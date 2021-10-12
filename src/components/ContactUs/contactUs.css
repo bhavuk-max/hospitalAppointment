@@ -1,0 +1,17 @@
+.contactUs {
+  background-color: #06308a;
+  color: azure;
+  height: 200px;
+  align-content: center;
+  text-decoration: none;
+}
+.info-main {
+  display: flex;
+  justify-content: center;
+}
+.info-card {
+  margin: 20px;
+}
+.info-content {
+  font-size: 20px;
+}

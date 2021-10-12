@@ -1,0 +1,29 @@
+.rows-column{
+    content: "";
+    clear: both;
+    display: table;
+    display: block;
+    /* top: 330px; */
+  
+  }
+  .column-Pharmacy {
+    float: left;
+       width: 20%;
+    padding: 5px;
+    
+  }
+  .column-Pharmacy:hover{
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+  .Pharmacy{
+      text-align: center;
+      background-color: rgb(235,241,248);
+  }
+  .shopping-cart{
+    position: fixed;
+    top: 32px;
+    z-index: 1000;
+    color: white;
+    left: 1184px;
+    size:lg;
+  }

@@ -1,0 +1,47 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  
+}
+
+
+.front-links{
+  text-decoration: none;
+  font-weight: bold;
+}
+.column:hover{
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+.rows{
+  content: "";
+  clear: both;
+  display: table;
+  position: fixed;
+  top: 330px;
+
+}
+.column-0{
+  float: left;
+  width: 30%;
+position: fixed;
+top: 60px;
+float: right;
+
+}
+.column {
+  float: left;
+     width: 20%;
+  padding: 5px;
+  
+}
+#problem-front{
+  
+  position: fixed;
+  top: 311px;
+  font-family: inherit;
+    font-weight: bold;
+    background-color: rgb(235,241,248);
+    width: 100%;
+}
+

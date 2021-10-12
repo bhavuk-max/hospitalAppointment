@@ -1,0 +1,191 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body{
+  
+    font-style: normal;
+    background-color: #e3e3e3;
+    font-weight: normal;
+
+    }
+
+.links-dashboards{
+  list-style: none;
+  position: relative;
+  left: 0%;
+  background-color: blue;
+  width: 14vw;
+  height: 100vh;
+}
+.links-dashboards li{
+  padding: 8px 8px 8px 0px;
+  
+  
+}
+.appoint-check{
+  position: absolute;
+    left: 160px;
+    top: 464px;
+}
+.li-one,.li-two,.li-three,.li-four,.li-five{
+  color: beige;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.category{
+  position: fixed;
+  top: 193px;
+  left: 165px;
+}
+  .form-select .form-select-sm .w-25 .p-3 .mh-25
+{
+  position: relative;
+  top: 100px;
+  width: 100px;
+
+}
+
+#select-one-doctor{
+  position: fixed;
+    left: 290px;
+    height: 50px;
+    width: 50px;
+    top: 252px;
+  
+}
+.form-select .form-select-sm{
+  width: 20%;
+  padding-bottom: 1px;
+} 
+
+#select-one-problem{
+  position: fixed;
+  left: 290px;
+  height: 53px;
+  width: 50px;
+  top: 187px;
+}
+.h3-select-date{
+  position: fixed;
+  left: 163px;
+  top: 323px;
+}
+
+.li-one:hover,
+.li-two:hover,
+.li-three:hover,
+.li-five:hover,
+.li-four:hover{
+  color: rgb(172, 169, 169);
+
+}
+.pat_details{
+  margin: 0;
+  padding: 0;
+ list-style-type: none;
+  font-weight: bold;
+  display: block;
+  position: absolute;
+  top: 80px;
+  left: 325px;
+
+  
+}
+.PreviousAppointment{
+  position: fixed;
+    top: 132px;
+    left: 150px;
+}
+ .Table{
+   position: relative;
+   top: 225px;
+ }
+.doctors-list{
+  position: fixed;
+  top: 263px;
+  left: 160px;
+}
+.select-time{
+  position: fixed;
+  left: 160px;
+  top: 375px;
+}
+#select-time-picker-clock{
+  position: relative;
+  left: 290px;
+  top: 10px;
+  
+  
+
+}
+#button-book-appointment{
+  position: absolute;
+  left: 300px;
+  top: 501px;
+  background-color: rgb(59, 101, 192);
+}
+.ContactUs{
+  text-align: center;
+  display: block;
+  position: absolute;
+  
+  
+}
+
+.Datepicker,.Datepicker:focus{
+  position: fixed;
+  left: 290px;
+  top: 323px;
+}
+.TImepicker{
+  position: absolute;
+  left: 290px;
+  top: 300px;
+}
+.time-pickme{
+  position: fixed;
+  left: 291px;
+  top: 375px;
+}
+/* .front-1{
+  background-color: ;
+} */
+.MobileNo{
+  position: fixed;
+  top: 430px;
+  left: 160px;
+}
+.send_mobile_no{
+  position: fixed;
+    top: 432px;
+    left: 290px;
+}
+
+.logout{
+  background-color: white !important;
+  position: fixed;
+left: 1262px;
+   top: 20px; 
+}
+.column-how{
+  position: absolute;
+  width: 11%;
+  right: 255px;
+  top: 100px;
+}
+.how-text{
+  position: fixed;
+    top: 295px;
+    left: 1000px;
+}
+ footer{
+  
+  text-align: center;
+  color: black;
+  background-color:#3d3d3d;
+  height: 10vh;
+ 
+  width: 100%;
+} 

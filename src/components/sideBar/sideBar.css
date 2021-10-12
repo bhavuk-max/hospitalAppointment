@@ -1,0 +1,28 @@
+.ham {
+  color: azure;
+  align-self: center;
+  margin: 20px;
+  cursor: pointer;
+}
+.sideBar-item {
+  height: 80px;
+}
+
+.side {
+  text-decoration: none;
+}
+.doc-side {
+  background-color: #060b26 !important;
+}
+.cross {
+  cursor: pointer;
+  color: azure;
+  margin-right: 10px;
+}
+.sideBar-item {
+  background-color: #060b26 !important;
+  color: aliceblue !important;
+}
+.sideBar-item:hover {
+  background-color: #1a83ff !important;
+}

@@ -1,0 +1,62 @@
+.carousel-item {
+  height: 300px;
+  background: #56a6c5;
+}
+/* .container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  left: 0;
+  right: 0;
+  padding-bottom: 50px;
+} */
+
+.inner-card {
+  display: flex;
+  padding: 20px;
+  width: 70%;
+  margin: auto;
+}
+.image {
+  height: 200px;
+  width: 200px;
+}
+
+/* .logo {
+  background-image: url("healthcare.jpg");
+  height: 300px;
+  width: 200px;
+} */
+
+h3 {
+  font-family: "Lucida Console", "Courier New", monospace;
+  font-weight: bolder;
+  text-decoration: underline;
+}
+.covid {
+  font-family: "Lucida Console", "Courier New", monospace;
+  text-align: left;
+  font-size: large;
+  padding-left: 1em;
+  text-indent: -1em;
+  list-style: none;
+}
+.covid:before {
+  content: "\2713";
+  color: #53a0f7;
+  padding: 5px;
+}
+p {
+  font-family: "Lucida Console", "Courier New", monospace;
+  font-weight: bolder;
+  font-size: large;
+}
+
+.tips {
+  margin: 10px;
+}
+
+.parent-tips {
+  display: flex;
+}

@@ -1,0 +1,54 @@
+.Nav {
+  /* background: #000; */
+  background: #060b26;
+  height: 88px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem cal((100vw - 1000px)/2);
+  position: sticky;
+  z-index: 999;
+  top: 0;
+}
+
+.NavLink {
+  color: #fff;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  margin-right: 10px;
+  padding: 10px;
+  height: 100%;
+  cursor: pointer;
+}
+.NavLink:active {
+  color: #15cdfc;
+}
+
+.NavMenu {
+  display: flex;
+  align-items: center;
+  margin-right: -24px;
+}
+
+.NavBtn {
+  display: flex;
+  align-items: center;
+  margin-right: 24px;
+}
+
+.NavBtnLink {
+  border-radius: 4px;
+  background: #256ce1;
+  padding: 10px 22px;
+  color: #fff;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.2s ease-out;
+  text-decoration: none;
+}
+.NavBtnLink:hover {
+  transition: all 0.2s ease-out;
+  background: #fff;
+  color: #010606;
+}
