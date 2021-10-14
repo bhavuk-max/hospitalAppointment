@@ -1,4 +1,6 @@
 import React from "react";
+import Card from "react-bootstrap/Card";
+import { Button } from 'react-bootstrap';
 import useState from "react";
 import crocin from "../Pharmacy/crocin.png";
 import photo2 from "./photo2.jfif";
@@ -33,7 +35,49 @@ class Pharmacy extends Component {
   render() {
     return (
       <>
-        <Router>
+      <div className="Pharmacy">
+            <h1>Pharmacy</h1>
+          </div>
+          <div className="rows-column">
+          <div className="column-Pharmacy">
+          <Card style={{ width: '12rem' }}>
+  <Card.Img variant="top"  src={crocin} />
+  <Card.Body>
+    <Card.Title><h6>
+                <b>Crocin</b>
+              </h6></Card.Title>
+   
+    <Grid />
+    <Button variant="primary">Order Now</Button>
+  </Card.Body>
+  
+</Card>
+</div>
+
+          <div className="column-Pharmacy">
+          <Card style={{ width: '12rem' }}>
+  <Card.Img variant="top"  src={photo2}
+                alt="Lisinopril" />
+  <Card.Body>
+    <Card.Title><h6>
+                <b>Lisinopril</b>
+              </h6></Card.Title>
+    
+    <Grid />
+    <Button variant="primary">Order Now</Button>
+  </Card.Body>
+  
+</Card>
+</div>
+</div>
+<div className="shopping-cart">
+            <Link to="/CheckOut">
+              <FaShoppingCart size={28} />
+            </Link> 
+          </div>
+
+
+        {/* <Router>
           <div className="Pharmacy">
             <h1>Pharmacy</h1>
           </div>
@@ -197,7 +241,7 @@ class Pharmacy extends Component {
               <FaShoppingCart size={28} />
             </Link> 
           </div> 
-        </Router>
+        </Router> */}
       </>
     );
   }

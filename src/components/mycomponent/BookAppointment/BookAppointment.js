@@ -116,19 +116,22 @@ class BookAppointment extends Component {
               Select Problem Here
             </option>
             <option value="Heart" name="Heart">
-              Heart
+              Heart Problem
             </option>
             <option value="Bone" name="Bone">
-              Bone
+              Bone Problem
             </option>
-            <option value="Plastic Surgeon" name="Plastic Surgeon">
-              Plastic Surgeon
+            <option value="Acne" name="Acne">
+              Acne Problem
             </option>
-            <option value="Neurologist" name="Neurologist">
-              Neurologist
+            <option value="Skin" name="Skin">
+              Skin Problem
             </option>
-            <option value="Cardiologist" name="Cardiologist" name="Heart">
-              Cardiologist
+            <option value="Back Pain" name="Back Pain">
+              Back Pain Problem
+            </option>
+            <option value="Leg Pain" name="Leg Pain" >
+              Leg Pain Problem
             </option>
           </select>
 
@@ -143,11 +146,11 @@ class BookAppointment extends Component {
               }
             >
               <option selected>Doctor available</option>
-              <option value="bhavuk">bhavuk</option>
-              <option value="keshav">keshav</option>
-              <option value="amrit">amrit</option>
-              <option value="kshitij">kshitij</option>
-              <option value="suresh">suresh</option>
+              <option value="Dr. Bhavuk">Dr. Bhavuk</option>
+              <option value="Dr. keshav">Dr. keshav</option>
+              <option value="Dr. Amrit">Dr. Amrit</option>
+              <option value="Dr. Kshitij">Dr. Kshitij</option>
+              <option value="Dr. suresh">Dr. suresh</option>
             </select>
           </div>
           <div className="data-picker ">
