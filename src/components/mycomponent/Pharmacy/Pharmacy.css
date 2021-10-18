@@ -7,6 +7,9 @@
     display: center;
   
   }
+  span {
+    margin-left: 3px;
+}
   .blocks{
     float: left;
   }
@@ -16,6 +19,9 @@
     padding: 5px;
     
   }
+  .image-size {
+    height: 141px;
+}
   /* .column-Pharmacy:hover{
     box-shadow: 0 8px 10px 0 rgba(0,0,0,0.2);
   } */
@@ -23,8 +29,11 @@
       text-align: center;
       background-color: rgb(235,241,248);
   }
+  .Order-now{
+    margin-top: 5px;
+  }
   .shopping-cart{
-    position: fixed;
+    position:absolute;
     top: 32px;
     z-index: 1000;
     color: white;
