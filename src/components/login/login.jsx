@@ -51,6 +51,40 @@ class Login extends Component {
             localStorage.setItem("ExpiresAt", result.data[0].ExpiresAt);
             localStorage.setItem("UserId", result.data[0].ID);
             localStorage.setItem("UserType", result.data[0].UserType);
+            if (("UserType", result.data[0].UserType)) {
+              const url2 = "http://hospitalappointment/GetId.php";
+              axios({
+                method: "post",
+                url: `${url2}`,
+                headers: { "content-type": "application/json" },
+                data: {
+                  userType: result.data[0].UserType,
+                  userId: result.data[0].ID,
+                },
+              })
+                .then((book) => {
+                  console.log(book.data);
+                  if (result.data[0].UserType === "1") {
+                    localStorage.setItem("Doctor_ID", book.data[0].Doctor_ID);
+                  } else if (result.data[0].UserType === "2") {
+                    localStorage.setItem("PatientID", book.data[0].Patient_ID);
+                  }
+                })
+                .catch((error) => this.setState({ error: error.message }));
+            }
+            if (result.data[0].First_login === "0") {
+              const url3 = "http://hospitalappointment/BookAppointmentId.php";
+              axios({
+                method: "post",
+                url: `${url3}`,
+                headers: { "content-type": "application/json" },
+                data: {
+                  userType: result.data[0].UserType,
+                  userId: result.data[0].ID,
+                  FirstLogin: result.data[0].First_login,
+                },
+              });
+            }
           } else if (result.data === false) {
             this.setState({ userIncorrect: true });
           }

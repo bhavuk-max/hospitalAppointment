@@ -6,8 +6,6 @@
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
-
-
  
   $rest_json = file_get_contents("php://input");
   $_POST = json_decode($rest_json, true);
@@ -18,16 +16,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     
     require_once 'db.php';
 
-    // if(uidExists($conn,$email) !== false){
-      
-
-
-    // }
-  
-
 
     $sql = "INSERT INTO user (Email,Password,FullName,UserType)
     VALUES ('$email','$password','$name','$user')";
+    
+
 
     if ($conn->query($sql) === TRUE) {
 
