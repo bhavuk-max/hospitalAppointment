@@ -2,7 +2,7 @@
 $server="localhost";
 $username="root";
 $password="";
-$dbname="date_time";
+$dbname="hospitalappointment";
 
 $conn= new mysqli($server,$username,$password,$dbname);
 

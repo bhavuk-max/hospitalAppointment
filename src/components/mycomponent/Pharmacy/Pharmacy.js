@@ -26,10 +26,12 @@ import { FaShoppingCart } from "react-icons/fa";
 import "./Pharmacy.css";
 import Grid from "./grid";
 import { mockComponent } from "react-dom/test-utils";
+import photos from "./photos";
 import { Component } from "react";
 class Pharmacy extends Component {
   constructor(props) {
     super(props);
+    //this.capitalizedName=this.capitalizedName.bind(this);
     //this.IncreCount=this.IncreCount.bind(this)
     //this.handleIncrement=this.handleIncrement.bind(this);
   }
@@ -42,8 +44,43 @@ class Pharmacy extends Component {
   // }
 
   render() {
+    // const photos=[{
+    //   Name:"Azithromycin",
+    //   source:'./Azithromycin.jfif.png',
+    //   width: "12rem",
+    //    height: "20rem",
+    //    alt: "Azithromycin tablets" 
+    //   }]
     return (
       <>
+      {/* <div className="rows-column">
+           <div className="column-Pharmacy"> 
+             {photos.map((image,index)=>(
+               <div>
+             <image key={index} src={require(`./${image.Name}.jfif`)} width={image.width}  alt={image.alt} />
+             <h1>{image.Name}</h1>
+             </div>
+            //  <Card style={{ width: "12rem" }}>
+            //             <Card.Img variant="top" className="image-size" src={require(image.source)} />
+                        
+            //            <Card.Body>
+            //              <Card.Title>
+            //                <h6>
+            //                 <b>{image.Name}</b>
+            //               </h6>
+            //            </Card.Title>
+         
+            //           <Grid />
+            //               <Button className="Order-now" variant="primary">
+            //                 Order Now
+            //               </Button>
+            //            </Card.Body>
+            //           </Card>
+             ))}
+            
+             */}
+      
+     
         <div className="Pharmacy">
           <h1>Pharmacy</h1>
         </div>
@@ -482,6 +519,7 @@ class Pharmacy extends Component {
         </div>
         
       </>
+    
     );
   }
 }

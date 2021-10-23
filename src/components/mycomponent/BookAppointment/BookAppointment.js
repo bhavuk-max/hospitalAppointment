@@ -115,22 +115,22 @@ class BookAppointment extends Component {
             <option value="start" selected>
               Select Problem Here
             </option>
-            <option value="Heart" name="Heart">
+            <option value="Heart Problem" >
               Heart Problem
             </option>
-            <option value="Bone" name="Bone">
+            <option value="Bone Problem" >
               Bone Problem
             </option>
-            <option value="Acne" name="Acne">
+            <option value="Acne Problem" >
               Acne Problem
             </option>
-            <option value="Skin" name="Skin">
+            <option value="Skin Problem" >
               Skin Problem
             </option>
-            <option value="Back Pain" name="Back Pain">
+            <option value="Back Pain Problem" >
               Back Pain Problem
             </option>
-            <option value="Leg Pain" name="Leg Pain" >
+            <option value="Leg Pain Problem"  >
               Leg Pain Problem
             </option>
           </select>
