@@ -28,6 +28,7 @@ import Patient_details from "./components/mycomponent/DashBoard/Patient_details"
 import CheckOut from "./components/mycomponent/Pharmacy/CheckOut";
 import Check from "./components/mycomponent/Pharmacy/check";
 import Grid from "./components/mycomponent/Pharmacy/grid";
+import Stopka from "./components/mycomponent/Pharmacy/stopka";
 // import Navbar from "./components/mycomponent/Navbar";
 // import { Patient_details } from "./components/mycomponent/Patient_details";
 
@@ -36,7 +37,7 @@ function App() {
   const userId = localStorage.getItem("UserId");
   // const loginForm = <Redirect to="/login" />;
   // const home = <Redirect exact to="/Home" />;
-
+ 
   return (
     <div className="App">
       <Router>
@@ -89,6 +90,7 @@ function App() {
             />
             <Route exact path="/CheckOut" exact strict component={CheckOut} />
             <Route exact path="/Check" exact strict component={Check} />
+            <Route exact path="/Stopka" exact strict component={Stopka} />
           </div>
         </Switch>
       </Router>
