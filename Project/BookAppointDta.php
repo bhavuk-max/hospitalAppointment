@@ -9,28 +9,19 @@ header("Access-Control-Allow-Headers: Content-Disposition, Content-Type, Content
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
 
-
-
  $rest_json = file_get_contents("php://input");
  $_POST = json_decode($rest_json, true);
- $category = $_POST["send"];
- $send_doc = $_POST["send_doc"];
+ $Patient_ID = $_POST["Patient_ID"];
+ $category = $_POST["category"];
+ $Doctor_ID = $_POST["send_doc"];
  $send_date = $_POST["send_date"];
  $send_time = $_POST["send_time"];
- $send_mobile=$_POST["send_mobile_no"];
-   
-   require_once 'DBase.php';
 
-   // if(uidExists($conn,$email) !== false){
-     
+ require_once 'db.php';
 
-
-   // }
- 
-
-
-   $sql = "INSERT INTO bookappointment (category,avail_doc,Date,Time,MobileNo)
-   VALUES ('$category','$send_doc','$send_date','$send_time','$send_mobile')";
+  //  $sql = "INSERT INTO bookappointment (category,avail_doc,Date,Time,MobileNo)
+  //  VALUES ('$category','$send_doc','$send_date','$send_time','$send_mobile')";
+  $sql = "INSERT INTO bookappointment (Patient_ID,Doctor_ID,Category,Date,Time) VALUES('$Patient_ID','$Doctor_ID','$category','$send_date','$send_time')";
 
    if ($conn->query($sql) === TRUE) {
 
@@ -43,6 +34,5 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
 $conn->close();
 }
-
 
 ?>
