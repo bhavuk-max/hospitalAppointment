@@ -1,71 +1,87 @@
 import React, { Component } from "react";
-import health from "./health.jpg";
+import { articles } from "./ArticlesData";
 import Card from "react-bootstrap/Card";
 import Carousel from "react-bootstrap/Carousel";
+import Accordion from "react-bootstrap/Accordion";
 import "./Article.css";
+
 class Article extends React.Component {
+  state = {
+    selectedArticle: articles[0][0],
+    eventKey: null,
+  };
+
+  handleCard(x) {
+    this.setState({ selectedArticle: x, eventKey: "0" });
+  }
+
   render() {
+    const { selectedArticle } = this.state;
+
     return (
       <div>
         <h1>Articles</h1>
 
-        <Carousel>
-          <Carousel.Item className="carousel-item header">
-            {/* <img className="d-block w-100" src={first} alt="First slide" /> */}
+        <Carousel variant={"dark"} interval={5000}>
+          {articles.map((x, index) => (
+            <Carousel.Item className="carousel-item header">
+              <div className="inner-card">
+                {x.map((item, index) => (
+                  <div>
+                    <Card
+                      onClick={() => this.handleCard(item)}
+                      style={{ width: "18rem", margin: "15px" }}
+                      key={index}
+                    >
+                      <Card.Body>
+                        <Card.Title>{item.title}</Card.Title>
+                        <Card.Img
+                          variant="top"
+                          src={item.image}
+                          className="image"
+                        />
+                        {/* <Card.Text>{x.body}</Card.Text> */}
+                      </Card.Body>
+                    </Card>{" "}
+                  </div>
+                ))}
+              </div>
+            </Carousel.Item>
+          ))}
+          {/* <Carousel.Item className="carousel-item header">
             <div className="inner-card">
-              <Card style={{ width: "18rem", margin: "10px" }}>
+              <Card style={{ width: "18rem", margin: "15px" }}>
                 <Card.Body>
-                  <Card.Title>Cardiac</Card.Title>
+                  <Card.Title>Dermatology</Card.Title>
                   <Card.Img variant="top" src={health} className="image" />
                   <Card.Text>
                     "Healthy living" to most people means both physical and
                     mental health are in balance or functioning well together in
-                    a person. In many instances, physical and mental health are
-                    closely linked, so that a change (good or bad) in one
-                    directly affects the other. Consequently, some of the tips
-                    will include suggestions for emotional and mental "healthy
-                    living."
+                    a person.
                   </Card.Text>
                 </Card.Body>
               </Card>
-              <Card style={{ width: "18rem", margin: "10px" }}>
-                <Card.Body>
-                  <Card.Title>Dental</Card.Title>
-                  <Card.Img variant="top" src={health} className="image" />
-                </Card.Body>
-              </Card>
-              <Card style={{ width: "18rem", margin: "10px" }}>
-                <Card.Body>
-                  <Card.Title>ENT</Card.Title>
-                  <Card.Img variant="top" src={health} className="image" />
-                </Card.Body>
-              </Card>
-            </div>
-          </Carousel.Item>
-          <Carousel.Item className="carousel-item header">
-            {/* <img className="d-block w-100" src={first} alt="First slide" /> */}
-            <div className="inner-card">
-              <Card style={{ width: "18rem", margin: "10px" }}>
-                <Card.Body>
-                  <Card.Title>Dermatology</Card.Title>
-                  <Card.Img variant="top" src={health} className="image" />
-                </Card.Body>
-              </Card>
-              <Card style={{ width: "18rem", margin: "10px" }}>
+              <Card style={{ width: "18rem", margin: "15px" }}>
                 <Card.Body>
                   <Card.Title>Orthopedic</Card.Title>
                   <Card.Img variant="top" src={health} className="image" />
                 </Card.Body>
               </Card>
-              <Card style={{ width: "18rem", margin: "10px" }}>
+              <Card style={{ width: "18rem", margin: "15px" }}>
                 <Card.Body>
                   <Card.Title>Gastroenterology</Card.Title>
                   <Card.Img variant="top" src={health} className="image" />
                 </Card.Body>
               </Card>
             </div>
-          </Carousel.Item>
+          </Carousel.Item> */}
         </Carousel>
+        <Accordion>
+          <Accordion.Item eventKey="0">
+            <Accordion.Header>{selectedArticle.title}</Accordion.Header>
+            <Accordion.Body>{selectedArticle.body} </Accordion.Body>
+          </Accordion.Item>
+        </Accordion>
       </div>
     );
   }
