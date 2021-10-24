@@ -48,33 +48,6 @@ class Article extends React.Component {
               </div>
             </Carousel.Item>
           ))}
-          {/* <Carousel.Item className="carousel-item header">
-            <div className="inner-card">
-              <Card style={{ width: "18rem", margin: "15px" }}>
-                <Card.Body>
-                  <Card.Title>Dermatology</Card.Title>
-                  <Card.Img variant="top" src={health} className="image" />
-                  <Card.Text>
-                    "Healthy living" to most people means both physical and
-                    mental health are in balance or functioning well together in
-                    a person.
-                  </Card.Text>
-                </Card.Body>
-              </Card>
-              <Card style={{ width: "18rem", margin: "15px" }}>
-                <Card.Body>
-                  <Card.Title>Orthopedic</Card.Title>
-                  <Card.Img variant="top" src={health} className="image" />
-                </Card.Body>
-              </Card>
-              <Card style={{ width: "18rem", margin: "15px" }}>
-                <Card.Body>
-                  <Card.Title>Gastroenterology</Card.Title>
-                  <Card.Img variant="top" src={health} className="image" />
-                </Card.Body>
-              </Card>
-            </div>
-          </Carousel.Item> */}
         </Carousel>
         <Accordion>
           <Accordion.Item eventKey="0">
