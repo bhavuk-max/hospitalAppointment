@@ -14,6 +14,7 @@ $sql = "SELECT bookappointment.Appointment_ID,user.FullName,user.PhoneNo,user.Qu
 $result = mysqli_query($conn,$sql);
 $resultCheck = mysqli_num_rows($result);
 
+
 for($set = array();$row = $result->fetch_assoc();$set[] = $row);
 echo json_encode($set);
 

@@ -37,6 +37,7 @@ z-index: 1;
     padding: 8px 10px 6px 3px;
     list-style: none;
     height: 60px;
+    color: #f5f5f5;
 }
 .nav-text a{
     text-decoration: none;
@@ -51,6 +52,7 @@ z-index: 1;
 }
 .nav-text a:hover{
     background-color: #1a83ff;
+    /* background-color: aliceblue; */
 }
 .nav-menu-items{
     width: 100%;

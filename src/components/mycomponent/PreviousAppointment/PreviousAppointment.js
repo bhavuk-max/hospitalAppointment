@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Table from "react-bootstrap/Table";
 import axios from "axios";
 class PreviousAppointment extends React.Component {
+
   state = { table: [], Patient_ID: localStorage.getItem("Patient_ID") };
   componentDidMount() {
     // http://hospitalappointment/getData.php
@@ -12,6 +13,7 @@ class PreviousAppointment extends React.Component {
       url: `${url}`,
       headers: { "content-type": "application/json" },
       data: { Patient_ID: Patient_ID },
+
     })
       .then((result) => {
         console.log(result.data);

@@ -94,20 +94,23 @@ class BookAppointment extends Component {
             <option value="start" selected>
               Select Problem Here
             </option>
-            <option value="Heart" name="Heart">
-              Heart
+            <option value="Heart Problem" >
+              Heart Problem
             </option>
-            <option value="Bone" name="Bone">
-              Bone
+            <option value="Bone Problem" >
+              Bone Problem
             </option>
-            <option value="Plastic Surgeon" name="Plastic Surgeon">
-              Plastic Surgeon
+            <option value="Acne Problem" >
+              Acne Problem
             </option>
-            <option value="Neurologist" name="Neurologist">
-              Neurologist
+            <option value="Skin Problem" >
+              Skin Problem
             </option>
-            <option value="Cardiologist" name="Cardiologist" name="Heart">
-              Cardiologist
+            <option value="Back Pain Problem" >
+              Back Pain Problem
+            </option>
+            <option value="Leg Pain Problem"  >
+              Leg Pain Problem
             </option>
           </select>
 
@@ -122,6 +125,7 @@ class BookAppointment extends Component {
                 this.setState({ send_doc: event.target.value })
               }
             >
+
               {" "}
               <option value="" disabled selected>
                 Select Doctors
@@ -131,6 +135,7 @@ class BookAppointment extends Component {
                   {x.FullName}
                 </option>
               ))}
+
             </select>
           </div>
           <div className="data-picker ">
