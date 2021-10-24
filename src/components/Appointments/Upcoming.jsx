@@ -2,14 +2,16 @@ import React, { Component } from "react";
 import Table from "react-bootstrap/Table";
 import axios from "axios";
 class Upcoming extends React.Component {
-  state = { table: [] };
+  state = { table: [], Doctor_ID: localStorage.getItem("Doctor_ID") };
   componentDidMount() {
+    const { Doctor_ID } = this.state;
     // http://hospitalappointment/getData.php
     const url = "http://hospitalappointment/Upcoming.php";
     axios({
-      method: "get",
+      method: "post",
       url: `${url}`,
       headers: { "content-type": "application/json" },
+      data: { Doctor_ID: Doctor_ID },
     })
       .then((result) => {
         console.log(result);
@@ -29,7 +31,8 @@ class Upcoming extends React.Component {
               <th>#</th>
               <th>Full Name</th>
               <th>Phone Number</th>
-              <th>Address</th>
+              <th>Date</th>
+              <th>Time</th>
             </tr>
           </thead>
           <tbody>
@@ -38,7 +41,8 @@ class Upcoming extends React.Component {
                 <td>{index + 1}</td>
                 <td>{x.FullName}</td>
                 <td>{x.PhoneNo}</td>
-                <td>{x.Address}</td>
+                <td>{x.Date}</td>
+                <td>{x.Time}</td>
               </tr>
             ))}
           </tbody>

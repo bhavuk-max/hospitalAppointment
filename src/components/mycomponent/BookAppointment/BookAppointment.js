@@ -13,45 +13,40 @@ class BookAppointment extends Component {
     this.AfterBook = this.AfterBook.bind(this);
 
     this.submitHandler = this.submitHandler.bind(this);
-    //this.componentDidMount = this.componentDidMount.bind(this);
   }
 
   state = {
-    send: "",
+    category: "",
     send_doc: "",
     send_date: "",
     send_time: "",
-    send_mobile_no: "",
-    data: [],
+    // send_mobile_no: "",
+    doctors: [],
+    Patient_ID: localStorage.getItem("Patient_ID"),
   };
-  // componentDidMount() {
-  //   const { data } = this.state;
-  //   const url2 = "http://hospitalappointment/Request_data.php";
-  //   axios({
-  //     method: "get",
-  //     url: `${url2}`,
-  //     headers: { "content-type": "application/json" },
-  //     data: this.state,
-  //   })
-  //     .then((response) => {
-  //       console.log(response);
-  //       this.setState({ dataa: this.state.data });
-  //     })
-  //     .catch((error) => this.setState({ error: error.message }));
-  // }
+
+  doctorList() {
+    const { category } = this.state;
+    const url2 = "http://hospitalappointment/Doctors.php";
+    axios({
+      method: "post",
+      url: `${url2}`,
+      headers: { "content-type": "application/json" },
+      data: { category: category },
+    })
+      .then((result) => {
+        if (result) {
+          this.setState({ doctors: result.data });
+        }
+      })
+      .catch((error) => this.setState({ error: error.message }));
+  }
   submitHandler(e) {
-    const { send } = this.state;
-    const { send_doc } = this.state;
-    const { send_date } = this.state;
-    const { send_time } = this.state;
-    const { dataa } = this.state;
-    const { send_mobile_no } = this.state;
-    alert("submithandler");
-    e.preventDefault();
+    const { category, send_doc, send_date, send_time, Patient_ID } = this.state;
 
     const url = "http://hospitalappointment/BookAppointDta.php";
-    const url2 = "http://hospitalappointment/Request_data.php";
-    if (send && send_doc && send_date && send_time && send_mobile_no) {
+
+    if (category && send_doc && send_date && send_time && Patient_ID) {
       axios({
         method: "post",
         url: `${url}`,
@@ -60,32 +55,10 @@ class BookAppointment extends Component {
       })
         .then((response) => {
           console.log(response);
+          this.setState({ category: "", send_doc: "" });
         })
         .catch((error) => this.setState({ error: error.message }));
-    } else {
     }
-    // axios({
-    //   method: "get",
-    //   url: `${url2}`,
-    //   headers: { "content-type": "application/json" },
-    //   data: this.state,
-    // })
-    //   .then((response) => {
-    //     console.log(response);
-    //     this.setState({ data: this.state.data });
-    //   })
-    //   .catch((error) => this.setState({ error: error.message }));
-     // axios({
-    //   method: "get",
-    //   url: `${url2}`,
-    //   headers: { "content-type": "application/json" },
-    //   data: this.state,
-    // })
-    //   .then((response) => {
-    //     console.log(response);
-    //     this.setState({ data: this.state.data });
-    //   })
-    //   .catch((error) => this.setState({ error: error.message }));
   }
 
   AfterBook() {
@@ -93,6 +66,7 @@ class BookAppointment extends Component {
   }
 
   render() {
+    const { doctors, category, send_doc } = this.state;
     return (
       <>
         <div className="PreviousAppointment">
@@ -109,8 +83,13 @@ class BookAppointment extends Component {
             className="form-select form-select-sm w-25 p-3 mh-25"
             id="select-one-problem"
             aria-label=".form-select-sm example"
+            value={category}
             // onChange={(event) => this.handleEvent(event)}
-            onChange={(event) => this.setState({ send: event.target.value })}
+            onChange={(event) =>
+              this.setState({ category: event.target.value }, () =>
+                this.doctorList()
+              )
+            }
           >
             <option value="start" selected>
               Select Problem Here
@@ -136,18 +115,22 @@ class BookAppointment extends Component {
             <h5 className="doctors-list">Doctors list:-</h5>
             <select
               className="form-select form-select-sm w-25 p-3 mh-25"
+              value={send_doc}
               id="select-one-doctor"
               aria-label=".form-select-sm example"
               onChange={(event) =>
                 this.setState({ send_doc: event.target.value })
               }
             >
-              <option selected>Doctor available</option>
-              <option value="bhavuk">bhavuk</option>
-              <option value="keshav">keshav</option>
-              <option value="amrit">amrit</option>
-              <option value="kshitij">kshitij</option>
-              <option value="suresh">suresh</option>
+              {" "}
+              <option value="" disabled selected>
+                Select Doctors
+              </option>
+              {doctors.map((x) => (
+                <option value={x.Doctor_ID} key={x.Doctor_ID}>
+                  {x.FullName}
+                </option>
+              ))}
             </select>
           </div>
           <div className="data-picker ">
@@ -181,7 +164,7 @@ class BookAppointment extends Component {
               className="Timepicker"
             ></input>
           </div>
-          <div>
+          {/* <div>
             <h5 className="MobileNo">Mobile No.:-</h5>
             <input
               type="number"
@@ -198,7 +181,7 @@ class BookAppointment extends Component {
 
           <div className="appoint-check">
             <button className="btn btn-primary">check</button>
-          </div>
+          </div> */}
 
           <div className="appoint-button">
             <Router>
