@@ -4,13 +4,15 @@
  $rest_json = file_get_contents("php://input");
  $_POST = json_decode($rest_json, true);
  
- 
- require_once 'DBase.php';
+ $Patient_ID = $_POST["Patient_ID"];
+ require_once 'db.php';
 
  //$sql="SELECT category,avail_doc,Date,Time FROM bookAppointment ";
- $sql="SELECT category,avail_doc,Date,Time FROM bookAppointment order by ID DESC LIMIT 1";
+//  $sql="SELECT category,avail_doc,Date,Time FROM bookAppointment order by ID DESC LIMIT 1";
+$sql = "SELECT bookappointment.Appointment_ID,user.FullName,user.PhoneNo,user.Qualification,bookappointment.Date,bookappointment.Time FROM bookappointment JOIN doctor ON bookappointment.Doctor_ID = doctor.Doctor_ID JOIN user ON doctor.ID = user.ID WHERE bookappointment.Patient_ID = '$Patient_ID'";
 
-
+$result = mysqli_query($conn,$sql);
+$resultCheck = mysqli_num_rows($result);
 
 
 for($set = array();$row = $result->fetch_assoc();$set[] = $row);

@@ -1,0 +1,62 @@
+.quote {
+  color: #2659f9;
+  font-size: 80px;
+}
+.aim {
+  font-size: 18px;
+  align-self: center;
+  margin: auto;
+}
+
+.aimSection {
+  padding: 20px 50px;
+  margin-bottom: 30px;
+}
+
+h1 {
+  padding: 10px;
+}
+
+.docImage {
+  background: url("./doc.jpg") no-repeat;
+  display: block;
+  width: 100%;
+  height: 400px;
+  background-size: cover;
+  padding: 140px 50px;
+}
+
+.offering {
+  padding: 40px;
+}
+
+.aboutUs {
+  margin: 30px;
+  display: flex;
+}
+
+.about {
+  padding: 5px;
+  text-align: left;
+  font-size: large;
+  padding-left: 1em;
+  text-indent: -1em;
+  list-style: none;
+}
+.about:before {
+  content: "\2713";
+  color: #53a0f7;
+  padding: 5px;
+}
+
+.footer {
+  background-color: rgb(1, 38, 146);
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer h5 {
+  margin: 0;
+}

@@ -67,7 +67,7 @@ class Login extends Component {
                   if (result.data[0].UserType === "1") {
                     localStorage.setItem("Doctor_ID", book.data[0].Doctor_ID);
                   } else if (result.data[0].UserType === "2") {
-                    localStorage.setItem("PatientID", book.data[0].Patient_ID);
+                    localStorage.setItem("Patient_ID", book.data[0].Patient_ID);
                   }
                 })
                 .catch((error) => this.setState({ error: error.message }));

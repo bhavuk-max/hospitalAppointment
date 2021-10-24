@@ -14,7 +14,7 @@
 
 .inner-card {
   display: flex;
-  padding: 20px;
+  padding: 50px;
   width: 70%;
   margin: auto;
 }
@@ -30,12 +30,10 @@
 } */
 
 h3 {
-  font-family: "Lucida Console", "Courier New", monospace;
   font-weight: bolder;
   text-decoration: underline;
 }
 .covid {
-  font-family: "Lucida Console", "Courier New", monospace;
   text-align: left;
   font-size: large;
   padding-left: 1em;
@@ -47,8 +45,8 @@ h3 {
   color: #53a0f7;
   padding: 5px;
 }
+
 p {
-  font-family: "Lucida Console", "Courier New", monospace;
   font-weight: bolder;
   font-size: large;
 }
