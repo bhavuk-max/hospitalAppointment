@@ -31,57 +31,55 @@ class Patient_details extends Component {
             Having Problem..? Consult your Problem with our Top Doctors
           </p>
           <div className="column" id="front-images-1">
-          <Link to="/BookAppointment" className="front-links">
-            <img src={cough} alt="cough" style={{ width: "100%" }}></img>
-            <h6>
-              <b>Cough and Cold</b>
-            </h6>
-
-            
+            <Link to="/BookAppointment" className="front-links">
+              <img src={cough} alt="cough" style={{ width: "100%" }}></img>
+              <h6>
+                <b>Cough and Cold</b>
+              </h6>
               Consult Now
             </Link>
           </div>
           <div className="column" id="front-images-2">
-          <Link to="/BookAppointment" className="front-links">
-            <img src={skin} alt="skin problem" style={{ width: "100%" }}></img>
-            <h6>
-              <b>Skin Problem</b>
-            </h6>
-            
+            <Link to="/BookAppointment" className="front-links">
+              <img
+                src={skin}
+                alt="skin problem"
+                style={{ width: "100%" }}
+              ></img>
+              <h6>
+                <b>Skin Problem</b>
+              </h6>
               Consult Now
             </Link>
           </div>
           <div className="column">
-          <Link to="/BookAppointment" className="front-links">
-            <img
-              src={heart}
-              alt="heart problem"
-              style={{ width: "100%" }}
-            ></img>
-            <h6>
-              <b>Heart Problem</b>
-            </h6>
-            
+            <Link to="/BookAppointment" className="front-links">
+              <img
+                src={heart}
+                alt="heart problem"
+                style={{ width: "100%" }}
+              ></img>
+              <h6>
+                <b>Heart Problem</b>
+              </h6>
               Consult Now
             </Link>
           </div>
           <div className="column">
-          <Link to="/BookAppointment" className="front-links">
-            <img src={lose} alt="lose weight" style={{ width: "100%" }}></img>
-            <h6>
-              <b>Lose Weight</b>
-            </h6>
-            
+            <Link to="/BookAppointment" className="front-links">
+              <img src={lose} alt="lose weight" style={{ width: "100%" }}></img>
+              <h6>
+                <b>Lose Weight</b>
+              </h6>
               Consult Now
             </Link>
           </div>
           <div className="column">
-          <Link to="/BookAppointment" className="front-links">
-            <img src={back} alt="back pain" style={{ width: "100%" }}></img>
-            <h6>
-              <b>Back Pain</b>
-            </h6>
-           
+            <Link to="/BookAppointment" className="front-links">
+              <img src={back} alt="back pain" style={{ width: "100%" }}></img>
+              <h6>
+                <b>Back Pain</b>
+              </h6>
               Consult Now
             </Link>
           </div>

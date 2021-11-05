@@ -4,6 +4,7 @@ import Card from "react-bootstrap/Card";
 import Carousel from "react-bootstrap/Carousel";
 import Accordion from "react-bootstrap/Accordion";
 import "./Article.css";
+import { Link } from "react-router-dom";
 
 class Article extends React.Component {
   state = {
@@ -17,12 +18,12 @@ class Article extends React.Component {
 
   render() {
     const { selectedArticle } = this.state;
-
+    console.log(this.props);
     return (
       <div>
         <h1>Articles</h1>
 
-        <Carousel variant={"dark"} interval={5000}>
+        {/* <Carousel variant={"dark"} interval={5000}>
           {articles.map((x, index) => (
             <Carousel.Item className="carousel-item header">
               <div className="inner-card">
@@ -40,7 +41,7 @@ class Article extends React.Component {
                           src={item.image}
                           className="image"
                         />
-                        {/* <Card.Text>{x.body}</Card.Text> */}
+                        
                       </Card.Body>
                     </Card>{" "}
                   </div>
@@ -54,7 +55,42 @@ class Article extends React.Component {
             <Accordion.Header>{selectedArticle.title}</Accordion.Header>
             <Accordion.Body>{selectedArticle.body} </Accordion.Body>
           </Accordion.Item>
-        </Accordion>
+        </Accordion> */}
+        <div className="articles">
+          {articles.map((x) => (
+            <Link
+              // onClick={() => this.props.history.push("/articleDetails")}
+              to={{
+                pathname: "/articleDetails",
+                state: {
+                  body: x.body,
+                  image: x.image,
+                },
+              }}
+              className="article-link"
+              state={{ from: "Article" }}
+            >
+              <Card
+                className="article-card"
+                style={{ width: "18rem" }}
+                // onClick={() => this.props.history.push("/articleDetails")}
+              >
+                <Card.Img
+                  className="article-card-icon"
+                  variant="top"
+                  src={x.image}
+                />
+                <Card.Body>
+                  <Card.Title>{x.title}</Card.Title>
+                </Card.Body>
+
+                <Card.Body>
+                  <Card.Text className="article-body">{x.body}</Card.Text>
+                </Card.Body>
+              </Card>
+            </Link>
+          ))}
+        </div>
       </div>
     );
   }

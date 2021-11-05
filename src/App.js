@@ -29,6 +29,7 @@ import CheckOut from "./components/mycomponent/Pharmacy/CheckOut";
 import Check from "./components/mycomponent/Pharmacy/check";
 import Grid from "./components/mycomponent/Pharmacy/grid";
 import Stopka from "./components/mycomponent/Pharmacy/stopka";
+import ArticleDetails from "./components/Articles/ArticleDetails";
 // import Navbar from "./components/mycomponent/Navbar";
 // import { Patient_details } from "./components/mycomponent/Patient_details";
 
@@ -61,6 +62,13 @@ function App() {
           <Route path="/Chat" exact strict component={Chat} />
           <div>
             <Navbar />
+
+            <Route
+              path="/articleDetails"
+              exact
+              strict
+              component={ArticleDetails}
+            />
             <Route path="/Upcoming" exact strict component={Upcoming} />
             <Route path="/Article" exact strict component={Article} />
             <Route path="/About" exact strict component={About} />
