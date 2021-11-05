@@ -37,7 +37,7 @@ function App() {
   const userId = localStorage.getItem("UserId");
   // const loginForm = <Redirect to="/login" />;
   // const home = <Redirect exact to="/Home" />;
- 
+
   return (
     <div className="App">
       <Router>
@@ -66,8 +66,8 @@ function App() {
             <Route path="/About" exact strict component={About} />
             <Route path="/Contact" exact strict component={Contact} />
             <Route path="/" exact strict component={Home} />
-            <Route path="/Doctor" exact strict component={Doctor} />
-            <Route path="/Patient" exact strict component={Patient} />
+            <Route path="/Doctor" exact strict component={Home} />
+            <Route path="/Patient" exact strict component={Home} />
             <Route
               path="/BookAppointment"
               exact

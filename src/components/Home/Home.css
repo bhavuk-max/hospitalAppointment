@@ -1,5 +1,5 @@
 .carousel-item {
-  height: 300px;
+  height: max-content;
   background: #56a6c5;
 }
 /* .container {
