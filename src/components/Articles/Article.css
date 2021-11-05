@@ -2,3 +2,32 @@
   background: rgb(240, 240, 240) !important;
   height: max-content;
 }
+
+.articles {
+  display: flex;
+  margin: 60px;
+  flex-wrap: wrap;
+  /* justify-content: space-evenly; */
+}
+
+.article-card {
+  margin: 20px;
+}
+
+.article-body {
+  text-align: left;
+}
+
+.article-card-icon {
+  height: 220px;
+}
+
+.article-link {
+  text-decoration: none;
+  color: black;
+}
+
+.article-card {
+  width: 900px;
+  height: 500px;
+}

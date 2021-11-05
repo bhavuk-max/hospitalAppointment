@@ -29,6 +29,7 @@ import CheckOut from "./components/mycomponent/Pharmacy/CheckOut";
 import Check from "./components/mycomponent/Pharmacy/check";
 import Grid from "./components/mycomponent/Pharmacy/grid";
 import Stopka from "./components/mycomponent/Pharmacy/stopka";
+import ArticleDetails from "./components/Articles/ArticleDetails";
 // import Navbar from "./components/mycomponent/Navbar";
 // import { Patient_details } from "./components/mycomponent/Patient_details";
 
@@ -37,7 +38,7 @@ function App() {
   const userId = localStorage.getItem("UserId");
   // const loginForm = <Redirect to="/login" />;
   // const home = <Redirect exact to="/Home" />;
- 
+
   return (
     <div className="App">
       <Router>
@@ -61,13 +62,20 @@ function App() {
           <Route path="/Chat" exact strict component={Chat} />
           <div>
             <Navbar />
+
+            <Route
+              path="/articleDetails"
+              exact
+              strict
+              component={ArticleDetails}
+            />
             <Route path="/Upcoming" exact strict component={Upcoming} />
             <Route path="/Article" exact strict component={Article} />
             <Route path="/About" exact strict component={About} />
             <Route path="/Contact" exact strict component={Contact} />
             <Route path="/" exact strict component={Home} />
-            <Route path="/Doctor" exact strict component={Doctor} />
-            <Route path="/Patient" exact strict component={Patient} />
+            <Route path="/Doctor" exact strict component={Home} />
+            <Route path="/Patient" exact strict component={Home} />
             <Route
               path="/BookAppointment"
               exact
