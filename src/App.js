@@ -26,10 +26,11 @@ import PreviousAppointment from "./components/mycomponent/PreviousAppointment/Pr
 import Pharmacy from "./components/mycomponent/Pharmacy/Pharmacy";
 import Patient_details from "./components/mycomponent/DashBoard/Patient_details";
 import CheckOut from "./components/mycomponent/Pharmacy/CheckOut";
-import Check from "./components/mycomponent/Pharmacy/check";
+import Check from "./components/mycomponent/Pharmacy/Pharmacy_main";
 import Grid from "./components/mycomponent/Pharmacy/grid";
 import Stopka from "./components/mycomponent/Pharmacy/stopka";
 import ArticleDetails from "./components/Articles/ArticleDetails";
+import Main from "./components/mycomponent/Pharmacy/Main";
 // import Navbar from "./components/mycomponent/Navbar";
 // import { Patient_details } from "./components/mycomponent/Patient_details";
 
@@ -89,7 +90,7 @@ function App() {
               component={PreviousAppointment}
             />
 
-            <Route path="/Pharmacy" exact strict component={Pharmacy} />
+            {/* <Route path="/Pharmacy" exact strict component={Pharmacy} /> */}
             <Route
               path="/Patient_details"
               exact
@@ -97,8 +98,9 @@ function App() {
               component={Patient_details}
             />
             <Route exact path="/CheckOut" exact strict component={CheckOut} />
-            <Route exact path="/Check" exact strict component={Check} />
+            <Route exact path="/Pharmacy" exact strict component={Check} />
             <Route exact path="/Stopka" exact strict component={Stopka} />
+            <Route exact path="/Main" exact strict component={Main} />
           </div>
         </Switch>
       </Router>
