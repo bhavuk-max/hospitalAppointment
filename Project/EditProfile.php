@@ -27,7 +27,7 @@ require_once 'db.php';
 //   $sql = "UPDATE user SET Address='$address', PhoneNo='$phone' WHERE ID='$id';
 //   INSERT INTO patient (ID) VALUES ('$id');";
 // }
-$sql = "UPDATE user SET Address='$address', PhoneNo='$phone' WHERE ID='$id'";
+$sql = "UPDATE user SET Address='$address', PhoneNo='$phone', Qualification='$qual' WHERE ID='$id'";
 
 
 if ($conn->multi_query($sql) === TRUE) {

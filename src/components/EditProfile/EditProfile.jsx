@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import "./PatientDetails.css";
-class PatientDetails extends Component {
+import "./EditProfile.css";
+import Dropdown from "react-bootstrap/Dropdown";
+import DropdownButton from "react-bootstrap/DropdownButton";
+class EditProfile extends Component {
   state = {
     Address: "",
     phoneNumber: "",
@@ -12,14 +14,14 @@ class PatientDetails extends Component {
     Qualification: "",
     userType: localStorage.getItem("UserType"),
   };
-  PatientDetails(e) {
+  EditProfile(e) {
     e.preventDefault();
     const { Address, phoneNumber, FullName, Qualification, ID, userType } =
       this.state;
     const qualification = userType === "1" ? Qualification : " ";
     if (Address && phoneNumber && FullName && qualification && userType && ID) {
       this.setState({ Qualification: qualification }, () => {
-        const url = "http://hospitalappointment/PatientDetails.php";
+        const url = "http://hospitalappointment/EditProfile.php";
         axios({
           method: "post",
           url: `${url}`,
@@ -40,23 +42,10 @@ class PatientDetails extends Component {
     const { Doc, userType } = this.state;
     return (
       <div>
-        <h3>Complete Your profile</h3>
+        <h3>Edit Your profile</h3>
         <form>
           <div className="container">
             <div className="row justify-content-md-center">
-              {/* <div className="form-floating mb-3 col-3">
-                <input
-                  type="e-mail"
-                  className="form-control loginForm"
-                  id="email"
-                  placeholder="E-mail"
-                  onChange={(event) =>
-                    this.setState({ Email: event.target.value })
-                  }
-                  required
-                />
-                <label>E-mail</label>
-              </div> */}
               <div className="form-floating mb-3  col-3">
                 <input
                   type="text"
@@ -85,53 +74,9 @@ class PatientDetails extends Component {
                 />
                 <label>Phone Number</label>
               </div>
-              {/* <div className="form-floating mb-3  col-3">
-                <input
-                  type="tel"
-                  className="form-control loginForm"
-                  id="phone"
-                  placeholder="Phone Number"
-                  onChange={(event) =>
-                    this.setState({ Email: event.target.value })
-                  }
-                  required
-                />
-                <label>Secondary Phone Number</label>
-              </div> */}
             </div>
             <div className="row justify-content-md-center">
-              {/* <div className="dropdown">
-                <button
-                  className="btn btn-secondary dropdown-toggle"
-                  type="button"
-                  id="dropdownMenuButton1"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Dropdown button
-                </button>
-                <ul
-                  className="dropdown-menu"
-                  aria-labelledby="dropdownMenuButton1"
-                >
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Action
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Another action
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Something else here
-                    </a>
-                  </li>
-                </ul>
-              </div> */}
-              <div className="form-floating mb-3  col-3 ">
+              <div className="form-floating mb-3  col-3">
                 <textarea
                   className="form-control text"
                   placeholder="Leave a comment here"
@@ -146,17 +91,25 @@ class PatientDetails extends Component {
             </div>
             {userType === "1" ? (
               <div className="row justify-content-md-center">
-                <div className="form-floating mb-3  col-3 ">
-                  <textarea
-                    className="form-control text"
-                    placeholder="Leave a comment here"
-                    id="floatingTextarea2"
+                <div className="form-floating mb-3 col-3">
+                  <select
+                    className="form-select form-select-sm p-3"
+                    aria-label=".form-select-sm example"
+                    required
                     onChange={(event) =>
                       this.setState({ Qualification: event.target.value })
                     }
-                    required
-                  ></textarea>
-                  <label for="floatingTextarea2">Qualification</label>
+                  >
+                    <option value="start" selected>
+                      Select Problem Here
+                    </option>
+                    <option value="Heart">Heart</option>
+                    <option value="Bone">Bone</option>
+                    <option value="Acne">Acne</option>
+                    <option value="Skin">Skin</option>
+                    <option value="Back Pain">Back Pain</option>
+                    <option value="Leg Pain">Leg Pain</option>
+                  </select>
                 </div>
               </div>
             ) : (
@@ -167,7 +120,7 @@ class PatientDetails extends Component {
             type="submit"
             name="submit"
             className="btn btn-primary"
-            onClick={(e) => this.PatientDetails(e)}
+            onClick={(e) => this.EditProfile(e)}
           >
             Submit
           </button>
@@ -177,4 +130,4 @@ class PatientDetails extends Component {
   }
 }
 
-export default PatientDetails;
+export default EditProfile;

@@ -51,6 +51,8 @@ class Login extends Component {
             localStorage.setItem("ExpiresAt", result.data[0].ExpiresAt);
             localStorage.setItem("UserId", result.data[0].ID);
             localStorage.setItem("UserType", result.data[0].UserType);
+            localStorage.setItem("Email", result.data[0].Email);
+            localStorage.setItem("FullName", result.data[0].FullName);
             if (("UserType", result.data[0].UserType)) {
               const url2 = "http://hospitalappointment/GetId.php";
               axios({

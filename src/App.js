@@ -12,7 +12,7 @@ import Login from "./components/login/login";
 import Home from "./components/Home/Home";
 import ForgotPassword from "./components/ForgotPassword/ForgotPassword";
 import ResetPassword from "./components/ForgotPassword/ResetPassword";
-import PatientDetails from "./components/PatientDetails/PatientDetails";
+import EditProfile from "./components/EditProfile/EditProfile";
 import Doctor from "./components/Doctor/Doctor";
 import Navbar from "./components/Navbar/Navbar";
 import Patient from "./components/Patient/Patient";
@@ -52,17 +52,12 @@ function App() {
             strict
             component={ForgotPassword}
           />
-          <Route
-            path="/PatientDetails"
-            exact
-            strict
-            component={PatientDetails}
-          />
+
           <Route path="/ResetPassword" exact strict component={ResetPassword} />
           <Route path="/Chat" exact strict component={Chat} />
           <div>
             <Navbar />
-
+            <Route path="/EditProfile" exact strict component={EditProfile} />
             <Route
               path="/articleDetails"
               exact
