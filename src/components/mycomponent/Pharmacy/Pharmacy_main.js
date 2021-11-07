@@ -5,6 +5,7 @@ import { companyData } from "./index2.js";
 import "./Pharmacy.css";
 import Grid from "./grid";
 import CheckOut from "./CheckOut.js";
+import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import {
   BrowserRouter as Router,
   Link,
@@ -20,18 +21,74 @@ class check extends Component {
     this.state = {
       search: "",
       cartItems:[],
+      quantity:0,
     };
   }
-AddToCart(){
-  
-  // {companyData && companyData.map((e)=>{
-  //   if(e.id==)
-  //   <CheckOut id={e.id} name={e.name} />
+AddToCart(e){
+
+  // this.setState({cartItems:})
+  alert(e.id);
+  alert(e.name);
+// this.setState({quantity:quantity+1})
+
+  // {e.id===companyData.id && e.map((item)=>{
+
   // })}
+  // {e.id===companyData.id && e.map((item)=>{
+  //   alert("yes");
+  //   <div key={item.id}>
+  //               <div className="column-Pharmacy">
+  //                 <Card style={{ width: "12rem", height: "19rem" }}>
+  //                   <Card.Img
+  //                     variant="top"
+  //                     src={item.image}
+  //                     className="image-size"
+  //                   />
+  //                   <Card.Body>
+  //                     <Card.Title>
+  //                       <h6>
+  //                         <b>{item.name}</b>
+  //                       </h6>
+  //                       <h6>{item.price}</h6>
+  //                     </Card.Title>
+
+  //                     <Grid key={item.id} />
+  //                     <Button
+  //                       className="Order-now"
+  //                       variant="primary"
+  //                       size="lg"
+  //                       key={item.id}
+  //                       onClick={()=>this.AddToCart(item)}
+  //                     >
+  //                       Add to cart
+  //                     </Button>
+  //                   </Card.Body>
+  //                 </Card>
+  //               </div>
+  //             </div>
+  // })}
+  // <div>
+   
+  // <CheckOut checkid={e.id} />
+    
+  // </div>
+//   const exist=this.state.cartItems.find(x=>x.id===companyData.id);
+//   if(exist){
+// this.state.cartItems.map(x=>x.id===companyData.id?{...exist}:x)
+//   }
+//   else{
+//     this.state.cartItems([...cartItems]);
+//   }
+}
+addtocartButton(){
+
 }
   render() {
+    // const greeting="this is a prop message";
     return (
+      
       <div>
+        {/* <CheckOut greeting={greeting} /> */}
         {/* <h1> CheckOut Page</h1> */}
         <div className="Pharmacy">
           <h1>Pharmacy</h1>
@@ -70,16 +127,16 @@ AddToCart(){
                             <h6>{item.price}</h6>
                           </Card.Title>
 
-                          {/* <Grid key={item.id} /> */}
+                          <Grid key={item.id} />
                           <Button
-                            className="Order-now"
-                            variant="primary"
-                            size="lg"
-                            key={item.id}
-                            onClick={(e)=>this.AddToCart(e)}
-                          >
-                            Add to cart
-                          </Button>
+                        className="Order-now"
+                        variant="primary"
+                        size="sm"
+                        key={item.id}
+                        onClick={()=>this.AddToCart(item),(event)=>this.setState({quantity:event.target.quantity+1})}
+                      >
+                        Order Now
+                      </Button>
                           {""}
                         </Card.Body>
                       </Card>
@@ -110,14 +167,15 @@ AddToCart(){
                         <h6>{item.price}</h6>
                       </Card.Title>
 
-                      {/* <Grid key={item.id} /> */}
+                      <Grid key={item.id} />
                       <Button
                         className="Order-now"
                         variant="primary"
-                        size="lg"
+                        size="sm"
                         key={item.id}
+                        onClick={()=>this.AddToCart(item)}
                       >
-                        Add to cart
+                        Order Now
                       </Button>
                     </Card.Body>
                   </Card>
@@ -126,7 +184,7 @@ AddToCart(){
             ))}
         <div className="shopping-cart">
           <Link to="/CheckOut">
-            <FaShoppingCart size={28} />
+            <ShoppingCartIcon size={28} />
           </Link>
         </div>
       </div>

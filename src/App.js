@@ -31,8 +31,7 @@ import Grid from "./components/mycomponent/Pharmacy/grid";
 import Stopka from "./components/mycomponent/Pharmacy/stopka";
 import ArticleDetails from "./components/Articles/ArticleDetails";
 import Main from "./components/mycomponent/Pharmacy/Main";
-// import Navbar from "./components/mycomponent/Navbar";
-// import { Patient_details } from "./components/mycomponent/Patient_details";
+
 
 function App() {
   console.log(localStorage.getItem("UserId"));
@@ -90,7 +89,7 @@ function App() {
               component={PreviousAppointment}
             />
 
-            {/* <Route path="/Pharmacy" exact strict component={Pharmacy} /> */}
+           
             <Route
               path="/Patient_details"
               exact

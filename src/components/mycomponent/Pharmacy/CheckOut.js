@@ -1,13 +1,22 @@
 import React from "react";
 import { Component } from "react";
-class CheckOut extends Component {
-    render() { 
+const CheckOut =(props)=>{
+    console.log(props);
+    
+    
+        
         return <div>
             <h1>CHECKOUT PAGE</h1>
-            <span>{this.props.id}</span>
-            <span>{this.props.name}</span>
+            <span>{props.checkid}</span>
+            <span>{props.greeting}</span>
+            <span>{props.name}</span>
+            <div>
+
+                </div>
+
         </div>;
     }
-}
+
+
  
 export default CheckOut;
