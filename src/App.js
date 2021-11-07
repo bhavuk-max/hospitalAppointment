@@ -22,7 +22,7 @@ import BookAppointment from "./components/mycomponent/BookAppointment/BookAppoin
 import Article from "./components/Articles/Article";
 import Contact from "./components/ContactUs/ContactUs";
 import About from "./components/About/About";
-import PreviousAppointment from "./components/mycomponent/PreviousAppointment/PreviousAppointment";
+import UpcomingPatientAppointment from "./components/mycomponent/UpcomingPatientAppointment/UpcomingPatientAppointment";
 import Pharmacy from "./components/mycomponent/Pharmacy/Pharmacy";
 import Patient_details from "./components/mycomponent/DashBoard/Patient_details";
 import CheckOut from "./components/mycomponent/Pharmacy/CheckOut";
@@ -83,10 +83,10 @@ function App() {
               component={BookAppointment}
             />
             <Route
-              path="/PreviousAppointment"
+              path="/UpcomingPatientAppointment"
               exact
               strict
-              component={PreviousAppointment}
+              component={UpcomingPatientAppointment}
             />
 
             <Route path="/Pharmacy" exact strict component={Pharmacy} />

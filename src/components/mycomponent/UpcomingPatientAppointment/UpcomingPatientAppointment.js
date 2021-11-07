@@ -1,15 +1,15 @@
 import React, { Component } from "react";
 import Table from "react-bootstrap/Table";
 import axios from "axios";
+import "./Appointment.css";
 import { Badge, OverlayTrigger } from "react-bootstrap";
 import Tooltip from "react-bootstrap/Tooltip";
-import "./Upcoming.css";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
-class Upcoming extends React.Component {
+class UpcomingPatientAppointment extends React.Component {
   state = {
     table: [],
-    Doctor_ID: localStorage.getItem("Doctor_ID"),
+    Patient_ID: localStorage.getItem("Patient_ID"),
     Status: "",
     show: false,
     Appointment_ID: null,
@@ -17,18 +17,18 @@ class Upcoming extends React.Component {
   componentDidMount() {
     this.getData();
   }
+
   getData() {
-    const { Doctor_ID } = this.state;
-    // http://hospitalappointment/getData.php
-    const url = "http://hospitalappointment/Upcoming.php";
+    const { Patient_ID } = this.state;
+    const url = "http://hospitalappointment/Request_data.php";
     axios({
       method: "post",
       url: `${url}`,
       headers: { "content-type": "application/json" },
-      data: { Doctor_ID: Doctor_ID },
+      data: { Patient_ID: Patient_ID },
     })
       .then((result) => {
-        console.log(result);
+        console.log(result.data);
         if (result) {
           localStorage.setItem("Appointment_ID", result.data[0].Appointment_ID);
           this.setState({ table: result.data });
@@ -36,13 +36,13 @@ class Upcoming extends React.Component {
       })
       .catch((error) => this.setState({ error: error.message }));
   }
-  MarkComplete() {
-    const url = "http://hospitalappointment/MarkComplete.php";
+  cancelAppointment() {
+    const url = "http://hospitalappointment/CancelAppointment.php";
     axios({
       method: "post",
       url: `${url}`,
       headers: { "content-type": "application/json" },
-      data: { Status: "Completed", Appointment_ID: this.state.Appointment_ID },
+      data: { Status: "Canceled", Appointment_ID: this.state.Appointment_ID },
     })
       .then((result) => {
         if (result) {
@@ -51,6 +51,7 @@ class Upcoming extends React.Component {
       })
       .catch((error) => this.setState({ error: error.message }));
   }
+
   getStatus(status) {
     if (status === "Pending") {
       return (
@@ -84,13 +85,13 @@ class Upcoming extends React.Component {
       <div>
         <Modal show={show} onHide={() => this.handleClose()}>
           <Modal.Body>
-            Are you sure you want to mark appointment completed?
+            Are you sure you want to cancel your appointment?
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={() => this.handleClose()}>
               No
             </Button>
-            <Button variant="primary" onClick={() => this.MarkComplete()}>
+            <Button variant="primary" onClick={() => this.cancelAppointment()}>
               Yes
             </Button>
           </Modal.Footer>
@@ -100,12 +101,13 @@ class Upcoming extends React.Component {
           <thead>
             <tr>
               <th>#</th>
-              <th>Full Name</th>
-              <th>Phone Number</th>
+              <th>Doctor Name</th>
+              <th>Phone No</th>
+              <th>Category</th>
               <th>Date</th>
               <th>Time</th>
               <th>Status</th>
-              <th>Action</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -114,6 +116,7 @@ class Upcoming extends React.Component {
                 <td>{index + 1}</td>
                 <td>{x.FullName}</td>
                 <td>{x.PhoneNo}</td>
+                <td>{x.Qualification}</td>
                 <td>{x.Date}</td>
                 <td>{x.Time}</td>
                 <td>{this.getStatus(x.Status)}</td>
@@ -122,11 +125,28 @@ class Upcoming extends React.Component {
                     <OverlayTrigger
                       placement="top"
                       overlay={
-                        <Tooltip id="button-tooltip-2">Mark completed</Tooltip>
+                        <Tooltip id="button-tooltip-2">
+                          Connect To Zoom Call
+                        </Tooltip>
                       }
                     >
                       <i
-                        className="fas fa-check-circle complete"
+                        className="fas fa-headset fa-1x call"
+                        onClick={() =>
+                          window.open(`${x.Meeting_Link}`, "_blank")
+                        }
+                      />
+                    </OverlayTrigger>
+                    <OverlayTrigger
+                      placement="top"
+                      overlay={
+                        <Tooltip id="button-tooltip-2">
+                          Cancel Appointment
+                        </Tooltip>
+                      }
+                    >
+                      <i
+                        className="fas fa-trash-alt cancel"
                         // onClick={() => this.cancelAppointment(x.Appointment_ID)}
                         onClick={() => this.handleShow(x.Appointment_ID)}
                       ></i>
@@ -144,4 +164,4 @@ class Upcoming extends React.Component {
   }
 }
 
-export default Upcoming;
+export default UpcomingPatientAppointment;

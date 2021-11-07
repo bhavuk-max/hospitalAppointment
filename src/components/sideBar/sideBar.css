@@ -26,3 +26,6 @@
 .sideBar-item:hover {
   background-color: #1a83ff !important;
 }
+.appointmentIcon {
+  padding: 10px;
+}

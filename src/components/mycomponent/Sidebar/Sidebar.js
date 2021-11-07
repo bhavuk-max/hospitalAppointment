@@ -42,7 +42,7 @@ function Sidebar_Patient(props) {
             <li className="nav-toggle">
               <Link to="#" className="menu-bars">
                 {/* <AiOutlineClose /> */}
-                <i class="fas fa-times fa-2x cross" onClick={handleClose}></i>
+                <i class="fas fa-times  sideCross" onClick={handleClose}></i>
               </Link>
             </li>
             <li className="nav-text">
@@ -55,12 +55,12 @@ function Sidebar_Patient(props) {
             </li>
             <li className="nav-text">
               <Mdicons.MdLibraryBooks />
-              <Link to="/PreviousAppointment">My Appointment</Link>
+              <Link to="/UpcomingPatientAppointment">My Appointments</Link>
             </li>
             <li className="nav-text">
               <Mdicons.MdLocalPharmacy />
               {/* <Link to="/Pharmacy">Pharmacy</Link> */}
-               <Link to="/Pharmacy">Pharmacy</Link> 
+              <Link to="/Pharmacy">Pharmacy</Link>
             </li>
           </ul>
         </nav>

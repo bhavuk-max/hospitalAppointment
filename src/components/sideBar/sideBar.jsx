@@ -5,6 +5,7 @@ import ListGroup from "react-bootstrap/ListGroup";
 import { Link } from "react-router-dom";
 import "./sideBar.css";
 import Sidebar_Patient from "../mycomponent/Sidebar/Sidebar";
+import zoom from "./zoom.jpg";
 function Sidebar(props) {
   const [show, setShow] = useState(false);
   const [display, setDisplay] = useState(false);
@@ -40,11 +41,20 @@ function Sidebar(props) {
                 variant="secondary"
                 className="sideBar-item "
               >
-                View Upcoming Appointments
+                <i class="fas fa-calendar-check fa-2x appointmentIcon"></i> View
+                Appointments
               </ListGroup.Item>
             </Link>
-            <ListGroup.Item action variant="secondary" className="sideBar-item">
-              View Previous Appointments
+
+            <ListGroup.Item
+              action
+              variant="secondary"
+              className="sideBar-item zoom"
+              onClick={() =>
+                window.open(`${localStorage.getItem("Meeting_Link")}`, "_blank")
+              }
+            >
+              <img src={zoom} /> Open Zoom
             </ListGroup.Item>
           </ListGroup>
         </Offcanvas.Body>
