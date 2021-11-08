@@ -101,6 +101,7 @@ addtocartButton(){
 
 }
   render() {
+    const a="₹";
     // const greeting="this is a prop message";
     return (
       
@@ -141,7 +142,7 @@ addtocartButton(){
                             <h6>
                               <b>{item.name}</b>
                             </h6>
-                            <h6>₹{item.price}</h6>
+                            <h6>{a}{item.price}</h6>
                           </Card.Title>
 
                           <Grid key={item.id} />
