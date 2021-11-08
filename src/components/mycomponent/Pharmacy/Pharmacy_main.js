@@ -5,6 +5,7 @@ import { companyData } from "./index2.js";
 import "./Pharmacy.css";
 import Grid from "./grid";
 import CheckOut from "./CheckOut.js";
+import axios from "axios";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import {
   BrowserRouter as Router,
@@ -25,10 +26,26 @@ class check extends Component {
     };
   }
 AddToCart(e){
+  const id=e.id;
+  const name=e.name;
+  const price=e.price;
+  
+const url4="http://project/send_pharmacy.php";
+axios({
+  method: "post",
+  url: `${url4}`,
+  headers: { "content-type": "application/json" },
+  data: {name,price},
+})
+  .then((response) => {
+    console.log(response);
+    
+  })
+  .catch((error) => this.setState({ error: error.message }));
 
   // this.setState({cartItems:})
-  alert(e.id);
-  alert(e.name);
+  // alert(e.id);
+  // alert(e.name);
 // this.setState({quantity:quantity+1})
 
   // {e.id===companyData.id && e.map((item)=>{
@@ -124,7 +141,7 @@ addtocartButton(){
                             <h6>
                               <b>{item.name}</b>
                             </h6>
-                            <h6>{item.price}</h6>
+                            <h6>₹{item.price}</h6>
                           </Card.Title>
 
                           <Grid key={item.id} />

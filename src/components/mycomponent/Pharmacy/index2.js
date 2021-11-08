@@ -24,7 +24,7 @@ export const companyData = [
     
     image: crocin,
     name: "Crocin",
-    price: "₹35",
+    price: "35",
     quantity: 1,
   },
   {
@@ -32,7 +32,7 @@ export const companyData = [
     
     image: photo2,
     name: "Lisnopril",
-    price: "₹35",
+    price: "35",
     quantity: 1,
   },
   {
@@ -40,7 +40,7 @@ export const companyData = [
    
     image: photo3,
     name: "Levothyroxine",
-    price: "₹35",
+    price: "35",
     quantity: 1,
   },
   {
@@ -48,7 +48,7 @@ export const companyData = [
    
     image: Azithromycin,
     name: "Azithromycin",
-    price: "₹125",
+    price: "125",
     quantity: 1,
   },
   {
@@ -56,7 +56,7 @@ export const companyData = [
     
     image: Metformin,
     name: "Metformin",
-    price: "₹235",
+    price: "235",
     quantity: 1,
   },
   {
@@ -64,7 +64,7 @@ export const companyData = [
  
     image: Lipitor,
     name: "Lipitor",
-    price: "₹90",
+    price: "90",
     quantity: 1,
   },
   {
@@ -72,7 +72,7 @@ export const companyData = [
     
     image: Amlodipine,
     name: "Amlodipine",
-    price: "₹105",
+    price: "105",
     quantity: 1,
   },
   {
@@ -80,7 +80,7 @@ export const companyData = [
     
     image: Amoxicillin,
     name: "Amoxicillin",
-    price: "₹115",
+    price: "115",
     quantity: 1,
   },
   {
@@ -88,7 +88,7 @@ export const companyData = [
     
     image: Hydrochlorothiazide,
     name: "Hydrochlorothiazide",
-    price: "₹155",
+    price: "155",
     quantity: 1,
   },
   {
@@ -96,7 +96,7 @@ export const companyData = [
   
     image: atorvastatin,
     name: "atorvastatin",
-    price: "₹135",
+    price: "135",
     quantity: 1,
   },
   {
@@ -104,7 +104,7 @@ export const companyData = [
     
     image: promethazine,
     name: "promethazine",
-    price: "₹100",
+    price: "100",
     quantity: 1,
   },
   {
@@ -112,7 +112,7 @@ export const companyData = [
    
     image: ibuprofen,
     name: "ibuprofen",
-    price: "₹125",
+    price: "125",
     quantity: 1,
   },
   ,
@@ -121,7 +121,7 @@ export const companyData = [
    
     image: paracetamol,
     name: "paracetamol",
-    price: "₹55",
+    price: "55",
     quantity: 1,
   },
   ,
@@ -130,7 +130,7 @@ export const companyData = [
    
     image: codeine,
     name: "codeine",
-    price: "₹125",
+    price: "125",
     quantity: 1,
   },
   ,
@@ -139,7 +139,7 @@ export const companyData = [
    
     image: morphine,
     name: "morphine",
-    price: "₹125",
+    price: "125",
     quantity: 1,
   },
   ,
@@ -148,7 +148,7 @@ export const companyData = [
    
     image: chloroquine,
     name: "chloroquine",
-    price: "₹125",
+    price: "120",
     quantity: 1,
   },
   ,
@@ -157,7 +157,7 @@ export const companyData = [
    
     image: azathioprine,
     name: "azathioprine",
-    price: "₹125",
+    price: "175",
     quantity: 1,
   },
   {
@@ -165,7 +165,7 @@ export const companyData = [
    
     image: methotrexate,
     name: "methotrexate",
-    price: "₹125",
+    price: "₹145",
     quantity: 1,
   },
   {
@@ -173,7 +173,7 @@ export const companyData = [
    
     image: penicillamine,
     name: "penicillamine",
-    price: "₹125",
+    price: "175",
     quantity: 1,
   },
   {
@@ -181,7 +181,7 @@ export const companyData = [
    
     image: ibuprofen,
     name: "ibuprofen",
-    price: "₹125",
+    price: "155",
     quantity: 1,
   },
 ];
