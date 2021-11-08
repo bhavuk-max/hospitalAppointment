@@ -1,9 +1,7 @@
 .rows-column{
     content: "";
     clear: both;
-    /* display: table; */
     display: block;
-    /* top: 330px; */
     display: center;
   
   }
@@ -31,7 +29,8 @@
       background-color: rgb(235,241,248);
   }
   .Order-now{
-    margin-top: 5px;
+    margin-top: 2px;
+    ;
   }
   .shopping-cart{
     position:absolute;
@@ -41,3 +40,4 @@
     left: 1184px;
     size:lg;
   }
+  

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Pharmacy from './Pharmacy';
 import Badge from 'react-bootstrap/Badge'
-
+import "./Pharmacy.css";
 class Grid extends Component {
     constructor(props) {
         super(props);
@@ -13,7 +13,7 @@ class Grid extends Component {
       };
     handleIncrement=()=>{
       const {count}=this.state;
-        console.log(count);
+        
         if(count<10)
         {
         this.setState({count:this.state.count+1});
@@ -22,13 +22,13 @@ class Grid extends Component {
     handleDecrement=()=>{
      
       const {count}=this.state;
-      console.log(count);
+     
       if(count>0){
         this.setState({count:this.state.count-1});
       }
     }
     render() { 
-        return <div>
+        return <div className="inc-dec">
             <button
                 type="button"
                 className="btn btn-primary btn-sm"
@@ -43,7 +43,7 @@ class Grid extends Component {
               </Badge>
                   <button
                 type="button"
-                className="btn btn-primary btn-sm"
+                className="btn btn-primary btn-sm btn-sm"
                 //={() => this.setState({ count: this.state.count + 1 })}
                 onClick={this.handleIncrement}
                 style={{ marginLeft: "5px" }}
