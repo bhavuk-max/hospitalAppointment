@@ -1,4 +1,5 @@
 import prom from "./promethazine.jpg";
+
 import crocin from "../Pharmacy/crocin.png";
 import photo2 from "./photo2.jfif";
 import photo3 from "./photo3.jfif";
@@ -183,5 +184,6 @@ export const companyData = [
     name: "ibuprofen",
     price: "155",
     quantity: 1,
+
   },
 ];
