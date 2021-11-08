@@ -52,3 +52,14 @@
   background: #fff;
   color: #010606;
 }
+
+.detail {
+  padding: 0.25rem 1rem;
+}
+
+.detail-name {
+  padding: 0.25rem 1rem;
+  font-weight: bold;
+  font-size: 18px;
+  text-transform: uppercase;
+}

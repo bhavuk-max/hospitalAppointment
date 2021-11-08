@@ -21,19 +21,19 @@ require_once 'db.php';
 // if($type == "1"){
 //   $sql = "UPDATE user SET Address='$address', PhoneNo='$phone' WHERE ID='$id';
 //   INSERT INTO doctor (ID) VALUES ('$id');";
-
+  
 // }
 // else if($type == "2"){
 //   $sql = "UPDATE user SET Address='$address', PhoneNo='$phone' WHERE ID='$id';
 //   INSERT INTO patient (ID) VALUES ('$id');";
 // }
-$sql = "UPDATE user SET Address='$address', PhoneNo='$phone' WHERE ID='$id'";
+$sql = "UPDATE user SET Address='$address', PhoneNo='$phone', Qualification='$qual' WHERE ID='$id'";
 
 
 if ($conn->multi_query($sql) === TRUE) {
     $data = array("Data inserted");
   echo json_encode($data);
-}
+}   
 else {
 echo "Error: " . $sql . "<br>" . $conn->error;
 }
@@ -41,6 +41,6 @@ echo "Error: " . $sql . "<br>" . $conn->error;
 $conn->close();
 
 
-?>
 
-Message @DEATHBLADE
+
+?>

@@ -12,7 +12,7 @@ import Login from "./components/login/login";
 import Home from "./components/Home/Home";
 import ForgotPassword from "./components/ForgotPassword/ForgotPassword";
 import ResetPassword from "./components/ForgotPassword/ResetPassword";
-import PatientDetails from "./components/PatientDetails/PatientDetails";
+import EditProfile from "./components/EditProfile/EditProfile";
 import Doctor from "./components/Doctor/Doctor";
 import Navbar from "./components/Navbar/Navbar";
 import Patient from "./components/Patient/Patient";
@@ -22,7 +22,7 @@ import BookAppointment from "./components/mycomponent/BookAppointment/BookAppoin
 import Article from "./components/Articles/Article";
 import Contact from "./components/ContactUs/ContactUs";
 import About from "./components/About/About";
-import PreviousAppointment from "./components/mycomponent/PreviousAppointment/PreviousAppointment";
+import UpcomingPatientAppointment from "./components/mycomponent/UpcomingPatientAppointment/UpcomingPatientAppointment";
 import Pharmacy from "./components/mycomponent/Pharmacy/Pharmacy";
 import Patient_details from "./components/mycomponent/DashBoard/Patient_details";
 import CheckOut from "./components/mycomponent/Pharmacy/CheckOut";
@@ -52,17 +52,12 @@ function App() {
             strict
             component={ForgotPassword}
           />
-          <Route
-            path="/PatientDetails"
-            exact
-            strict
-            component={PatientDetails}
-          />
+
           <Route path="/ResetPassword" exact strict component={ResetPassword} />
           <Route path="/Chat" exact strict component={Chat} />
           <div>
             <Navbar />
-
+            <Route path="/EditProfile" exact strict component={EditProfile} />
             <Route
               path="/articleDetails"
               exact
@@ -83,10 +78,10 @@ function App() {
               component={BookAppointment}
             />
             <Route
-              path="/PreviousAppointment"
+              path="/UpcomingPatientAppointment"
               exact
               strict
-              component={PreviousAppointment}
+              component={UpcomingPatientAppointment}
             />
 
             <Route path="/Pharmacy" exact strict component={Pharmacy} />

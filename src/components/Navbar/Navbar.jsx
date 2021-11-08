@@ -56,8 +56,12 @@ class Navbar extends React.Component {
                 <i class="fas fa-user-circle fa-2x"></i>
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li className="detail-name">
+                  {localStorage.getItem("FullName")}
+                </li>
+                <li className="detail">{localStorage.getItem("Email")}</li>
                 <li>
-                  <a href="/PatientDetails" class="dropdown-item">
+                  <a href="/EditProfile" class="dropdown-item">
                     Edit Profile
                   </a>
                 </li>

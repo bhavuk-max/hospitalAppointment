@@ -51,6 +51,8 @@ class Login extends Component {
             localStorage.setItem("ExpiresAt", result.data[0].ExpiresAt);
             localStorage.setItem("UserId", result.data[0].ID);
             localStorage.setItem("UserType", result.data[0].UserType);
+            localStorage.setItem("Email", result.data[0].Email);
+            localStorage.setItem("FullName", result.data[0].FullName);
             if (("UserType", result.data[0].UserType)) {
               const url2 = "http://hospitalappointment/GetId.php";
               axios({
@@ -66,6 +68,10 @@ class Login extends Component {
                   console.log(book.data);
                   if (result.data[0].UserType === "1") {
                     localStorage.setItem("Doctor_ID", book.data[0].Doctor_ID);
+                    localStorage.setItem(
+                      "Meeting_Link",
+                      book.data[0].Meeting_Link
+                    );
                   } else if (result.data[0].UserType === "2") {
                     localStorage.setItem("Patient_ID", book.data[0].Patient_ID);
                   }
@@ -125,9 +131,6 @@ class Login extends Component {
             )}
 
             <div className="box">
-              <button onClick={() => this.props.history.push("/")}>
-                Home Page
-              </button>
               <h4>Login</h4>
               <form>
                 {/* <div className="form-floating mb-3 container col-4 inputBox"> */}
