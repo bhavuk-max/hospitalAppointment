@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Pharmacy from './Pharmacy';
 import Badge from 'react-bootstrap/Badge'
 import "./Pharmacy.css";
+ import { companyData } from "./index2.js";
 class Grid extends Component {
     constructor(props) {
         super(props);
@@ -16,8 +17,10 @@ class Grid extends Component {
         
         if(count<10)
         {
-        this.setState({count:this.state.count+1});
+        //this.setState({count:this.state.count+1});
+        this.setState(prevState=>{return{count: prevState.count+1}})
         }
+        // alert(count);
     }
     handleDecrement=()=>{
      

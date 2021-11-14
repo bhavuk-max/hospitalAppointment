@@ -6,7 +6,8 @@ import "./Pharmacy.css";
 import Grid from "./grid";
 import CheckOut from "./CheckOut.js";
 import axios from "axios";
-// import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
+import Badge from "react-bootstrap/Badge";
+import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import {
   BrowserRouter as Router,
   Link,
@@ -21,89 +22,51 @@ class check extends Component {
     super(props);
     this.state = {
       search: "",
-      cartItems: [],
-      quantity: 0,
+      Patient_ID: localStorage.getItem("Patient_ID"),
+      count:0,
+      dataNEW: [],
+     
     };
   }
+  
   AddToCart(e) {
-    const id = e.id;
-    const name = e.name;
-    const price = e.price;
+// console.log(e.id)
+// console.log(e.name)
+// console.log(e.price)
 
+const data=[e.id,e.name,e.price];
+    const id = e.id;
+    const a=1;
+    const name = e.name;
+    const price = e.price; 
+    const quantity=e.quantity+a;
+
+    const { Patient_ID } = this.state;
+    console.log(data);
+    // alert(quantity);
+    
     const url4 = "http://project/send_pharmacy.php";
     axios({
       method: "post",
       url: `${url4}`,
       headers: { "content-type": "application/json" },
-      data: { name, price },
+      data: { name, price, Patient_ID,quantity },
     })
       .then((response) => {
         console.log(response);
       })
       .catch((error) => this.setState({ error: error.message }));
 
-    // this.setState({cartItems:})
-    // alert(e.id);
-    // alert(e.name);
-    // this.setState({quantity:quantity+1})
-
-    // {e.id===companyData.id && e.map((item)=>{
-
-    // })}
-    // {e.id===companyData.id && e.map((item)=>{
-    //   alert("yes");
-    //   <div key={item.id}>
-    //               <div className="column-Pharmacy">
-    //                 <Card style={{ width: "12rem", height: "19rem" }}>
-    //                   <Card.Img
-    //                     variant="top"
-    //                     src={item.image}
-    //                     className="image-size"
-    //                   />
-    //                   <Card.Body>
-    //                     <Card.Title>
-    //                       <h6>
-    //                         <b>{item.name}</b>
-    //                       </h6>
-    //                       <h6>{item.price}</h6>
-    //                     </Card.Title>
-
-    //                     <Grid key={item.id} />
-    //                     <Button
-    //                       className="Order-now"
-    //                       variant="primary"
-    //                       size="lg"
-    //                       key={item.id}
-    //                       onClick={()=>this.AddToCart(item)}
-    //                     >
-    //                       Add to cart
-    //                     </Button>
-    //                   </Card.Body>
-    //                 </Card>
-    //               </div>
-    //             </div>
-    // })}
-    // <div>
-
-    // <CheckOut checkid={e.id} />
-
-    // </div>
-    //   const exist=this.state.cartItems.find(x=>x.id===companyData.id);
-    //   if(exist){
-    // this.state.cartItems.map(x=>x.id===companyData.id?{...exist}:x)
-    //   }
-    //   else{
-    //     this.state.cartItems([...cartItems]);
-    //   }
+   
   }
-  addtocartButton() {}
+
+
   render() {
-    const a = "₹";
-    // const greeting="this is a prop message";
+    const a="₹";
     return (
       <div>
-        {/* <CheckOut greeting={greeting} /> */}
-        {/* <h1> CheckOut Page</h1> */}
+        
+        
         <div className="Pharmacy">
           <h1>Pharmacy</h1>
         </div>
@@ -113,6 +76,7 @@ class check extends Component {
             placeholder="Search...."
             onChange={(event) => this.setState({ search: event.target.value })}
           />
+        
         </div>
         {companyData &&
           companyData
@@ -143,19 +107,19 @@ class check extends Component {
                               {item.price}
                             </h6>
                           </Card.Title>
+                          
+                          {/* <div key={item.id}>
+                           */}
+                          {/* <input type="number" key={item.id} placeholder="enter Quantity" onChange={()=>item.quantity(item)} /> */}
 
-                          <Grid key={item.id} />
                           <Button
                             className="Order-now"
                             variant="primary"
                             size="sm"
                             key={item.id}
                             onClick={
-                              (() => this.AddToCart(item),
-                              (event) =>
-                                this.setState({
-                                  quantity: event.target.quantity + 1,
-                                }))
+                              () => this.AddToCart(item)
+                          
                             }
                           >
                             Order Now
@@ -167,14 +131,10 @@ class check extends Component {
                   </div>
                 );
               }
-              // else if(item.name.toLowerCase()!==this.state.search){
-              //   return(<div>
-              //     <h1>medicine not available right now</h1>
-              //   </div>)
-              // }
+              
             })
             .map((item) => (
-              <div key={item.id}>
+              <div >
                 <div className="column-Pharmacy">
                   <Card style={{ width: "12rem", height: "19rem" }}>
                     <Card.Img
@@ -187,10 +147,42 @@ class check extends Component {
                         <h6>
                           <b>{item.name}</b>
                         </h6>
-                        <h6>{item.price}</h6>
+                        <h6>
+                          {a}
+                          {item.price}
+                        </h6>
                       </Card.Title>
-
-                      <Grid key={item.id} />
+     {/* <Grid required /> */}
+                  {/* <input className="input-quantity" key={item.id} type="number"  placeholder="enter Quantity" selected={item.quantity} onChange={(event) =>
+                this.setState({ quantity: item.quantity })} /> 
+                {item.quantity} */}
+                  {/* ()=>this.quantity(item) */}
+                  {/* <Button
+                type="button"
+                className="btn btn-primary btn-sm"
+                style={{ marginLeft: "5px" }}
+                onClick={()=>this.handleDecrement(item)}
+                size="sm"
+              >
+                  -
+                  </Button>
+                  <Badge pill bg="primary" >
+              <span  >{this.state.count}</span>
+              </Badge>
+                  <Button
+                type="button"
+                className="btn btn-primary btn-sm btn-sm"
+                //={() => this.setState({ count: this.state.count + 1 })}
+                onClick={()=>this.handleIncrement(item)}
+                style={{ marginLeft: "5px" }}
+                size="sm" 
+                variant="outline-success"
+              >
+                +
+              </Button>
+      */}
+ 
+                 
                       <Button
                         className="Order-now"
                         variant="primary"
@@ -198,7 +190,7 @@ class check extends Component {
                         key={item.id}
                         onClick={() => this.AddToCart(item)}
                       >
-                        Order Now
+                        Add To Cart
                       </Button>
                     </Card.Body>
                   </Card>
@@ -206,9 +198,10 @@ class check extends Component {
               </div>
             ))}
         <div className="shopping-cart">
-          {/* <Link to="/CheckOut">
-            <ShoppingCartIcon size={28} />
-          </Link> */}
+          <Link to="/CheckOut">
+            {/* <ShoppingCartIcon size={28} /> */}
+            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+          </Link>
         </div>
       </div>
     );

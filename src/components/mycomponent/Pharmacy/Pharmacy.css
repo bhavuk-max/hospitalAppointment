@@ -40,4 +40,7 @@
     left: 1184px;
     size:lg;
   }
-  
+  .input-quantity{
+    width:140px;
+    text-align: center;
+  }
