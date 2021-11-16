@@ -12,17 +12,7 @@ class Patient_details extends Component {
   render() {
     return (
       <>
-        {/* <Sidebar /> */}
-        {/* <div className="pat_details">
-          {/* <ul>
-            <li>Name:-</li>
-            <li>Age:-</li>
-            <li>Weight:-</li>
-            <li>Problem:-</li>
-            <li>Address:-</li>
-            <li>Contact</li>
-          </ul> 
-        </div> */}
+        
         <div className="column-0">
           <img src={doctor} alt="cough" style={{ width: "100%" }}></img>
         </div>
@@ -84,32 +74,7 @@ class Patient_details extends Component {
             </Link>
           </div>
 
-          {/* <img src={skin} alt="skin problems" id="front-images-2" className="front-images"></img>  */}
-          {/* <img src={photo3}></img>  */}
-          {/* </div>
-        <div className="Front_links">
-          <Link
-            to="/mycomponent/BookAppointment"
-            className="btn btn-primary link1"
-          >
-            Book Appointment
-          </Link>
-        </div>
-        <div className="Front_links">
-          {" "}
-          <Link
-            to="/mycomponent/PreviousAppointment"
-            className="btn btn-primary link2"
-          >
-            My Appointment
-          </Link>
-        </div>
-        <div className="Front_links">
-          {" "}
-          <Link to="/mycomponent/Pharmacy" className="btn btn-primary link3">
-            Pharmacy
-          </Link> */}
-          {/* <Link to="/mycomponent/BookAppointment" className="btn btn-primary">Book Appointment</Link> */}
+          
         </div>
       </>
     );

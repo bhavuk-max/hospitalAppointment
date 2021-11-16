@@ -10,15 +10,15 @@ class Grid extends Component {
         //this.handleIncrement=this.handleIncrement.bind(this);
       }
       state = {
-        count: 0,
+        count: this.props.quantity,
       };
     handleIncrement=()=>{
       const {count}=this.state;
         
         if(count<10)
         {
-        //this.setState({count:this.state.count+1});
-        this.setState(prevState=>{return{count: prevState.count+1}})
+        this.setState({count:this.state.count+1},()=>this.props.totalQuantity(this.state.count));
+        // this.setState(prevState=>{return{count: prevState.count+1}})
         }
         // alert(count);
     }
@@ -31,7 +31,9 @@ class Grid extends Component {
       }
     }
     render() { 
+      console.log(this.props);
         return <div className="inc-dec">
+
             <button
                 type="button"
                 className="btn btn-primary btn-sm"
@@ -42,7 +44,8 @@ class Grid extends Component {
                   -
                   </button>
                   <Badge pill bg="primary" >
-              <span  >{this.state.count}</span>
+              {/* <span  >{this.state.count}</span> */}
+              <span>{this.state.count}</span>
               </Badge>
                   <button
                 type="button"
