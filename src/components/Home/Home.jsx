@@ -26,6 +26,9 @@ class Home extends Component {
         <button onClick={() => this.props.history.push("/BookAppointment")}>
           BookApppointment
         </button> */}
+        {/* <button onClick={() => this.props.history.push("/Payment")}>
+          Pyament
+        </button> */}
 
         <Carousel>
           <Carousel.Item className="carousel-item">

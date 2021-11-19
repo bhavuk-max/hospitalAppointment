@@ -31,6 +31,7 @@ import Grid from "./components/mycomponent/Pharmacy/grid";
 import Stopka from "./components/mycomponent/Pharmacy/stopka";
 import ArticleDetails from "./components/Articles/ArticleDetails";
 import Check from "./components/mycomponent/Pharmacy/Pharmacy_main";
+import Payment from "./components/mycomponent/BookAppointment/Payment";
 
 // import Navbar from "./components/mycomponent/Navbar";
 // import { Patient_details } from "./components/mycomponent/Patient_details";
@@ -59,6 +60,7 @@ function App() {
           <Route path="/Chat" exact strict component={Chat} />
           <div>
             <Navbar />
+            <Route path="/Payment" exact strict component={Payment} />
             <Route exact path="/Pharmacy" exact strict component={Check} />
             <Route path="/EditProfile" exact strict component={EditProfile} />
             <Route
