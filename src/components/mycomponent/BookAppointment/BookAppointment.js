@@ -27,6 +27,7 @@ class BookAppointment extends Component {
     Patient_ID: localStorage.getItem("Patient_ID"),
     doctorFees: null,
     booked: false,
+    doctorName: "",
   };
 
   doctorList() {
@@ -82,8 +83,15 @@ class BookAppointment extends Component {
   }
 
   render() {
-    const { doctors, category, send_doc, paymentSuccess, doctorFees, booked } =
-      this.state;
+    const {
+      doctors,
+      category,
+      send_doc,
+      paymentSuccess,
+      doctorFees,
+      booked,
+      doctorName,
+    } = this.state;
     console.log(doctorFees);
     return (
       <div>
@@ -150,6 +158,9 @@ class BookAppointment extends Component {
                     doctorFees: doctors.find(
                       (x) => x.Doctor_ID === this.state.send_doc
                     ).Doctor_Fee,
+                    doctorName: doctors.find(
+                      (x) => x.Doctor_ID === this.state.send_doc
+                    ).FullName,
                   })
                 )
               }
@@ -202,6 +213,7 @@ class BookAppointment extends Component {
             </button>
             <Payment
               doctorFees={doctorFees}
+              doctorName={doctorName}
               paymentSuccess={(event) => {
                 if (event.paymentMethodData.tokenizationData.token)
                   this.setState({ paymentSuccess: false });

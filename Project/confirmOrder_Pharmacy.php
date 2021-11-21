@@ -12,39 +12,25 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $rest_json = file_get_contents("php://input");
     $_POST = json_decode($rest_json, true);
     $table = $_POST["table"];
-    // $Name=$_POST["table"][1];
+   
     // $Price = $_POST["table"][2];
     $Patient_ID=$_POST["Patient_ID"];
     // $Quantity=$_POST["table"][3];
   
     require_once 'db.php';
-    
+   
     if(is_array($table)){
-        foreach ($table as $row) {
-            $Name = mysqli_real_escape_string($conn, $row[1]);
-            $Price = mysqli_real_escape_string($conn, $row[2]);
-            $Quantity = mysqli_real_escape_string($conn, $row[3]);
+       for($i = 0; $i < count($table); $i++){
+        $Name=$_POST["table"][$i]["NAME"];
+        $price=$_POST["table"][$i]["price"];
+        $Quantity=$_POST["table"][$i]["quantity"];
+        $sql = "INSERT INTO confirmedorders(Patient_ID,MedicineName,Quantity,Price) VALUES('$Patient_ID','$Name','$Quantity','$price')";
+        mysqli_query($conn, $sql);
+        
+    }   
+}
 
-            $query = "INSERT INTO confirmedorders(Patient_ID,NAME,quantity,price) VALUES('$Patient_ID','$Name','$Quantity','$Price')";
-            // $query ="INSERT INTO programming_lang (field1, field2, field3) VALUES ( '". $fieldVal1."','".$fieldVal2."','".$fieldVal3."' )";
-            mysqli_query($conn, $query);
-        }
-    }
-    
-  
-   
-     
-//      $sql = "INSERT INTO confirmedorders(Patient_ID,NAME,quantity,price) VALUES('$Patient_ID','$Name','$Quantity','$Price')";
-//     //  $sql = "INSERT INTO cart(Patient_ID,NAME,quantity,price) VALUES('$table')";
-   
-//       if ($conn->query($sql) === TRUE) {
-   
-//           $data = array("Data inserted");
-//         echo json_encode($data);
-//    }   
-//       else {
-//     echo "Error: " . $sql . "<br>" . $conn->error;
-//    }
+
    
    $conn->close();
    }

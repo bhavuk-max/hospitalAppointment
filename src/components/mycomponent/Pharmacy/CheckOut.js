@@ -16,12 +16,13 @@ export class CheckOut extends Component {
     total: 0,
     cart: false,
     confirmtable: false,
+    confirmOrder: false,
   };
 
   confirmOrder() {
     const { Patient_ID, table } = this.state;
-    // console.log("table")
-    // console.log(table)
+    console.log("table");
+    console.log(table);
     const url7 = "http://hospitalappointment/confirmOrder_Pharmacy.php";
     axios({
       method: "post",
@@ -31,6 +32,9 @@ export class CheckOut extends Component {
     })
       .then((response) => {
         console.log(response);
+        if (response) {
+          this.setState({ confirmOrder: true });
+        }
         // window.location.reload(false);
       })
       .catch((error) => this.setState({ error: error.message }));
@@ -111,11 +115,32 @@ export class CheckOut extends Component {
       })
       .catch((error) => this.setState({ error: error.message }));
   }
+  handleClose() {
+    this.setState({ confirmOrder: false });
+  }
 
   render() {
+    const { confirmOrder } = this.state;
     const a = "₹";
     return (
       <>
+        {confirmOrder ? (
+          <div>
+            <div className="alert alert-success" role="alert">
+              <strong>Order Placed Successfully!!</strong>
+
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="alert"
+                aria-label="Close"
+                onClick={() => this.handleClose()}
+              ></button>
+            </div>
+          </div>
+        ) : (
+          ""
+        )}
         {this.state.cart && (
           <div className="Checkout-Dash">
             <h1>CHECKOUT</h1>
