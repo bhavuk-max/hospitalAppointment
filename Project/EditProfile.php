@@ -12,22 +12,21 @@ $name = $_POST["FullName"];
 $qual = $_POST["Qualification"];
 $type = $_POST["userType"];
 
-require_once 'db.php';
-// $getInfo = "SELECT ProfileCompleted from doctor WHERE ID='$id' ";
-// $query = mysql_query($getInfo, $conn);
-// $row = mysql_fetch_array($query);
-// $profile = $row['ProfileCompleted'];
+$fees = $_POST["Fees"];
+$link = $_POST["MeetingLink"];
 
-// if($type == "1"){
-//   $sql = "UPDATE user SET Address='$address', PhoneNo='$phone' WHERE ID='$id';
-//   INSERT INTO doctor (ID) VALUES ('$id');";
-  
-// }
-// else if($type == "2"){
-//   $sql = "UPDATE user SET Address='$address', PhoneNo='$phone' WHERE ID='$id';
-//   INSERT INTO patient (ID) VALUES ('$id');";
-// }
-$sql = "UPDATE user SET Address='$address', PhoneNo='$phone', Qualification='$qual' WHERE ID='$id'";
+require_once 'db.php';
+
+if($type == "1"){
+  $sql = "
+  UPDATE user SET Address='$address', PhoneNo='$phone', Qualification='$qual' WHERE ID='$id';
+  UPDATE doctor SET Doctor_Fee='$fees', Meeting_Link='$link' WHERE ID='$id';
+  ";
+}
+else if($type == "2"){
+  $sql = "UPDATE user SET Address='$address', PhoneNo='$phone', Qualification='$qual' WHERE ID='$id'";
+}
+
 
 
 if ($conn->multi_query($sql) === TRUE) {
