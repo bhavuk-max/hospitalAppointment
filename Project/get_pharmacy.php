@@ -12,7 +12,7 @@ header("Access-Control-Allow-Headers: Content-Disposition, Content-Type, Content
  require_once 'db.php';
 
 
-$sql = "SELECT ID_Pharmacy,NAME,price,quantity FROM pharmacy where Patient_ID='$Patient_ID'";
+$sql = "SELECT ID_Pharmacy,NAME,price,quantity FROM cart where Patient_ID='$Patient_ID'";
 
 // $result = mysqli_query($conn,$sql);
 $result = $conn->query($sql) or die($conn->error);

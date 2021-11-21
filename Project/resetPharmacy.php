@@ -12,7 +12,7 @@ header("Access-Control-Allow-Headers: Content-Disposition, Content-Type, Content
  require_once 'db.php';
 
 
- $sql = "DELETE FROM Pharmacy WHERE Patient_ID='$Patient_ID'";
+ $sql = "DELETE FROM cart WHERE Patient_ID='$Patient_ID'";
 
 // $result = mysqli_query($conn,$sql);
 if ($conn->query($sql) === TRUE) {

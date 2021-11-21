@@ -6,7 +6,7 @@ import Toast from 'react-bootstrap/Toast';
 import { ToastContainer, toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
 import "./Pharmacy.css";
-import Grid from "./grid";
+import IncrementDecrement from "./IncrementDecrement";
 import CheckOut from "./CheckOut.js";
 import axios from "axios";
 import Badge from "react-bootstrap/Badge";
@@ -27,46 +27,38 @@ class check extends Component {
     this.state = {
       search: "",
       Patient_ID: localStorage.getItem("Patient_ID"),
-     
-      dataNEW: [],
       IncCheck:false,
+      count: "",
       
     };
   }
   
-  // Increment(i) {
-  //   const url5 = "http://project/updateQuantity.php";
-
-  //   this.setState({ count: this.state.count + 1 });
-  //   console.log(this.state.count);
-  //   this.setState({ IncCheck: true });
-  //   toast(this.state.count);
-
-    
-  // }
   AddToCart(e) {
-    
-    // const data = [e.id, e.name, e.price];
-    const id = e.id;
-    // const quantity=e.;
+
     const name = e.name;
-    const price = e.price;
     const { Patient_ID, count } = this.state;
+    var number=JSON.parse(localStorage.getItem("Count"));
+    const price = e.price*number;
+    console.log(number)
     // console.log();
     const url4 = "http://project/send_pharmacy.php";
     axios({
       method: "post",
       url: `${url4}`,
       headers: { "content-type": "application/json" },
-      data: { name, price, Patient_ID  },
+      data: { name, price, Patient_ID,number},
     })
       .then((response) => {
         console.log(response);
-        // this.setState({ count: 0 });
+      
       })
       .catch((error) => this.setState({ error: error.message }));
   }
-
+HandleCount(Count){
+  console.log("count");
+  console.log(Count);
+this.setState({quantity:Count});
+}
   render() {
     console.log(this.props);
     const a = "₹";
@@ -156,74 +148,16 @@ class check extends Component {
                           {item.price}
                         </h6>
                       </Card.Title>
-                      {/* <Grid required /> */}
-                      {/* <input className="input-quantity" key={item.id} type="number"  placeholder="enter Quantity" selected={item.quantity} onChange={(event) =>
-                this.setState({ quantity: item.quantity })} /> 
-                {item.quantity} */}
-                      {/* ()=>this.quantity(item) */}
-                      {/* <Button
-                type="button"
-                className="btn btn-primary btn-sm"
-                style={{ marginLeft: "5px" }}
-                onClick={()=>this.handleDecrement(item)}
-                size="sm"
-              >
-                  -
-                  </Button>
-                  <Badge pill bg="primary" >
-              <span  >{this.state.count}</span>
-              </Badge>
-                  <Button
-                type="button"
-                className="btn btn-primary btn-sm btn-sm"
-                //={() => this.setState({ count: this.state.count + 1 })}
-                onClick={()=>this.handleIncrement(item)}
-                style={{ marginLeft: "5px" }}
-                size="sm" 
-                variant="outline-success"
-              >
-                +
-              </Button>
-      */}
+                      
 
                       
 
                       
                       <br />
                       <div className="butoonns">
-                      {/* <Button
-                        variant="primary"
-                        size="sm"
-                        key={item.id}
-                        onClick={() => this.Increment(item)}
-                      >
-                        +
-                      </Button> */}
-                      {/* <button
-                type="button"
-                className="btn btn-primary btn-sm"
-                style={{ marginLeft: "5px" }}
-                onClick={this.handleDecrement}
-                size="sm"
-              >
-                  -
-                  </button>
-                  <Badge pill bg="primary" >
-              <span  >{this.state.count}</span>
-              </Badge>
-                  <button
-                type="button"
-                className="btn btn-primary btn-sm btn-sm"
-                //={() => this.setState({ count: this.state.count + 1 })}
-                onClick={this.handleIncrement}
-                style={{ marginLeft: "5px" }}
-                size="sm" 
-                variant="outline-success"
-              >
-                +
-              </button> */}
-              <Grid id={item.id} quantity={item.quantity} totalQuantity={(e)=>console.log(e)}/>
-                      
+                    <IncrementDecrement />
+              
+              
                       <Button
                         className="Order-now"
                         variant="primary"
@@ -253,7 +187,7 @@ class check extends Component {
                       }
         <div className="shopping-cart">
           <Link to="/CheckOut">
-            {/* <ShoppingCartIcon size={28} /> */}
+            
             <i class="fa fa-shopping-cart" aria-hidden="true"></i>
           </Link>
         </div>

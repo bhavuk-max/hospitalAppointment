@@ -24,7 +24,7 @@ import penicillamine from "./penicillamine.jpg";
 import { BrowserRouter as Router, Link, Route } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
 import "./Pharmacy.css";
-import Grid from "./grid";
+import Grid from "./IncrementDecrement";
 import { mockComponent } from "react-dom/test-utils";
 import photos from "./photos";
 import { Component } from "react";

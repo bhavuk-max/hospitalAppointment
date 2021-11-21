@@ -2,7 +2,7 @@ import React from "react";
 import { Component } from "react";
 import axios from "axios";
 import Table from "react-bootstrap/Table";
-import Grid from "./grid";
+import IncrementDecrement from "./IncrementDecrement";
 import Badge from 'react-bootstrap/Badge';
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
@@ -12,7 +12,7 @@ export class CheckOut extends Component {
     state = { 
       table: [] ,
       Patient_ID: localStorage.getItem("Patient_ID"),
-      count: 0,
+      count: localStorage.getItem("Count"),
       quantity: 0,
       total:0,
       cart: false,
@@ -20,22 +20,24 @@ export class CheckOut extends Component {
     
     };
     
-  // handleIncrement=()=>{
-  //   const {count}=this.state;
-      
-  //     if(count<10)
-  //     {
-  //     this.setState({count:this.state.count+1});
-  //     }
-  // }
-  // handleDecrement=()=>{
-   
-  //   const {count}=this.state;
-   
-  //   if(count>0){
-  //     this.setState({count:this.state.count-1});
-  //   }
-  // }
+    confirmOrder(){
+     
+      const { Patient_ID,table} = this.state;
+      // console.log("table")
+      // console.log(table)
+      const url7="http://project/confirmOrder_Pharmacy.php";
+      axios({
+        method: "post",
+        url: `${url7}`,
+        headers: { "content-type": "application/json" },
+        data: {Patient_ID,table},
+      })
+        .then((response) => {
+          console.log(response);
+          // window.location.reload(false);
+        })
+        .catch((error) => this.setState({ error: error.message }));
+    }
     componentDidMount() {
       this.getData();
       this.totalprice();
@@ -67,6 +69,7 @@ export class CheckOut extends Component {
       })
         .then((result) => {
           console.log(result.data);
+          
           if (result) {
             localStorage.setItem("Appointment_ID", result.data[0].Appointment_ID);
             this.setState({ table: result.data });
@@ -74,6 +77,7 @@ export class CheckOut extends Component {
           }
         })
         .catch((error) => this.setState({ error: error.message }));
+        // localStorage.removeItem("Count");
     }
     totalprice(){
       const { Patient_ID } = this.state;
@@ -88,7 +92,7 @@ export class CheckOut extends Component {
           console.log(result.data);
           this.setState({ total: result.data });
             console.log("total");
-            console.log(this.state.total);
+            // console.log(this.state.total);
           
           
         })
@@ -134,9 +138,9 @@ export class CheckOut extends Component {
             <tr>
               <th>#</th>
               <th>Name</th>
-              <th>Price</th>
-              <th>quantity</th>
               
+              <th>quantity</th>
+              <th>Price</th>
               <th>Action</th>
               
             </tr>
@@ -146,8 +150,9 @@ export class CheckOut extends Component {
               <tr>
                 <td>{index + 1}</td>
                 <td>{x.NAME}</td>
-                <td>{a}{x.price}</td>
                 <td>{x.quantity}</td>
+                <td>{a}{x.price}</td>
+                
                <td><Button onClick={()=>this.delete(x)}>Remove item</Button></td>
      
  
@@ -166,12 +171,15 @@ export class CheckOut extends Component {
         </Table>
                 </div>
                 <div>
+                  <h3>
                <b> TOTAL PRICE:-{a}{this.state.total}</b>
+               </h3>
                 </div>
                 {/* <div>
                   <Button onClick={this.setState({confirmtable: true})}>Confirm Order</Button>
                 </div> */}
                 <Button onClick={()=>this.reset()}>Reset Cart</Button>
+                <Button onClick={()=>this.confirmOrder()}>Confirm Order</Button>
                 {/* <div>
                   {this.state.table.map((x)=>{
                   )

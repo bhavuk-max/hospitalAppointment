@@ -3,24 +3,29 @@ import Pharmacy from './Pharmacy';
 import Badge from 'react-bootstrap/Badge'
 import "./Pharmacy.css";
  import { companyData } from "./index2.js";
-class Grid extends Component {
+class IncrementDecrement extends Component {
     constructor(props) {
         super(props);
-        //this.IncreCount=this.IncreCount.bind(this)
-        //this.handleIncrement=this.handleIncrement.bind(this);
+        
+        this.handleIncrement=this.handleIncrement.bind(this);
+        // this.handlelocal=this.handlelocal.bind(this)
       }
       state = {
-        count: this.props.quantity,
+      
+        count:0,
       };
-    handleIncrement=()=>{
+    handleIncrement(){
       const {count}=this.state;
         
         if(count<10)
         {
-        this.setState({count:this.state.count+1},()=>this.props.totalQuantity(this.state.count));
+        this.setState({count:this.state.count+1});
+        
         // this.setState(prevState=>{return{count: prevState.count+1}})
         }
-        // alert(count);
+        var number=count+1;
+        localStorage.setItem('Count', JSON.stringify(number));
+        
     }
     handleDecrement=()=>{
      
@@ -29,8 +34,16 @@ class Grid extends Component {
       if(count>0){
         this.setState({count:this.state.count-1});
       }
+      var number2=count-1;
+        localStorage.setItem('Count', JSON.stringify(number2));
+    }
+   
+    onClick(){
+      this.handleIncrement()
+
     }
     render() { 
+      
       console.log(this.props);
         return <div className="inc-dec">
 
@@ -44,13 +57,13 @@ class Grid extends Component {
                   -
                   </button>
                   <Badge pill bg="primary" >
-              {/* <span  >{this.state.count}</span> */}
+            
               <span>{this.state.count}</span>
               </Badge>
                   <button
                 type="button"
                 className="btn btn-primary btn-sm btn-sm"
-                //={() => this.setState({ count: this.state.count + 1 })}
+              
                 onClick={this.handleIncrement}
                 style={{ marginLeft: "5px" }}
                 size="sm" 
@@ -59,12 +72,11 @@ class Grid extends Component {
                 +
               </button>
      
- 
-  
+             
             
             
         </div>
     }
 }
  
-export default Grid;
+export default IncrementDecrement;

@@ -12,14 +12,14 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $rest_json = file_get_contents("php://input");
     $_POST = json_decode($rest_json, true);
     $Name = $_POST["name"];
-    $Price = $_POST["price"];
+    // $Price = $_POST["price"];
     $Patient_ID=$_POST["Patient_ID"];
-    // $Quantity = $_POST["quantity"];
+    $Quantity = $_POST["quantity"];
     require_once 'db.php';
  
    
      
-     $sql = "DELETE FROM cart where NAME='$Name' AND Patient_ID='$Patient_ID' LIMIT 1";
+     $sql = "UPDATE pharmacy SET quantity='$Quantity' where NAME='$Name' AND Patient_ID='$Patient_ID'";
    
       if ($conn->query($sql) === TRUE) {
    

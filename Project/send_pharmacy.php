@@ -14,13 +14,13 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $Name = $_POST["name"];
     $Price = $_POST["price"];
     $Patient_ID=$_POST["Patient_ID"];
-    $Quantity=$_POST["quantity"];
+    $Quantity=$_POST["number"];
   
     require_once 'db.php';
  
    
      
-     $sql = "INSERT INTO pharmacy(Patient_ID,NAME,quantity,price) VALUES('$Patient_ID','$Name','$Quantity','$Price')";
+     $sql = "INSERT INTO cart(Patient_ID,NAME,quantity,price) VALUES('$Patient_ID','$Name','$Quantity','$Price')";
    
       if ($conn->query($sql) === TRUE) {
    

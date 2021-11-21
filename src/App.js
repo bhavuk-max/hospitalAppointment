@@ -27,7 +27,7 @@ import Pharmacy from "./components/mycomponent/Pharmacy/Pharmacy";
 import Patient_details from "./components/mycomponent/DashBoard/Patient_details";
 import CheckOut from "./components/mycomponent/Pharmacy/CheckOut";
 
-import Grid from "./components/mycomponent/Pharmacy/grid";
+import IncrementDecrement from "./components/mycomponent/Pharmacy/IncrementDecrement";
 import Stopka from "./components/mycomponent/Pharmacy/stopka";
 import ArticleDetails from "./components/Articles/ArticleDetails";
 import Check from "./components/mycomponent/Pharmacy/Pharmacy_main";

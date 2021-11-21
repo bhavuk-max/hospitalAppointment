@@ -12,7 +12,7 @@ header("Access-Control-Allow-Headers: Content-Disposition, Content-Type, Content
  require_once 'db.php';
 //  where Patient_ID='$Patient_ID'
 
-$sql = "SELECT SUM(price) as `totalprice` FROM pharmacy where Patient_ID='$Patient_ID'";
+$sql = "SELECT SUM(price) as `totalprice` FROM cart where Patient_ID='$Patient_ID'";
 $res=mysqli_query($conn,$sql);
 $data=mysqli_fetch_array($res);
 echo $data['totalprice'];
