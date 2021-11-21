@@ -2,10 +2,12 @@ import React, { Component } from "react";
 import { Button } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import { companyData } from "./index2.js";
+
 import "./Pharmacy.css";
-import Grid from "./grid";
+import IncrementDecrement from "./IncrementDecrement";
 import CheckOut from "./CheckOut.js";
 import axios from "axios";
+import Badge from "react-bootstrap/Badge";
 // import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import {
   BrowserRouter as Router,
@@ -16,94 +18,47 @@ import {
 } from "react-router-dom";
 import { useState } from "react";
 import { FaShoppingCart } from "react-icons/fa";
+
 class check extends Component {
   constructor(props) {
     super(props);
     this.state = {
       search: "",
-      cartItems: [],
-      quantity: 0,
+      Patient_ID: localStorage.getItem("Patient_ID"),
+      IncCheck: false,
+      count: "",
     };
   }
-  AddToCart(e) {
-    const id = e.id;
-    const name = e.name;
-    const price = e.price;
 
-    const url4 = "http://project/send_pharmacy.php";
+  AddToCart(e) {
+    const name = e.name;
+    const { Patient_ID, count } = this.state;
+    var number = JSON.parse(localStorage.getItem("Count"));
+    const price = e.price * number;
+    console.log(number);
+    // console.log();
+    const url4 = "http://hospitalappointment/send_pharmacy.php";
     axios({
       method: "post",
       url: `${url4}`,
       headers: { "content-type": "application/json" },
-      data: { name, price },
+      data: { name, price, Patient_ID, number },
     })
       .then((response) => {
         console.log(response);
       })
       .catch((error) => this.setState({ error: error.message }));
-
-    // this.setState({cartItems:})
-    // alert(e.id);
-    // alert(e.name);
-    // this.setState({quantity:quantity+1})
-
-    // {e.id===companyData.id && e.map((item)=>{
-
-    // })}
-    // {e.id===companyData.id && e.map((item)=>{
-    //   alert("yes");
-    //   <div key={item.id}>
-    //               <div className="column-Pharmacy">
-    //                 <Card style={{ width: "12rem", height: "19rem" }}>
-    //                   <Card.Img
-    //                     variant="top"
-    //                     src={item.image}
-    //                     className="image-size"
-    //                   />
-    //                   <Card.Body>
-    //                     <Card.Title>
-    //                       <h6>
-    //                         <b>{item.name}</b>
-    //                       </h6>
-    //                       <h6>{item.price}</h6>
-    //                     </Card.Title>
-
-    //                     <Grid key={item.id} />
-    //                     <Button
-    //                       className="Order-now"
-    //                       variant="primary"
-    //                       size="lg"
-    //                       key={item.id}
-    //                       onClick={()=>this.AddToCart(item)}
-    //                     >
-    //                       Add to cart
-    //                     </Button>
-    //                   </Card.Body>
-    //                 </Card>
-    //               </div>
-    //             </div>
-    // })}
-    // <div>
-
-    // <CheckOut checkid={e.id} />
-
-    // </div>
-    //   const exist=this.state.cartItems.find(x=>x.id===companyData.id);
-    //   if(exist){
-    // this.state.cartItems.map(x=>x.id===companyData.id?{...exist}:x)
-    //   }
-    //   else{
-    //     this.state.cartItems([...cartItems]);
-    //   }
   }
-  addtocartButton() {}
+  HandleCount(Count) {
+    console.log("count");
+    console.log(Count);
+    this.setState({ quantity: Count });
+  }
   render() {
+    console.log(this.props);
     const a = "₹";
-    // const greeting="this is a prop message";
     return (
       <div>
-        {/* <CheckOut greeting={greeting} /> */}
-        {/* <h1> CheckOut Page</h1> */}
         <div className="Pharmacy">
           <h1>Pharmacy</h1>
         </div>
@@ -144,21 +99,22 @@ class check extends Component {
                             </h6>
                           </Card.Title>
 
-                          <Grid key={item.id} />
+                          <Button
+                            variant="primary"
+                            size="sm"
+                            key={item.id}
+                            onClick={() => this.Increment(item)}
+                          >
+                            +
+                          </Button>
                           <Button
                             className="Order-now"
                             variant="primary"
                             size="sm"
                             key={item.id}
-                            onClick={
-                              (() => this.AddToCart(item),
-                              (event) =>
-                                this.setState({
-                                  quantity: event.target.quantity + 1,
-                                }))
-                            }
+                            onClick={() => this.AddToCart(item)}
                           >
-                            Order Now
+                            Add To Cart
                           </Button>
                           {""}
                         </Card.Body>
@@ -167,14 +123,9 @@ class check extends Component {
                   </div>
                 );
               }
-              // else if(item.name.toLowerCase()!==this.state.search){
-              //   return(<div>
-              //     <h1>medicine not available right now</h1>
-              //   </div>)
-              // }
             })
             .map((item) => (
-              <div key={item.id}>
+              <div>
                 <div className="column-Pharmacy">
                   <Card style={{ width: "12rem", height: "19rem" }}>
                     <Card.Img
@@ -187,28 +138,36 @@ class check extends Component {
                         <h6>
                           <b>{item.name}</b>
                         </h6>
-                        <h6>{item.price}</h6>
+                        <h6>
+                          {a}
+                          {item.price}
+                        </h6>
                       </Card.Title>
 
-                      <Grid key={item.id} />
-                      <Button
-                        className="Order-now"
-                        variant="primary"
-                        size="sm"
-                        key={item.id}
-                        onClick={() => this.AddToCart(item)}
-                      >
-                        Order Now
-                      </Button>
+                      <br />
+                      <div className="butoonns">
+                        <IncrementDecrement />
+
+                        <Button
+                          className="Order-now"
+                          variant="primary"
+                          size="sm"
+                          key={item.id}
+                          onClick={() => this.AddToCart(item)}
+                        >
+                          Add To Cart
+                        </Button>
+                      </div>
                     </Card.Body>
                   </Card>
                 </div>
               </div>
             ))}
+
         <div className="shopping-cart">
-          {/* <Link to="/CheckOut">
-            <ShoppingCartIcon size={28} />
-          </Link> */}
+          <Link to="/CheckOut">
+            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+          </Link>
         </div>
       </div>
     );
