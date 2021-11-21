@@ -16,12 +16,13 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
  $Doctor_ID = $_POST["send_doc"];
  $send_date = $_POST["send_date"];
  $send_time = $_POST["send_time"];
+ $doctorFees = $_POST["doctorFees"];
 
  require_once 'db.php';
 
   //  $sql = "INSERT INTO bookappointment (category,avail_doc,Date,Time,MobileNo)
   //  VALUES ('$category','$send_doc','$send_date','$send_time','$send_mobile')";
-  $sql = "INSERT INTO bookappointment (Patient_ID,Doctor_ID,Category,Date,Time) VALUES('$Patient_ID','$Doctor_ID','$category','$send_date','$send_time')";
+  $sql = "INSERT INTO bookappointment (Patient_ID,Doctor_ID,Category,Date,Time,Fees) VALUES('$Patient_ID','$Doctor_ID','$category','$send_date','$send_time','$doctorFees')";
 
    if ($conn->query($sql) === TRUE) {
 

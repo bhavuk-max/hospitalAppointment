@@ -95,7 +95,7 @@ class Upcoming extends React.Component {
             </Button>
           </Modal.Footer>
         </Modal>
-        <h3>Upcoming Appointment</h3>
+        <h3>Appointments</h3>
         <Table striped bordered hover>
           <thead>
             <tr>

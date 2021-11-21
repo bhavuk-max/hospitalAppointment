@@ -7,6 +7,8 @@ import axios from "axios";
 import "./Com.css";
 import how from "./how.png";
 import Sidebar from "../Sidebar/Sidebar";
+import GooglePayButton from "@google-pay/button-react";
+import Payment from "./Payment";
 class BookAppointment extends Component {
   constructor(props) {
     super(props);
@@ -20,9 +22,11 @@ class BookAppointment extends Component {
     send_doc: "",
     send_date: "",
     send_time: "",
-    // send_mobile_no: "",
+    paymentSuccess: true,
     doctors: [],
     Patient_ID: localStorage.getItem("Patient_ID"),
+    doctorFees: null,
+    booked: false,
   };
 
   doctorList() {
@@ -36,17 +40,25 @@ class BookAppointment extends Component {
     })
       .then((result) => {
         if (result) {
-          this.setState({ doctors: result.data });
+          this.setState({ doctors: result.data, send_doc: "" });
         }
       })
       .catch((error) => this.setState({ error: error.message }));
   }
   submitHandler(e) {
-    const { category, send_doc, send_date, send_time, Patient_ID } = this.state;
-
+    const { category, send_doc, send_date, send_time, Patient_ID, doctorFees } =
+      this.state;
+    this.setState({ booked: true });
     const url = "http://hospitalappointment/BookAppointDta.php";
 
-    if (category && send_doc && send_date && send_time && Patient_ID) {
+    if (
+      category &&
+      send_doc &&
+      send_date &&
+      send_time &&
+      Patient_ID &&
+      doctorFees
+    ) {
       axios({
         method: "post",
         url: `${url}`,
@@ -55,6 +67,7 @@ class BookAppointment extends Component {
       })
         .then((response) => {
           console.log(response);
+
           this.setState({ category: "", send_doc: "" });
         })
         .catch((error) => this.setState({ error: error.message }));
@@ -64,11 +77,33 @@ class BookAppointment extends Component {
   AfterBook() {
     alert("You are about to book your appointment");
   }
+  handleClose() {
+    this.setState({ booked: false });
+  }
 
   render() {
-    const { doctors, category, send_doc } = this.state;
+    const { doctors, category, send_doc, paymentSuccess, doctorFees, booked } =
+      this.state;
+    console.log(doctorFees);
     return (
-      <>
+      <div>
+        {booked ? (
+          <div>
+            <div className="alert alert-success" role="alert">
+              <strong>Appointment Successfully Booked!!</strong>
+
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="alert"
+                aria-label="Close"
+                onClick={() => this.handleClose()}
+              ></button>
+            </div>
+          </div>
+        ) : (
+          ""
+        )}
         <div className="PreviousAppointment">
           <h6>BOOK YOUR APPOINTMENT</h6>
         </div>
@@ -83,10 +118,10 @@ class BookAppointment extends Component {
             className="form-select form-select-sm w-25 p-3 mh-25"
             id="select-one-problem"
             aria-label=".form-select-sm example"
-            value={category}
+            // value={category}
             // onChange={(event) => this.handleEvent(event)}
             onChange={(event) =>
-              this.setState({ category: event.target.value }, () =>
+              this.setState({ category: event.target.value, doctors: [] }, () =>
                 this.doctorList()
               )
             }
@@ -110,7 +145,13 @@ class BookAppointment extends Component {
               id="select-one-doctor"
               aria-label=".form-select-sm example"
               onChange={(event) =>
-                this.setState({ send_doc: event.target.value })
+                this.setState({ send_doc: event.target.value }, () =>
+                  this.setState({
+                    doctorFees: doctors.find(
+                      (x) => x.Doctor_ID === this.state.send_doc
+                    ).Doctor_Fee,
+                  })
+                )
               }
             >
               {" "}
@@ -140,12 +181,6 @@ class BookAppointment extends Component {
             <h5 className="select-time">Select time:-</h5>
           </div>
           <div className="time-pickme">
-            {/* <TimePicker
-              className="Timepicker"
-              selected={this.state.send_time}
-              onChange={(time) => this.setState({ send_time: time })}
-              placeholderText="Select Time"
-            /> */}
             <input
               type="time"
               selected={this.state.send_time}
@@ -155,35 +190,23 @@ class BookAppointment extends Component {
               className="Timepicker"
             ></input>
           </div>
-          {/* <div>
-            <h5 className="MobileNo">Mobile No.:-</h5>
-            <input
-              type="number"
-              selected={this.state.send_mobile_no}
-              onChange={(event) =>
-                this.setState({ send_mobile_no: event.target.value })
-              }
-              placeholder="Enter Mobile No. ONLY"
-              maxLength="10"
-              // onInput={this.maxLength}
-              className="send_mobile_no"
-            ></input>
-          </div>
-
-          <div className="appoint-check">
-            <button className="btn btn-primary">check</button>
-          </div> */}
 
           <div className="appoint-button">
-            <Router>
-              <button
-                className="btn btn-primary"
-                id="button-book-appointment"
-                onClick={(e) => this.submitHandler(e)}
-              >
-                Book Appointment
-              </button>
-            </Router>
+            <button
+              disabled={paymentSuccess}
+              className="btn btn-primary"
+              id="button-book-appointment"
+              onClick={(e) => this.submitHandler(e)}
+            >
+              Book Appointment
+            </button>
+            <Payment
+              doctorFees={doctorFees}
+              paymentSuccess={(event) => {
+                if (event.paymentMethodData.tokenizationData.token)
+                  this.setState({ paymentSuccess: false });
+              }}
+            />
           </div>
         </div>
         <div className="column-how">
@@ -195,57 +218,7 @@ class BookAppointment extends Component {
           <p> Select Date and Time</p>
           <p>Then Book your Appointment</p>
         </div>
-        {/* <table class="table table-hover">
-          <thead>
-            <tr>
-              <th>category</th>
-              <th>Email</th>
-              <th>Username</th>
-            </tr>
-          </thead>
-          <tbody>
-          {this.state.data.map((result) => {
-            return (
-             
-                 <tr>
-                  <td>{result.send}</td>
-                  <td>{result.send_doc}</td>
-                  <td>{result.send_date}</td>
-                </tr>
-             
-            )
-          })}
-           
-            
-          </tbody>
-        </table> */}
-        {/* <div><table class="table table-hover">
-          <thead>
-            <tr>
-              <th>category</th>
-              <th>available doc</th>
-              <th>Date</th>
-              <th>Time</th>
-            </tr>
-          </thead>
-          <tbody>
-          {this.state.data.map((bookappointment) => {
-            return (
-             
-                 <tr>
-                  <td>send={bookappointment.send}</td>
-                  <td>send_doc={bookappointment.send_doc}</td>
-                  <td>send_date{bookappointment.send_date}</td>
-                  <td>send_time={bookappointment.send_time}</td>
-                </tr>
-             
-            )
-          })}
-           
-            
-          </tbody>
-        </table></div> */}
-      </>
+      </div>
     );
   }
 }
