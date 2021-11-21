@@ -89,7 +89,7 @@ class BookAppointment extends Component {
       <div>
         {booked ? (
           <div>
-            <div className="alert alert-success" role="alert">
+            <div className="alert alert-success bookAlert" role="alert">
               <strong>Appointment Successfully Booked!!</strong>
 
               <button

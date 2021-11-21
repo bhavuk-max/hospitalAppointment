@@ -177,3 +177,6 @@ footer {
 
   width: 100%;
 }
+.bookAlert {
+  z-index: 10000;
+}

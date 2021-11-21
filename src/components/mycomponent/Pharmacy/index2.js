@@ -26,7 +26,7 @@ export const companyData = [
     image: crocin,
     name: "Crocin",
     price: "35",
-    quantity: 1,
+    quantity:0,
   },
   {
     id: 2,
@@ -34,7 +34,8 @@ export const companyData = [
     image: photo2,
     name: "Lisnopril",
     price: "35",
-    quantity: 1,
+    quantity:0,
+    
   },
   {
     id: 3,
@@ -42,7 +43,8 @@ export const companyData = [
     image: photo3,
     name: "Levothyroxine",
     price: "35",
-    quantity: 1,
+    quantity:0,
+    
   },
   {
     id: 4,
@@ -50,7 +52,8 @@ export const companyData = [
     image: Azithromycin,
     name: "Azithromycin",
     price: "125",
-    quantity: 1,
+    quantity:0,
+    
   },
   {
     id: 5,
@@ -58,7 +61,8 @@ export const companyData = [
     image: Metformin,
     name: "Metformin",
     price: "235",
-    quantity: 1,
+    quantity:0,
+    
   },
   {
     id: 6,
@@ -66,7 +70,8 @@ export const companyData = [
     image: Lipitor,
     name: "Lipitor",
     price: "90",
-    quantity: 1,
+    quantity:0,
+    
   },
   {
     id: 7,
@@ -74,7 +79,8 @@ export const companyData = [
     image: Amlodipine,
     name: "Amlodipine",
     price: "105",
-    quantity: 1,
+    quantity:0,
+    
   },
   {
     id: 8,
@@ -82,7 +88,8 @@ export const companyData = [
     image: Amoxicillin,
     name: "Amoxicillin",
     price: "115",
-    quantity: 1,
+    quantity:0,
+  
   },
   {
     id: 9,
@@ -90,7 +97,8 @@ export const companyData = [
     image: Hydrochlorothiazide,
     name: "Hydrochlorothiazide",
     price: "155",
-    quantity: 1,
+    quantity:0,
+   
   },
   {
     id: 10,
@@ -98,7 +106,8 @@ export const companyData = [
     image: atorvastatin,
     name: "atorvastatin",
     price: "135",
-    quantity: 1,
+    quantity:0,
+    
   },
   {
     id: 11,
@@ -106,7 +115,8 @@ export const companyData = [
     image: promethazine,
     name: "promethazine",
     price: "100",
-    quantity: 1,
+    quantity:0,
+    
   },
   {
     id: 12,
@@ -114,7 +124,8 @@ export const companyData = [
     image: ibuprofen,
     name: "ibuprofen",
     price: "125",
-    quantity: 1,
+    quantity:0,
+    
   },
   ,
   {
@@ -123,7 +134,8 @@ export const companyData = [
     image: paracetamol,
     name: "paracetamol",
     price: "55",
-    quantity: 1,
+    quantity:0,
+    
   },
   ,
   {
@@ -132,7 +144,8 @@ export const companyData = [
     image: codeine,
     name: "codeine",
     price: "125",
-    quantity: 1,
+    quantity:0,
+    
   },
   ,
   {
@@ -141,7 +154,7 @@ export const companyData = [
     image: morphine,
     name: "morphine",
     price: "125",
-    quantity: 1,
+    quantity:0,
   },
   ,
   {
@@ -150,7 +163,8 @@ export const companyData = [
     image: chloroquine,
     name: "chloroquine",
     price: "120",
-    quantity: 1,
+    quantity:0,
+   
   },
   ,
   {
@@ -159,15 +173,17 @@ export const companyData = [
     image: azathioprine,
     name: "azathioprine",
     price: "175",
-    quantity: 1,
+    quantity:0,
+    
   },
   {
     id: 18,
    
     image: methotrexate,
     name: "methotrexate",
-    price: "₹145",
-    quantity: 1,
+    price: "145",
+    quantity:0,
+    
   },
   {
     id: 19,
@@ -175,7 +191,8 @@ export const companyData = [
     image: penicillamine,
     name: "penicillamine",
     price: "175",
-    quantity: 1,
+    quantity:0,
+    
   },
   {
     id: 20,
@@ -183,7 +200,8 @@ export const companyData = [
     image: ibuprofen,
     name: "ibuprofen",
     price: "155",
-    quantity: 1,
+    quantity:0,
+    
 
   },
 ];

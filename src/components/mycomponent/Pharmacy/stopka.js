@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import crocin from "../Pharmacy/crocin.png";
 import Card from "react-bootstrap/Card";
-import Grid from "./grid";
+import IncrementDecrement from "./IncrementDecrement";
 import { Button } from "react-bootstrap";
 class Stopka extends Component {
     render() {
@@ -31,7 +31,7 @@ class Stopka extends Component {
                    </h6>
                  </Card.Title>
 
-                 <Grid />
+                 <IncrementDecrement />
                  <Button className="Order-now" variant="primary">
                    Order Now
                  </Button>
