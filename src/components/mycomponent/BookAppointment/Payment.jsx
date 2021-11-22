@@ -27,7 +27,7 @@ export default function Payment(props) {
           ],
           merchantInfo: {
             merchantId: "12345678901234567890",
-            merchantName: "Demo Merchant",
+            merchantName: `${props.doctorName}`,
           },
           transactionInfo: {
             totalPriceStatus: "FINAL",
