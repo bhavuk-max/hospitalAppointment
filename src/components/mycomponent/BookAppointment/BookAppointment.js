@@ -202,7 +202,7 @@ class BookAppointment extends Component {
             ></input>
           </div>
 
-          <div className="appoint-button">
+          <div >
             <button
               disabled={paymentSuccess}
               className="btn btn-primary"
@@ -211,7 +211,9 @@ class BookAppointment extends Component {
             >
               Book Appointment
             </button>
+            <div id="google-pay">
             <Payment
+            id="google-pay"
               doctorFees={doctorFees}
               doctorName={doctorName}
               paymentSuccess={(event) => {
@@ -219,6 +221,7 @@ class BookAppointment extends Component {
                   this.setState({ paymentSuccess: false });
               }}
             />
+            </div>
           </div>
         </div>
         <div className="column-how">
