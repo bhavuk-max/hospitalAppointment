@@ -5,26 +5,21 @@ import heart from "../DashBoard/heart.jpg";
 import lose from "../DashBoard/lose.jpg";
 import back from "../DashBoard/back.jpg";
 import doctor from "../DashBoard/doctor.jpg";
+import Banner from "../DashBoard/Banner.png";
 import { BrowserRouter as Router, Link, Route } from "react-router-dom";
 import "../DashBoard/patient_css.css";
-//import Sidebar from "./Sidebar/";
+import { Button } from "react-bootstrap";
 class Patient_details extends Component {
   render() {
     return (
       <>
-        {/* <Sidebar /> */}
-        {/* <div className="pat_details">
-          {/* <ul>
-            <li>Name:-</li>
-            <li>Age:-</li>
-            <li>Weight:-</li>
-            <li>Problem:-</li>
-            <li>Address:-</li>
-            <li>Contact</li>
-          </ul> 
-        </div> */}
+      {/* <div className="buttons-Dashboard">
+      <Link to="/BookAppointment"><Button variant="primary" className="button-bookAppoint">BookAppointment</Button></Link>
+      <Link to="/UpcomingPatientAppointment"><Button variant="primary" className="button-Myappoint">My Appointments</Button></Link>
+      <Link to="/Pharmacy"><Button variant="primary" className="button-Pharmacy">Pharmacy</Button></Link>
+</div> */}
         <div className="column-0">
-          <img src={doctor} alt="cough" style={{ width: "100%" }}></img>
+          <img src={Banner} alt="Banner" style={{ width: "100%" }}></img>
         </div>
         <div className="rows">
           <p id="problem-front">
@@ -83,33 +78,6 @@ class Patient_details extends Component {
               Consult Now
             </Link>
           </div>
-
-          {/* <img src={skin} alt="skin problems" id="front-images-2" className="front-images"></img>  */}
-          {/* <img src={photo3}></img>  */}
-          {/* </div>
-        <div className="Front_links">
-          <Link
-            to="/mycomponent/BookAppointment"
-            className="btn btn-primary link1"
-          >
-            Book Appointment
-          </Link>
-        </div>
-        <div className="Front_links">
-          {" "}
-          <Link
-            to="/mycomponent/PreviousAppointment"
-            className="btn btn-primary link2"
-          >
-            My Appointment
-          </Link>
-        </div>
-        <div className="Front_links">
-          {" "}
-          <Link to="/mycomponent/Pharmacy" className="btn btn-primary link3">
-            Pharmacy
-          </Link> */}
-          {/* <Link to="/mycomponent/BookAppointment" className="btn btn-primary">Book Appointment</Link> */}
         </div>
       </>
     );

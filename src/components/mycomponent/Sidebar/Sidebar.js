@@ -47,7 +47,7 @@ function Sidebar_Patient(props) {
             </li>
             <li className="nav-text">
               <AiIcons.AiFillHome />
-              <Link to="/Patient_details">Dashboard</Link>
+              <Link to="/Dashboard">Dashboard</Link>
             </li>
             <li className="nav-text">
               <Riicons.RiHealthBookLine />
@@ -66,62 +66,9 @@ function Sidebar_Patient(props) {
         </nav>
       </div>
 
-      {/* <i className="fas fa-bars fa-2x ham" onClick={handleShow}></i>
-
-      <Offcanvas show={show} onHide={handleClose}>
-        <Offcanvas.Header closeButton>
-          <Offcanvas.Title></Offcanvas.Title>
-        </Offcanvas.Header>
-        <Offcanvas.Body>
-          <ListGroup className="navbars-Common">
-            <Link to="/Patient_details" className="side">
-              <ListGroup.Item
-                action
-                
-                 className="navbars-Common"
-              >
-                Dashboard
-              </ListGroup.Item>
-            </Link>
-            <ListGroup.Item action variant="secondary" className="sideBar-item">
-              View Previous Appointments
-            </ListGroup.Item>
-          </ListGroup>
-        </Offcanvas.Body>
-      </Offcanvas> */}
+     
     </>
   );
 }
 
 export default Sidebar_Patient;
-
-// export const Sidebar = [
-//   {
-//     title: "Dashboard",
-//     path: "/Patient_details",
-//     icon: <AiIcons.AiFillHome />,
-//     cName: "nav-text",
-//   },
-//   {
-//     title: "Book Appointment",
-//     path: "/BookAppointment",
-//      icon:<Riicons.RiHealthBookLine />,
-//     cName: "nav-text",
-//   },
-//   {
-//     title: "My Appointment",
-//     path: "/PreviousAppointment",
-//     icon:<Mdicons.MdLibraryBooks />,
-//     cName: "nav-text",
-//   },
-//   {
-//     title: "Pharmacy",
-//     path: "/Pharmacy",
-//     icon:<Mdicons.MdLocalPharmacy />,
-//     cName: "nav-text",
-//   },
-//    {
-//      title: "Contact Us",
-//      path:"/mycomponent/ContactUs"
-//   }
-// ];
