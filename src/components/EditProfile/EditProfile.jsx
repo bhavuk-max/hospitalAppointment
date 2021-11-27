@@ -12,11 +12,12 @@ class EditProfile extends Component {
     FullName: "",
     ID: localStorage.getItem("UserId"),
     Doc: false,
-    Qualification: "",
+    Speciality: "",
     userType: localStorage.getItem("UserType"),
     profileChanged: false,
     MeetingLink: "",
     Fees: "",
+    Qualification: "",
   };
 
   EditProfile(e) {
@@ -26,13 +27,19 @@ class EditProfile extends Component {
       phoneNumber,
       FullName,
       ID,
-      Qualification,
+      Speciality,
       userType,
       Fees,
       MeetingLink,
+      Qualification,
     } = this.state;
     if (userType === "2") {
-      this.setState({ Qualification: " ", Fees: " ", MeetingLink: " " });
+      this.setState({
+        Speciality: " ",
+        Fees: " ",
+        MeetingLink: " ",
+        Qualification: "",
+      });
     }
     const url = "http://hospitalappointment/EditProfile.php";
     if (
@@ -40,10 +47,11 @@ class EditProfile extends Component {
       phoneNumber &&
       FullName &&
       ID &&
-      Qualification &&
+      Speciality &&
       userType &&
       Fees &&
-      MeetingLink
+      MeetingLink &&
+      Qualification
     ) {
       axios({
         method: "post",
@@ -149,13 +157,28 @@ class EditProfile extends Component {
                 {userType === "1" ? (
                   <div>
                     <div className="row justify-content-md-center">
+                      <div className="form-floating mb-3  ">
+                        <input
+                          type="text"
+                          className="form-control"
+                          id="name"
+                          placeholder="Qualification"
+                          onChange={(event) =>
+                            this.setState({ Qualification: event.target.value })
+                          }
+                          required
+                        />
+                        <label className="edit">Qualification</label>
+                      </div>
+                    </div>
+                    <div className="row justify-content-md-center">
                       <div className="form-floating mb-3 ">
                         <select
                           className="form-select form-select-sm p-3"
                           aria-label=".form-select-sm example"
                           required
                           onChange={(event) =>
-                            this.setState({ Qualification: event.target.value })
+                            this.setState({ Speciality: event.target.value })
                           }
                         >
                           <option value="start" selected>

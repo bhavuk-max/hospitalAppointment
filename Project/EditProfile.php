@@ -9,9 +9,9 @@ $address = $_POST["Address"];
 $phone = $_POST["phoneNumber"];
 $id = $_POST["ID"];
 $name = $_POST["FullName"];
-$qual = $_POST["Qualification"];
+$speciality = $_POST["Speciality"];
 $type = $_POST["userType"];
-
+$qual = $_POST["Qualification"];
 $fees = $_POST["Fees"];
 $link = $_POST["MeetingLink"];
 
@@ -19,12 +19,12 @@ require_once 'db.php';
 
 if($type == "1"){
   $sql = "
-  UPDATE user SET Address='$address', PhoneNo='$phone', Qualification='$qual' WHERE ID='$id';
-  UPDATE doctor SET Doctor_Fee='$fees', Meeting_Link='$link' WHERE ID='$id';
+  UPDATE user SET FullName='$name',Address='$address', PhoneNo='$phone' WHERE ID='$id';
+  UPDATE doctor SET Doctor_Fee='$fees', Meeting_Link='$link', Speciality='$speciality',Qualification='$qual' WHERE ID='$id';
   ";
 }
 else if($type == "2"){
-  $sql = "UPDATE user SET Address='$address', PhoneNo='$phone', Qualification='$qual' WHERE ID='$id'";
+  $sql = "UPDATE user SET FullName='$name',Address='$address', PhoneNo='$phone' WHERE ID='$id'";
 }
 
 

@@ -31,7 +31,7 @@ import Grid from "./components/mycomponent/Pharmacy/grid";
 import Stopka from "./components/mycomponent/Pharmacy/stopka";
 import ArticleDetails from "./components/Articles/ArticleDetails";
 import Check from "./components/mycomponent/Pharmacy/Pharmacy_main";
-import Payment from "./components/mycomponent/BookAppointment/Payment";
+import Payment from "./components/mycomponent/Payment/Payment";
 
 // import Navbar from "./components/mycomponent/Navbar";
 // import { Patient_details } from "./components/mycomponent/Patient_details";
