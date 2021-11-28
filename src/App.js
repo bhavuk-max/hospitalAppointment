@@ -90,7 +90,7 @@ function App() {
             />
 
             <Route
-              path="/Patient_details"
+              path="/Dashboard"
               exact
               strict
               component={Patient_details}

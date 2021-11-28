@@ -202,7 +202,7 @@ class BookAppointment extends Component {
             ></input>
           </div>
 
-          <div className="appoint-button">
+          <div >
             <button
               disabled={paymentSuccess}
               className="btn btn-primary"
@@ -211,15 +211,22 @@ class BookAppointment extends Component {
             >
               Book Appointment
             </button>
+            <div id="google-pay">
             <Payment
+<<<<<<< HEAD
               id="google-pay"
+=======
+
+>>>>>>> d050fdab5dc58d49a3f1fbbeda7e8bc368451c31
               payment={payment}
               merchantName={merchantName}
+
               paymentSuccess={(event) => {
                 if (event.paymentMethodData.tokenizationData.token)
                   this.setState({ paymentSuccess: false });
               }}
             />
+            </div>
           </div>
         </div>
         <div className="column-how">
