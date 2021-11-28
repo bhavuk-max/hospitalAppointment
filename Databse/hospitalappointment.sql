@@ -237,7 +237,9 @@ CREATE TABLE IF NOT EXISTS `user` (
   `FullName` varchar(50) NOT NULL,
   `Address` varchar(200) DEFAULT NULL,
   `PhoneNo` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+
   `Speciality` varchar(150) DEFAULT NULL,
+
   `UserType` int NOT NULL,
   `First_login` tinyint NOT NULL DEFAULT '0',
   PRIMARY KEY (`ID`),
@@ -250,7 +252,10 @@ CREATE TABLE IF NOT EXISTS `user` (
 -- Dumping data for table `user`
 --
 
+
 INSERT INTO `user` (`ID`, `Email`, `Password`, `FullName`, `Address`, `PhoneNo`, `Speciality`, `UserType`, `First_login`) VALUES
+
+
 (1, 'keshav@gmail.com', 'keshav', 'keshav', 'hr', '333', 'Heart', 1, 1),
 (2, 'keshav@yahoo.com', 'keshav', 'keshav', NULL, '1234567890', NULL, 2, 1),
 (3, 'abc@gmail.com', 'abc', 'abc', NULL, NULL, 'Bone', 1, 1),

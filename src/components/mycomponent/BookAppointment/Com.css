@@ -2,6 +2,14 @@
   margin: 0;
   padding: 0;
 }
+#google-pay{
+  
+
+  position: absolute;
+    left: 1px;
+    top: -80px;
+    margin-top: 10px;
+}
 body {
   font-style: normal;
   background-color: #e3e3e3;
@@ -112,8 +120,9 @@ body {
 }
 #button-book-appointment {
   position: absolute;
-  left: 450px;
-  top: 501px;
+    left: 161px;
+    top: 475px;
+    margin-top: 20px;
   background-color: rgb(59, 101, 192);
 }
 .ContactUs {
@@ -165,9 +174,9 @@ body {
   top: 100px;
 }
 .how-text {
-  position: fixed;
-  top: 295px;
-  left: 1000px;
+  position: absolute;
+    top: 285px;
+    left: 914px;
 }
 footer {
   text-align: center;

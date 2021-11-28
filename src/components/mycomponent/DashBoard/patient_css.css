@@ -11,22 +11,41 @@
   font-weight: bold;
 }
 .column:hover{
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.466);
+}
+.buttons-Dashboard{
+  color: white;
+}
+.button-Myappoint{
+  position: absolute;
+    top: 169px;
+    left: 509px;
+
+}
+.button-Pharmacy{
+  position: absolute;
+  top: 169px;
+  left: 296px;
+}
+.button-bookAppoint{
+  position: absolute;
+    top: 169px;
+    left: 28px;
 }
 .rows{
   content: "";
   clear: both;
   display: table;
   position: fixed;
-  top: 330px;
+  top: 310px;
 
 }
 .column-0{
-  float: left;
-  width: 30%;
-position: fixed;
-top: 60px;
-float: right;
+  display: block;
+    width: 40%;
+    position: absolute;
+    top: 91px;
+    left: 809px;
 
 }
 .column {
@@ -38,7 +57,7 @@ float: right;
 #problem-front{
   
   position: fixed;
-  top: 311px;
+  top: 288px;
   font-family: inherit;
     font-weight: bold;
     background-color: rgb(235,241,248);
