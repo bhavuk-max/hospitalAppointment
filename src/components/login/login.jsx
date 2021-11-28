@@ -53,6 +53,7 @@ class Login extends Component {
             localStorage.setItem("UserType", result.data[0].UserType);
             localStorage.setItem("Email", result.data[0].Email);
             localStorage.setItem("FullName", result.data[0].FullName);
+            localStorage.setItem("Status", result.data[0].FullName);
             if (("UserType", result.data[0].UserType)) {
               const url2 = "http://hospitalappointment/GetId.php";
               axios({
@@ -72,6 +73,7 @@ class Login extends Component {
                       "Meeting_Link",
                       book.data[0].Meeting_Link
                     );
+                    localStorage.setItem("Status", book.data[0].Status);
                   } else if (result.data[0].UserType === "2") {
                     localStorage.setItem("Patient_ID", book.data[0].Patient_ID);
                   }
