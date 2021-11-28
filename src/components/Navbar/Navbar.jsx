@@ -10,6 +10,9 @@ import Login from "../login/login";
 import Sidebar from "../sideBar/sideBar";
 import Sidebar_Patient from "../mycomponent/Sidebar/Sidebar";
 // import Sidebar_Doctor from "../sideBar/sideBar";
+import DropdownButton from "react-bootstrap/DropdownButton";
+import Dropdown from "react-bootstrap/Dropdown";
+import ButtonGroup from "react-bootstrap/ButtonGroup";
 class Navbar extends React.Component {
   state = {
     Profile: false,
@@ -43,6 +46,7 @@ class Navbar extends React.Component {
             Articles
           </Link>
         </div>
+
         <div className="NavBtn">
           {Profile ? (
             <div class="dropdown">
@@ -55,6 +59,7 @@ class Navbar extends React.Component {
               >
                 <i class="fas fa-user-circle fa-2x"></i>
               </button>
+
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                 <li className="detail-name">
                   {localStorage.getItem("FullName")}
@@ -65,6 +70,18 @@ class Navbar extends React.Component {
                     Edit Profile
                   </a>
                 </li>
+                {/* <li className="detail">
+                  <DropdownButton
+                    as={ButtonGroup}
+                    key={"end"}
+                    id={`dropdown-button-drop-${"end"}`}
+                    drop={"end"}
+                    variant="secondary"
+                    title={` Drop ${"end"} `}
+                  >
+                    <Dropdown.Item eventKey="1">Action</Dropdown.Item>
+                  </DropdownButton>
+                </li> */}
                 <li>
                   <a
                     href="/login"
