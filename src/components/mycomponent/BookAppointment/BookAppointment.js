@@ -8,7 +8,7 @@ import "./Com.css";
 import how from "./how.png";
 import Sidebar from "../Sidebar/Sidebar";
 import GooglePayButton from "@google-pay/button-react";
-import Payment from "./Payment";
+import Payment from "../Payment/Payment";
 class BookAppointment extends Component {
   constructor(props) {
     super(props);
@@ -25,9 +25,9 @@ class BookAppointment extends Component {
     paymentSuccess: true,
     doctors: [],
     Patient_ID: localStorage.getItem("Patient_ID"),
-    doctorFees: null,
+    payment: null,
     booked: false,
-    doctorName: "",
+    merchantName: "",
   };
 
   doctorList() {
@@ -47,7 +47,7 @@ class BookAppointment extends Component {
       .catch((error) => this.setState({ error: error.message }));
   }
   submitHandler(e) {
-    const { category, send_doc, send_date, send_time, Patient_ID, doctorFees } =
+    const { category, send_doc, send_date, send_time, Patient_ID, payment } =
       this.state;
     this.setState({ booked: true });
     const url = "http://hospitalappointment/BookAppointDta.php";
@@ -58,7 +58,7 @@ class BookAppointment extends Component {
       send_date &&
       send_time &&
       Patient_ID &&
-      doctorFees
+      payment
     ) {
       axios({
         method: "post",
@@ -88,11 +88,11 @@ class BookAppointment extends Component {
       category,
       send_doc,
       paymentSuccess,
-      doctorFees,
+      payment,
       booked,
-      doctorName,
+      merchantName,
     } = this.state;
-    console.log(doctorFees);
+    console.log(payment);
     return (
       <div>
         {booked ? (
@@ -155,10 +155,10 @@ class BookAppointment extends Component {
               onChange={(event) =>
                 this.setState({ send_doc: event.target.value }, () =>
                   this.setState({
-                    doctorFees: doctors.find(
+                    payment: doctors.find(
                       (x) => x.Doctor_ID === this.state.send_doc
                     ).Doctor_Fee,
-                    doctorName: doctors.find(
+                    merchantName: doctors.find(
                       (x) => x.Doctor_ID === this.state.send_doc
                     ).FullName,
                   })
@@ -213,9 +213,10 @@ class BookAppointment extends Component {
             </button>
             <div id="google-pay">
             <Payment
-            id="google-pay"
-              doctorFees={doctorFees}
-              doctorName={doctorName}
+
+              payment={payment}
+              merchantName={merchantName}
+
               paymentSuccess={(event) => {
                 if (event.paymentMethodData.tokenizationData.token)
                   this.setState({ paymentSuccess: false });

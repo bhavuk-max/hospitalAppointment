@@ -18,25 +18,19 @@ $link = $_POST["MeetingLink"];
 require_once 'db.php';
 
 if($type == "1"){
-  $sql = "
-  UPDATE user SET FullName='$name',Address='$address', PhoneNo='$phone' WHERE ID='$id';
-  UPDATE doctor SET Doctor_Fee='$fees', Meeting_Link='$link', Speciality='$speciality',Qualification='$qual' WHERE ID='$id';
-  ";
+  $sql = "SELECT user.FullName,user.Address,user.PhoneNo,doctor.Qualification,doctor.Speciality,doctor.Doctor_Fee,doctor.Meeting_Link FROM user JOIN doctor ON user.ID = doctor.Doctor_ID WHERE user.ID='$id'";
 }
 else if($type == "2"){
-  $sql = "UPDATE user SET FullName='$name',Address='$address', PhoneNo='$phone' WHERE ID='$id'";
+  $sql = "SELECT user.FullName,user.Address,user.PhoneNo FROM user WHERE user.ID = '$id'";
 }
 
 
 
-if ($conn->multi_query($sql) === TRUE) {
-    $data = array("Data inserted");
-  echo json_encode($data);
-}   
-else {
-echo "Error: " . $sql . "<br>" . $conn->error;
-}
+$result = mysqli_query($conn,$sql);
+$resultCheck = mysqli_num_rows($result);
 
+for($set = array();$row = $result->fetch_assoc();$set[] = $row);
+echo json_encode($set);
 $conn->close();
 
 

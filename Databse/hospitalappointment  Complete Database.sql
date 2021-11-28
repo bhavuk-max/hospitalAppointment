@@ -3,11 +3,10 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Nov 23, 2021 at 07:58 AM
+-- Generation Time: Nov 27, 2021 at 05:59 PM
 -- Server version: 8.0.21
 -- PHP Version: 7.3.21
 
-SET FOREIGN_KEY_CHECKS=0;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
@@ -75,15 +74,14 @@ CREATE TABLE IF NOT EXISTS `cart` (
   `price` int NOT NULL,
   PRIMARY KEY (`ID_Pharmacy`),
   KEY `Patient_ID` (`Patient_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `cart`
 --
 
 INSERT INTO `cart` (`ID_Pharmacy`, `Patient_ID`, `NAME`, `quantity`, `price`) VALUES
-(1, 2, 'Crocin', 2, 70),
-(2, 2, 'Lisnopril', 1, 35);
+(4, 2, 'Levothyroxine', 2, 70);
 
 -- --------------------------------------------------------
 
@@ -121,7 +119,7 @@ CREATE TABLE IF NOT EXISTS `confirmedorders` (
   `Price` int NOT NULL,
   PRIMARY KEY (`Order_ID`),
   KEY `Patient_ID` (`Patient_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `confirmedorders`
@@ -129,7 +127,9 @@ CREATE TABLE IF NOT EXISTS `confirmedorders` (
 
 INSERT INTO `confirmedorders` (`Order_ID`, `Patient_ID`, `NAME`, `Quantity`, `Price`) VALUES
 (1, 2, 'Crocin', 2, 70),
-(2, 2, 'Lisnopril', 1, 35);
+(2, 2, 'Lisnopril', 1, 35),
+(3, 2, 'Lisnopril', 2, 70),
+(4, 2, 'Levothyroxine', 2, 70);
 
 -- --------------------------------------------------------
 
@@ -141,6 +141,8 @@ DROP TABLE IF EXISTS `doctor`;
 CREATE TABLE IF NOT EXISTS `doctor` (
   `Doctor_ID` int NOT NULL AUTO_INCREMENT,
   `ID` int NOT NULL,
+  `Qualification` varchar(50) NOT NULL,
+  `Speciality` varchar(50) NOT NULL,
   `Doctor_Fee` float NOT NULL,
   `Meeting_Link` varchar(60) NOT NULL,
   PRIMARY KEY (`Doctor_ID`),
@@ -152,10 +154,10 @@ CREATE TABLE IF NOT EXISTS `doctor` (
 -- Dumping data for table `doctor`
 --
 
-INSERT INTO `doctor` (`Doctor_ID`, `ID`, `Doctor_Fee`, `Meeting_Link`) VALUES
-(1, 1, 400, 'https://zoom.us/j/2350488474?pwd=UjNuRmQ4Rkp6NFpHVERUTmhlZVJ'),
-(2, 3, 500, 'https://us05web.zoom.us/j/3578828586?pwd=Nk1mOWxPa3BhUFFoYzB'),
-(3, 4, 600, '');
+INSERT INTO `doctor` (`Doctor_ID`, `ID`, `Qualification`, `Speciality`, `Doctor_Fee`, `Meeting_Link`) VALUES
+(1, 1, 'Mbbs', 'Heart', 450, 'https://zoom.us/j/2350488474?pwd=UjNuRmQ4Rkp6NFpHVERUTmhlZVJ'),
+(2, 3, '', '', 500, 'https://us05web.zoom.us/j/3578828586?pwd=Nk1mOWxPa3BhUFFoYzB'),
+(3, 4, '', '', 600, '');
 
 -- --------------------------------------------------------
 
@@ -237,9 +239,6 @@ CREATE TABLE IF NOT EXISTS `user` (
   `FullName` varchar(50) NOT NULL,
   `Address` varchar(200) DEFAULT NULL,
   `PhoneNo` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
-
-  `Speciality` varchar(150) DEFAULT NULL,
-
   `UserType` int NOT NULL,
   `First_login` tinyint NOT NULL DEFAULT '0',
   PRIMARY KEY (`ID`),
@@ -252,15 +251,12 @@ CREATE TABLE IF NOT EXISTS `user` (
 -- Dumping data for table `user`
 --
 
-
-INSERT INTO `user` (`ID`, `Email`, `Password`, `FullName`, `Address`, `PhoneNo`, `Speciality`, `UserType`, `First_login`) VALUES
-
-
-(1, 'keshav@gmail.com', 'keshav', 'keshav', 'hr', '333', 'Heart', 1, 1),
-(2, 'keshav@yahoo.com', 'keshav', 'keshav', NULL, '1234567890', NULL, 2, 1),
-(3, 'abc@gmail.com', 'abc', 'abc', NULL, NULL, 'Bone', 1, 1),
-(4, 'pranav@gmail.com', 'pranav', 'pranav', 'CHD', '678', 'Skin', 1, 1),
-(5, 'abc@yahoo.com', 'abc', 'abc', 'hp', '888', ' ', 2, 1);
+INSERT INTO `user` (`ID`, `Email`, `Password`, `FullName`, `Address`, `PhoneNo`, `UserType`, `First_login`) VALUES
+(1, 'keshav@gmail.com', 'keshav', 'Keshav ', 'pb', '123', 1, 1),
+(2, 'keshav@yahoo.com', 'keshav', 'keshav', NULL, '1234567890', 2, 1),
+(3, 'abc@gmail.com', 'abc', 'abc', NULL, NULL, 1, 1),
+(4, 'pranav@gmail.com', 'pranav', 'pranav', 'CHD', '678', 1, 1),
+(5, 'abc@yahoo.com', 'abc', 'abc', 'hp', '5667', 2, 1);
 
 --
 -- Constraints for dumped tables
@@ -274,16 +270,10 @@ ALTER TABLE `bookappointment`
   ADD CONSTRAINT `bookappointment_ibfk_2` FOREIGN KEY (`Doctor_ID`) REFERENCES `doctor` (`Doctor_ID`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
--- Constraints for table `cart`
---
-ALTER TABLE `cart`
-  ADD CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`Patient_ID`) REFERENCES `patient` (`Patient_ID`) ON DELETE RESTRICT ON UPDATE RESTRICT;
-
---
 -- Constraints for table `confirmedorders`
 --
 ALTER TABLE `confirmedorders`
-  ADD CONSTRAINT `confirmedorders_ibfk_1` FOREIGN KEY (`Patient_ID`) REFERENCES `cart` (`Patient_ID`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+  ADD CONSTRAINT `confirmedorders_ibfk_1` FOREIGN KEY (`Patient_ID`) REFERENCES `patient` (`Patient_ID`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
 -- Constraints for table `doctor`
@@ -296,7 +286,6 @@ ALTER TABLE `doctor`
 --
 ALTER TABLE `patient`
   ADD CONSTRAINT `patient_ibfk_1` FOREIGN KEY (`ID`) REFERENCES `user` (`ID`);
-SET FOREIGN_KEY_CHECKS=1;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

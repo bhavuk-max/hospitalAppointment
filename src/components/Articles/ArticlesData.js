@@ -5,7 +5,8 @@ const carusel1 = [
     title: "Healthy Lifestyle",
     body: '"Healthy living" to most people means both physical and mental health are in balance or functioning well together in a person"',
     image: health,
-    content: "",
+    content:
+      "Healthy living to most people means both physical and mental health are in balance or functioning well together in a person. In many instances, physical and mental health are closely linked, so that a change (good or bad) in one directly affects the other. Consequently, some of the tips will include suggestions for emotional and mental healthy living.",
   },
   {
     title: "Physical Activity",

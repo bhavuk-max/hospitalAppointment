@@ -27,12 +27,12 @@ export default function Payment(props) {
           ],
           merchantInfo: {
             merchantId: "12345678901234567890",
-            merchantName: `${props.doctorName}`,
+            merchantName: `${props.merchantName}`,
           },
           transactionInfo: {
             totalPriceStatus: "FINAL",
             totalPriceLabel: "Total",
-            totalPrice: `${props.doctorFees}`,
+            totalPrice: `${props.payment}`,
             currencyCode: "INR",
             countryCode: "IN",
           },
