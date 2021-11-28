@@ -2,13 +2,11 @@
   margin: 0;
   padding: 0;
 }
-#google-pay{
-  
-
+#google-pay {
   position: absolute;
-    left: 1px;
-    top: -80px;
-    margin-top: 10px;
+  left: 1px;
+  top: -80px;
+  margin-top: 10px;
 }
 body {
   font-style: normal;
@@ -120,15 +118,9 @@ body {
 }
 #button-book-appointment {
   position: absolute;
-<<<<<<< HEAD
   left: 161px;
   top: 425px;
   margin-top: 20px;
-=======
-    left: 161px;
-    top: 475px;
-    margin-top: 20px;
->>>>>>> d050fdab5dc58d49a3f1fbbeda7e8bc368451c31
   background-color: rgb(59, 101, 192);
 }
 .ContactUs {
@@ -181,8 +173,8 @@ body {
 }
 .how-text {
   position: absolute;
-    top: 285px;
-    left: 914px;
+  top: 285px;
+  left: 914px;
 }
 footer {
   text-align: center;
