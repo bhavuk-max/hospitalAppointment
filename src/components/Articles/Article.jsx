@@ -65,6 +65,7 @@ class Article extends React.Component {
                 state: {
                   body: x.body,
                   image: x.image,
+                  content: x.content,
                 },
               }}
               className="article-link"

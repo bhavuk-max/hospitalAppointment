@@ -13,6 +13,7 @@ import Sidebar_Patient from "../mycomponent/Sidebar/Sidebar";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import Dropdown from "react-bootstrap/Dropdown";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
+import MaxCare from "./MaxCare.jpg";
 class Navbar extends React.Component {
   state = {
     Profile: false,
@@ -30,6 +31,8 @@ class Navbar extends React.Component {
       <nav className="Nav">
         {/* <Sidebar /> */}
         {hamType === "1" ? <Sidebar /> : <Sidebar_Patient />}
+
+        <img src={MaxCare} className="Logo" />
 
         <div className="NavMenu">
           <Link to="/" className="NavLink">

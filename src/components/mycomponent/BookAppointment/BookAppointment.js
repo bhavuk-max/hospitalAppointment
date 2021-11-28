@@ -212,6 +212,7 @@ class BookAppointment extends Component {
               Book Appointment
             </button>
             <Payment
+              id="google-pay"
               payment={payment}
               merchantName={merchantName}
               paymentSuccess={(event) => {
