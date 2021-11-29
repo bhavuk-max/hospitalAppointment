@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Nov 27, 2021 at 05:59 PM
+-- Generation Time: Nov 29, 2021 at 11:59 AM
 -- Server version: 8.0.21
 -- PHP Version: 7.3.21
 
@@ -145,19 +145,21 @@ CREATE TABLE IF NOT EXISTS `doctor` (
   `Speciality` varchar(50) NOT NULL,
   `Doctor_Fee` float NOT NULL,
   `Meeting_Link` varchar(60) NOT NULL,
+  `Status` int NOT NULL DEFAULT '1',
   PRIMARY KEY (`Doctor_ID`),
   UNIQUE KEY `ID` (`ID`),
   UNIQUE KEY `Doctor_ID` (`Doctor_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `doctor`
 --
 
-INSERT INTO `doctor` (`Doctor_ID`, `ID`, `Qualification`, `Speciality`, `Doctor_Fee`, `Meeting_Link`) VALUES
-(1, 1, 'Mbbs', 'Heart', 450, 'https://zoom.us/j/2350488474?pwd=UjNuRmQ4Rkp6NFpHVERUTmhlZVJ'),
-(2, 3, '', '', 500, 'https://us05web.zoom.us/j/3578828586?pwd=Nk1mOWxPa3BhUFFoYzB'),
-(3, 4, '', '', 600, '');
+INSERT INTO `doctor` (`Doctor_ID`, `ID`, `Qualification`, `Speciality`, `Doctor_Fee`, `Meeting_Link`, `Status`) VALUES
+(1, 1, 'Mbbs', 'Heart', 450, 'https://zoom.us/j/2350488474?pwd=UjNuRmQ4Rkp6NFpHVERUTmhlZVJ', 1),
+(2, 3, '', '', 500, 'https://us05web.zoom.us/j/3578828586?pwd=Nk1mOWxPa3BhUFFoYzB', 1),
+(3, 4, '', '', 600, '', 1),
+(4, 7, 'Mbbs', 'Skin', 600, 'demo', 1);
 
 -- --------------------------------------------------------
 
@@ -172,7 +174,7 @@ CREATE TABLE IF NOT EXISTS `patient` (
   PRIMARY KEY (`Patient_ID`),
   UNIQUE KEY `ID` (`ID`),
   UNIQUE KEY `Patient_ID` (`Patient_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `patient`
@@ -180,7 +182,8 @@ CREATE TABLE IF NOT EXISTS `patient` (
 
 INSERT INTO `patient` (`Patient_ID`, `ID`) VALUES
 (1, 2),
-(2, 5);
+(2, 5),
+(3, 8);
 
 -- --------------------------------------------------------
 
@@ -245,7 +248,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   UNIQUE KEY `Email` (`Email`),
   UNIQUE KEY `ID` (`ID`),
   UNIQUE KEY `Phone No` (`PhoneNo`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `user`
@@ -256,7 +259,10 @@ INSERT INTO `user` (`ID`, `Email`, `Password`, `FullName`, `Address`, `PhoneNo`,
 (2, 'keshav@yahoo.com', 'keshav', 'keshav', NULL, '1234567890', 2, 1),
 (3, 'abc@gmail.com', 'abc', 'abc', NULL, NULL, 1, 1),
 (4, 'pranav@gmail.com', 'pranav', 'pranav', 'CHD', '678', 1, 1),
-(5, 'abc@yahoo.com', 'abc', 'abc', 'hp', '5667', 2, 1);
+(5, 'abc@yahoo.com', 'abc', 'abc', 'hp', '5667', 2, 1),
+(6, 'bhavuk@gmail.com', 'bg12', 'Bhavuk Gupta', NULL, NULL, 1, 0),
+(7, 'Aman@gmail.com', 'aman123', 'Aman', 'chd', '2222', 1, 1),
+(8, 'Aman@yahoo.com', 'aman', 'Aman', 'Wb', '444', 2, 1);
 
 --
 -- Constraints for dumped tables

@@ -18,7 +18,7 @@ $link = $_POST["MeetingLink"];
 require_once 'db.php';
 
 if($type == "1"){
-  $sql = "SELECT user.FullName,user.Address,user.PhoneNo,doctor.Qualification,doctor.Speciality,doctor.Doctor_Fee,doctor.Meeting_Link FROM user JOIN doctor ON user.ID = doctor.Doctor_ID WHERE user.ID='$id'";
+  $sql = "SELECT user.FullName,user.Address,user.PhoneNo,doctor.Qualification,doctor.Speciality,doctor.Doctor_Fee,doctor.Meeting_Link FROM user JOIN doctor ON user.ID = doctor.ID WHERE user.ID='$id'";
 }
 else if($type == "2"){
   $sql = "SELECT user.FullName,user.Address,user.PhoneNo FROM user WHERE user.ID = '$id'";
