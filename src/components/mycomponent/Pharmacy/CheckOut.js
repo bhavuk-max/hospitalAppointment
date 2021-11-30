@@ -202,10 +202,11 @@ export class CheckOut extends Component {
                 </b>
               </h3>
             </div>
-            {/* <div>
-                  <Button onClick={this.setState({confirmtable: true})}>Confirm Order</Button>
-                </div> */}
+
             <div className="pharmacyPayment">
+              <Button className="Reset-button" onClick={() => this.reset()}>
+                Reset Cart
+              </Button>
               <Payment
                 payment={payment}
                 merchantName={merchantName}
@@ -215,13 +216,16 @@ export class CheckOut extends Component {
                 }}
               />
             </div>
-            <Button onClick={() => this.reset()}>Reset Cart</Button>
-            <Button
-              disabled={paymentSuccess}
-              onClick={() => this.confirmOrder()}
-            >
-              Confirm Order
-            </Button>
+            <div>
+              {" "}
+              <Button
+                className="Confirm-button"
+                disabled={paymentSuccess}
+                onClick={() => this.confirmOrder()}
+              >
+                Confirm Order
+              </Button>
+            </div>
           </div>
         )}
         {!this.state.cart && (

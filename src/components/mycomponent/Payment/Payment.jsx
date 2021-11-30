@@ -3,7 +3,7 @@ import GooglePayButton from "@google-pay/button-react";
 import { useLocation } from "react-router";
 export default function Payment(props) {
   return (
-    <div style={{ position: "absolute", left: "160px", top: "501px" }}>
+    <div>
       <GooglePayButton
         environment="TEST"
         paymentRequest={{
