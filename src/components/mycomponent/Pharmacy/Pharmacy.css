@@ -1,46 +1,42 @@
-.rows-column{
-    content: "";
-    clear: both;
-    display: block;
-    display: center;
-  
-  }
-  span {
-    margin-left: 3px;
+.rows-column {
+  content: "";
+  clear: both;
+  display: block;
+  display: center;
 }
-  .blocks{
-    float: left;
-  }
-  .column-Pharmacy {
-    float: left;
-       width: 20%;
-    padding: 5px;
-    
-  }
-  .image-size {
-    height: 141px;
-    
+span {
+  margin-left: 3px;
 }
-  /* .column-Pharmacy:hover{
+.blocks {
+  float: left;
+}
+.column-Pharmacy {
+  float: left;
+  width: 20%;
+  padding: 5px;
+}
+.image-size {
+  height: 141px;
+}
+/* .column-Pharmacy:hover{
     box-shadow: 0 8px 10px 0 rgba(0,0,0,0.2);
   } */
-  .Pharmacy{
-      text-align: center;
-      background-color: rgb(235,241,248);
-  }
-  .Order-now{
-    margin-top: 2px;
-    ;
-  }
-  .shopping-cart{
-    position:absolute;
-    top: 32px;
-    z-index: 1000;
-    color: white;
-    left: 1184px;
-    size:lg;
-  }
-  .input-quantity{
-    width:140px;
-    text-align: center;
-  }
+.Pharmacy {
+  text-align: center;
+  background-color: rgb(235, 241, 248);
+}
+.Order-now {
+  margin-top: 2px;
+}
+.shopping-cart {
+  position: absolute;
+  top: 32px;
+  z-index: 1000;
+  color: white;
+  left: 89%;
+  size: lg;
+}
+.input-quantity {
+  width: 140px;
+  text-align: center;
+}
