@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Pharmacy from './Pharmacy';
+// import Pharmacy from './Pharmacy';
 import Badge from 'react-bootstrap/Badge'
 import "./Pharmacy.css";
 class Grid extends Component {

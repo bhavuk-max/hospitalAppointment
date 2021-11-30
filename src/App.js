@@ -23,7 +23,7 @@ import Article from "./components/Articles/Article";
 import Contact from "./components/ContactUs/ContactUs";
 import About from "./components/About/About";
 import UpcomingPatientAppointment from "./components/mycomponent/UpcomingPatientAppointment/UpcomingPatientAppointment";
-import Pharmacy from "./components/mycomponent/Pharmacy/Pharmacy";
+// import Pharmacy from "./components/mycomponent/Pharmacy/Pharmacy";
 import Patient_details from "./components/mycomponent/DashBoard/Patient_details";
 import CheckOut from "./components/mycomponent/Pharmacy/CheckOut";
 

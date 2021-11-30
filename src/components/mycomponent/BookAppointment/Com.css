@@ -4,11 +4,13 @@
 }
 #google-pay{
   
-
-  position: absolute;
+position: absolute;
+left: 0%;
+top: -9%;
+  /* position: absolute;
     left: 1px;
     top: -80px;
-    margin-top: 10px;
+    margin-top: 10px; */
 }
 body {
   font-style: normal;
@@ -147,9 +149,7 @@ body {
   left: 291px;
   top: 375px;
 }
-/* .front-1{
-  background-color: ;
-} */
+
 .MobileNo {
   position: fixed;
   top: 430px;
@@ -170,8 +170,9 @@ body {
 .column-how {
   position: absolute;
   width: 11%;
-  right: 255px;
+  /* right: 255px; */
   top: 100px;
+  right: 26%;
 }
 .how-text {
   position: absolute;
