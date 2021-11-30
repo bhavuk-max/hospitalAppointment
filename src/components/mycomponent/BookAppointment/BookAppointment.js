@@ -28,6 +28,7 @@ class BookAppointment extends Component {
     payment: null,
     booked: false,
     merchantName: "",
+    // status: localStorage.getItem("Status"),
   };
 
   doctorList() {
@@ -171,7 +172,7 @@ class BookAppointment extends Component {
               </option>
               {doctors.map((x) => (
                 <option value={x.Doctor_ID} key={x.Doctor_ID}>
-                  {x.FullName}
+                  {x.FullName + " " + "(" + x.Qualification + ")"}
                 </option>
               ))}
             </select>

@@ -21,44 +21,27 @@ const carusel1 = [
   },
   {
     title: "Physical Activity",
-    body: "Physical activity and exercise is a major contributor to a healthy lifestyle; people are made to use their bodies, and disuse leads to unhealthy living. Unhealthy living may manifest itself in obesity, weakness, lack of endurance, and overall poor health that may foster disease development",
+    body: "Physical activity and exercise is a major contributor to a healthy lifestyle;Unhealthy living may manifest itself in obesity, weakness, lack of endurance, and overall poor health that may foster disease development",
     image: Activity,
-    content: "",
+    content:
+      "Physical activity and exercise is a major contributor to a healthy lifestyle; people are made to use their bodies, and disuse leads to unhealthy living. Unhealthy living may manifest itself in obesity, weakness, lack of endurance, and overall poor health that may foster disease development 1.	Regular exercise can prevent and reverse age-related decreases in muscle mass and strength, improve balance, flexibility, and endurance, and decrease the risk of falls in the elderly. Regular exercise can help prevent coronary heart disease, stroke, diabetes, obesity, and high blood pressure. Regular, weight-bearing exercise can also help prevent osteoporosis by building bone strength. 2.	Regular fitness can help chronic arthritis sufferers improve their capacity to perform daily activities such as driving, climbing stairs, and opening jars. 3.	Regular exercise can help increase self-esteem and self-confidence, decrease stress and anxiety, enhance mood, and improve general mental health. 4.	Regular exercise can help control body weight and in some people cause loss of fat. 5.	Thirty minutes of modest exercise (walking is OK) at least 3 to 5 days a week is recommended, but the greatest health benefits come from exercising most days of the week. 6.	Exercise can be broken up into smaller 10-minute sessions.m 7.	Start slowly and progress gradually to avoid injury or excessive soreness or fatigue. Over time, build up to 30 to 60 minutes of moderate to vigorous exercise every day. ",
   },
-  {
-    title: "ENT",
-    body: "",
-    image: health,
-  },
+  // {
+  //   title: "ENT",
+  //   body: "",
+  //   image: health,
+  // },
 
-  {
-    title: "Orthopedic",
-    body: "",
-    image: health,
-  },
-  {
-    title: "Gastroenterology",
-    body: "",
-    image: health,
-  },
+  // {
+  //   title: "Orthopedic",
+  //   body: "",
+  //   image: health,
+  // },
+  // {
+  //   title: "Gastroenterology",
+  //   body: "",
+  //   image: health,
+  // },
 ];
-
-// const carusel2 = [
-//   {
-//     title: "",
-//     body: "",
-//     image: health,
-//   },
-//   {
-//     title: "Orthopedic",
-//     body: "",
-//     image: health,
-//   },
-//   {
-//     title: "Gastroenterology",
-//     body: "",
-//     image: health,
-//   },
-// ];
 
 export const articles = carusel1;

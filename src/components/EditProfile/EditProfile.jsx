@@ -59,9 +59,7 @@ class EditProfile extends Component {
         .catch((error) => this.setState({ error: error.message }));
     }
   }
-
-  EditProfile(e) {
-    e.preventDefault();
+  EditApi() {
     const {
       Address,
       phoneNumber,
@@ -73,14 +71,6 @@ class EditProfile extends Component {
       MeetingLink,
       Qualification,
     } = this.state;
-    if (userType === "2") {
-      this.setState({
-        Speciality: " ",
-        Fees: " ",
-        MeetingLink: " ",
-        Qualification: "",
-      });
-    }
     const url = "http://hospitalappointment/EditProfile.php";
     if (
       Address &&
@@ -106,6 +96,24 @@ class EditProfile extends Component {
           }
         })
         .catch((error) => this.setState({ error: error.message }));
+    }
+  }
+
+  EditProfile(e) {
+    e.preventDefault();
+    const { userType } = this.state;
+    if (userType === "1") {
+      this.EditApi();
+    } else if (userType === "2") {
+      this.setState(
+        {
+          Speciality: " ",
+          Fees: " ",
+          MeetingLink: " ",
+          Qualification: " ",
+        },
+        () => this.EditApi()
+      );
     }
   }
 

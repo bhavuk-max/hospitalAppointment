@@ -70,3 +70,8 @@
   left: 64px;
   top: 5px;
 }
+.status {
+  padding: 0.25rem 1rem;
+  font-weight: bold;
+  font-size: 18px;
+}
