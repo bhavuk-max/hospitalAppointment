@@ -6,7 +6,8 @@ import IncrementDecrement from "./IncrementDecrement";
 import Badge from "react-bootstrap/Badge";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-// import "./checkOut.css";
+import Payment from "../Payment/Payment";
+import "./checkOut.css";
 export class CheckOut extends Component {
   state = {
     table: [],
@@ -17,6 +18,9 @@ export class CheckOut extends Component {
     cart: false,
     confirmtable: false,
     confirmOrder: false,
+    payment: null,
+    merchantName: "",
+    paymentSuccess: true,
   };
 
   confirmOrder() {
@@ -72,8 +76,13 @@ export class CheckOut extends Component {
 
         if (result) {
           localStorage.setItem("Appointment_ID", result.data[0].Appointment_ID);
-          this.setState({ table: result.data });
-          this.setState({ cart: true });
+          // this.setState({ table: result.data });
+          // this.setState({ cart: true });
+          this.setState({
+            table: result.data,
+            cart: true,
+            merchantName: "Max Care",
+          });
         }
       })
       .catch((error) => this.setState({ error: error.message }));
@@ -90,7 +99,8 @@ export class CheckOut extends Component {
     })
       .then((result) => {
         console.log(result.data);
-        this.setState({ total: result.data });
+        this.setState({ total: result.data, payment: result.data });
+        // this.setState({ payment: result.data });
         console.log("total");
         // console.log(this.state.total);
       })
@@ -120,7 +130,7 @@ export class CheckOut extends Component {
   }
 
   render() {
-    const { confirmOrder } = this.state;
+    const { confirmOrder, merchantName, payment, paymentSuccess } = this.state;
     const a = "₹";
     return (
       <>
@@ -195,13 +205,23 @@ export class CheckOut extends Component {
             {/* <div>
                   <Button onClick={this.setState({confirmtable: true})}>Confirm Order</Button>
                 </div> */}
+            <div className="pharmacyPayment">
+              <Payment
+                payment={payment}
+                merchantName={merchantName}
+                paymentSuccess={(event) => {
+                  if (event.paymentMethodData.tokenizationData.token)
+                    this.setState({ paymentSuccess: false });
+                }}
+              />
+            </div>
             <Button onClick={() => this.reset()}>Reset Cart</Button>
-            <Button onClick={() => this.confirmOrder()}>Confirm Order</Button>
-            {/* <div>
-                  {this.state.table.map((x)=>{
-                  )
-                  }
-                </div> */}
+            <Button
+              disabled={paymentSuccess}
+              onClick={() => this.confirmOrder()}
+            >
+              Confirm Order
+            </Button>
           </div>
         )}
         {!this.state.cart && (

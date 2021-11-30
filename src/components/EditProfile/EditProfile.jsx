@@ -12,38 +12,76 @@ class EditProfile extends Component {
     FullName: "",
     ID: localStorage.getItem("UserId"),
     Doc: false,
-    Qualification: "",
+    Speciality: "",
     userType: localStorage.getItem("UserType"),
     profileChanged: false,
     MeetingLink: "",
     Fees: "",
+    Qualification: "",
   };
+  componentDidMount() {
+    this.ProfileData();
+  }
+  ProfileData() {
+    const { userType } = this.state;
+    const url = "http://hospitalappointment/ProfileData.php";
+    {
+      axios({
+        method: "post",
+        url: `${url}`,
+        headers: { "content-type": "application/json" },
+        data: this.state,
+      })
+        .then((result) => {
+          console.log(result);
+          if (result) {
+            const data = result.data[0];
 
-  EditProfile(e) {
-    e.preventDefault();
+            if (userType === "1") {
+              this.setState({
+                Address: data.Address,
+                phoneNumber: data.PhoneNo,
+                FullName: data.FullName,
+                Speciality: data.Speciality,
+                MeetingLink: data.Meeting_Link,
+                Fees: data.Doctor_Fee,
+                Qualification: data.Qualification,
+              });
+            } else if (userType === "2") {
+              this.setState({
+                Address: data.Address,
+                phoneNumber: data.PhoneNo,
+                FullName: data.FullName,
+              });
+            }
+          }
+        })
+        .catch((error) => this.setState({ error: error.message }));
+    }
+  }
+  EditApi() {
     const {
       Address,
       phoneNumber,
       FullName,
       ID,
-      Qualification,
+      Speciality,
       userType,
       Fees,
       MeetingLink,
+      Qualification,
     } = this.state;
-    if (userType === "2") {
-      this.setState({ Qualification: " ", Fees: " ", MeetingLink: " " });
-    }
     const url = "http://hospitalappointment/EditProfile.php";
     if (
       Address &&
       phoneNumber &&
       FullName &&
       ID &&
-      Qualification &&
+      Speciality &&
       userType &&
       Fees &&
-      MeetingLink
+      MeetingLink &&
+      Qualification
     ) {
       axios({
         method: "post",
@@ -61,6 +99,24 @@ class EditProfile extends Component {
     }
   }
 
+  EditProfile(e) {
+    e.preventDefault();
+    const { userType } = this.state;
+    if (userType === "1") {
+      this.EditApi();
+    } else if (userType === "2") {
+      this.setState(
+        {
+          Speciality: " ",
+          Fees: " ",
+          MeetingLink: " ",
+          Qualification: " ",
+        },
+        () => this.EditApi()
+      );
+    }
+  }
+
   handleClose() {
     this.setState({ profileChanged: false });
   }
@@ -68,7 +124,20 @@ class EditProfile extends Component {
   render() {
     // const userType = localStorage.getItem("UserType");
 
-    const { Doc, userType, profileChanged } = this.state;
+    const {
+      Doc,
+      userType,
+      profileChanged,
+      Address,
+      phoneNumber,
+      FullName,
+      ID,
+      Speciality,
+      Fees,
+      MeetingLink,
+      Qualification,
+    } = this.state;
+    console.log(this.state);
     return (
       <div>
         {profileChanged ? (
@@ -91,7 +160,7 @@ class EditProfile extends Component {
         <Card
           bg={"dark"}
           text={"white"}
-          style={{ width: "18rem" }}
+          style={{ width: "500px" }}
           className="mb-2 container formCard"
         >
           <Card.Header>
@@ -103,6 +172,7 @@ class EditProfile extends Component {
                 <div className="row justify-content-md-center">
                   <div className="form-floating mb-3  ">
                     <input
+                      defaultValue={FullName}
                       type="text"
                       className="form-control"
                       id="name"
@@ -118,6 +188,7 @@ class EditProfile extends Component {
                 <div className="row justify-content-md-center">
                   <div className="form-floating mb-3  ">
                     <input
+                      defaultValue={phoneNumber}
                       type="tel"
                       className="form-control loginForm"
                       id="phone"
@@ -133,6 +204,7 @@ class EditProfile extends Component {
                 <div className="row justify-content-md-center">
                   <div className="form-floating mb-3  ">
                     <textarea
+                      defaultValue={Address}
                       className="form-control text"
                       placeholder="Leave a comment here"
                       id="floatingTextarea2"
@@ -149,13 +221,30 @@ class EditProfile extends Component {
                 {userType === "1" ? (
                   <div>
                     <div className="row justify-content-md-center">
+                      <div className="form-floating mb-3  ">
+                        <input
+                          defaultValue={Qualification}
+                          type="text"
+                          className="form-control"
+                          id="name"
+                          placeholder="Qualification"
+                          onChange={(event) =>
+                            this.setState({ Qualification: event.target.value })
+                          }
+                          required
+                        />
+                        <label className="edit">Qualification</label>
+                      </div>
+                    </div>
+                    <div className="row justify-content-md-center">
                       <div className="form-floating mb-3 ">
                         <select
+                          value={Speciality}
                           className="form-select form-select-sm p-3"
                           aria-label=".form-select-sm example"
                           required
                           onChange={(event) =>
-                            this.setState({ Qualification: event.target.value })
+                            this.setState({ Speciality: event.target.value })
                           }
                         >
                           <option value="start" selected>
@@ -173,6 +262,7 @@ class EditProfile extends Component {
                     <div className="row justify-content-md-center">
                       <div className="form-floating mb-3  ">
                         <input
+                          defaultValue={Fees}
                           type="number"
                           className="form-control"
                           id="name"
@@ -188,6 +278,7 @@ class EditProfile extends Component {
                     <div className="row justify-content-md-center">
                       <div className="form-floating mb-3  ">
                         <input
+                          defaultValue={MeetingLink}
                           type="text"
                           className="form-control"
                           id="name"

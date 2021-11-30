@@ -116,7 +116,7 @@ class UpcomingPatientAppointment extends React.Component {
                 <td>{index + 1}</td>
                 <td>{x.FullName}</td>
                 <td>{x.PhoneNo}</td>
-                <td>{x.Qualification}</td>
+                <td>{x.Speciality}</td>
                 <td>{x.Date}</td>
                 <td>{x.Time}</td>
                 <td>{this.getStatus(x.Status)}</td>

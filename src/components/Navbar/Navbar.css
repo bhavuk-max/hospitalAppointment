@@ -63,3 +63,15 @@
   font-size: 18px;
   text-transform: uppercase;
 }
+
+.Logo {
+  height: 70px;
+  position: absolute;
+  left: 64px;
+  top: 5px;
+}
+.status {
+  padding: 0.25rem 1rem;
+  font-weight: bold;
+  font-size: 18px;
+}

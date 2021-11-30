@@ -24,7 +24,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $Name=$_POST["table"][$i]["NAME"];
         $price=$_POST["table"][$i]["price"];
         $Quantity=$_POST["table"][$i]["quantity"];
-        $sql = "INSERT INTO confirmedorders(Patient_ID,MedicineName,Quantity,Price) VALUES('$Patient_ID','$Name','$Quantity','$price')";
+        $sql = "INSERT INTO confirmedorders(Patient_ID,Name,Quantity,Price) VALUES('$Patient_ID','$Name','$Quantity','$price')";
         mysqli_query($conn, $sql);
         
     }   

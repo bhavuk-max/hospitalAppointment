@@ -10,23 +10,54 @@ import Login from "../login/login";
 import Sidebar from "../sideBar/sideBar";
 import Sidebar_Patient from "../mycomponent/Sidebar/Sidebar";
 // import Sidebar_Doctor from "../sideBar/sideBar";
+import DropdownButton from "react-bootstrap/DropdownButton";
+import Dropdown from "react-bootstrap/Dropdown";
+import ButtonGroup from "react-bootstrap/ButtonGroup";
+import MaxCare from "./MaxCare.jpg";
+import axios from "axios";
 class Navbar extends React.Component {
   state = {
     Profile: false,
     hamType: "",
+    status: "",
+    ID: localStorage.getItem("UserId"),
+    DoctorStatus: false,
   };
   componentDidMount() {
     const userType = localStorage.getItem("UserType");
+    if (userType === "1") {
+      this.setState({ DoctorStatus: true });
+    }
     if (userType) {
       this.setState({ Profile: true, hamType: userType });
     }
   }
+  Status(e) {
+    const url = "http://hospitalappointment/Status.php";
+    this.setState({ status: e.target.checked ? 1 : 0 }, () => {
+      axios({
+        method: "post",
+        url: `${url}`,
+        headers: { "content-type": "application/json" },
+        data: this.state,
+      })
+        .then((result) => {
+          console.log(result);
+          if (result) {
+            localStorage.setItem("Status", this.state.status);
+          }
+        })
+        .catch((error) => this.setState({ error: error.message }));
+    });
+  }
   render() {
-    const { Profile, hamType } = this.state;
+    const { Profile, hamType, DoctorStatus } = this.state;
     return (
       <nav className="Nav">
         {/* <Sidebar /> */}
         {hamType === "1" ? <Sidebar /> : <Sidebar_Patient />}
+
+        <img src={MaxCare} className="Logo" />
 
         <div className="NavMenu">
           <Link to="/" className="NavLink">
@@ -43,6 +74,7 @@ class Navbar extends React.Component {
             Articles
           </Link>
         </div>
+
         <div className="NavBtn">
           {Profile ? (
             <div class="dropdown">
@@ -55,16 +87,43 @@ class Navbar extends React.Component {
               >
                 <i class="fas fa-user-circle fa-2x"></i>
               </button>
+
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                 <li className="detail-name">
                   {localStorage.getItem("FullName")}
                 </li>
                 <li className="detail">{localStorage.getItem("Email")}</li>
+                {DoctorStatus ? (
+                  <li className="status">
+                    <div class="form-check form-switch">
+                      <input
+                        defaultChecked={
+                          localStorage.getItem("Status") === "1" ? true : false
+                        }
+                        onChange={(e) => this.Status(e)}
+                        class="form-check-input"
+                        type="checkbox"
+                        role="switch"
+                        id="flexSwitchCheckDefault"
+                      />
+                      <label
+                      // class="form-check-label"
+                      // for="flexSwitchCheckDefault"
+                      >
+                        Status
+                      </label>
+                    </div>
+                  </li>
+                ) : (
+                  ""
+                )}
+
                 <li>
                   <a href="/EditProfile" class="dropdown-item">
                     Edit Profile
                   </a>
                 </li>
+
                 <li>
                   <a
                     href="/login"

@@ -58,3 +58,7 @@ p {
 .parent-tips {
   display: flex;
 }
+.HomeCarousel {
+  text-decoration: none;
+  color: black;
+}
