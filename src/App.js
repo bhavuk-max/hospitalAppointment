@@ -89,7 +89,7 @@ function App() {
               component={Patient_details}
             />
             <Route exact path="/CheckOut" exact strict component={CheckOut} />
-            <Route exact path="/Check" exact strict component={Check} />
+            
           
           </div>
         </Switch>
