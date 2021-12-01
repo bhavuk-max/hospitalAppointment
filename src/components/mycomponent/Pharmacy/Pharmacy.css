@@ -28,15 +28,11 @@ span {
 .Order-now {
   margin-top: 2px;
 }
-.shopping-cart {
-  position: absolute;
-  top: 32px;
-  z-index: 1000;
-  color: white;
-  left: 89%;
-  size: lg;
-}
+
 .input-quantity {
   width: 140px;
   text-align: center;
+}
+.alert-itemadded{
+  z-index: 1000000000;
 }

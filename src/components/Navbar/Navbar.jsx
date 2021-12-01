@@ -87,6 +87,11 @@ class Navbar extends React.Component {
               >
                 <i class="fas fa-user-circle fa-2x"></i>
               </button>
+              <div className="shopping-cart">
+          <Link to="/CheckOut">
+            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+          </Link>
+        </div>
 
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                 <li className="detail-name">

@@ -43,9 +43,22 @@
 .column-0{
   display: block;
     width: 40%;
-    position: absolute;
-    top: 91px;
-    left: 809px;
+    float: right;
+    margin-right: 50px;
+
+}
+.column-01{
+  display: block;
+    width: 24%;
+    float: left;
+
+}
+.column-02{
+  display: block;
+    width: 14%;
+    float: left;
+    margin-right: 106px;
+    margin-left: 76px;
 
 }
 .column {
@@ -63,4 +76,3 @@
     background-color: rgb(235,241,248);
     width: 100%;
 }
-
