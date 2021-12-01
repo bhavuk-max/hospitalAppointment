@@ -183,11 +183,6 @@ export class CheckOut extends Component {
                           Remove item
                         </Button>
                       </td>
-
-                      {/* <td> {!this.state.confirmtable && <div><Button onClick={()=>this.delete(x)}>Remove item</Button></div>}</td>
-                <td>{this.state.confirmtable && <div><Badge pill bg="success">
-          Ordered
-        </Badge></div>}</td> */}
                     </tr>
                   ))}
                 </tbody>
@@ -202,10 +197,11 @@ export class CheckOut extends Component {
                 </b>
               </h3>
             </div>
-            {/* <div>
-                  <Button onClick={this.setState({confirmtable: true})}>Confirm Order</Button>
-                </div> */}
+
             <div className="pharmacyPayment">
+              <Button className="Reset-button" onClick={() => this.reset()}>
+                Reset Cart
+              </Button>
               <Payment
                 payment={payment}
                 merchantName={merchantName}
@@ -215,13 +211,16 @@ export class CheckOut extends Component {
                 }}
               />
             </div>
-            <Button onClick={() => this.reset()}>Reset Cart</Button>
-            <Button
-              disabled={paymentSuccess}
-              onClick={() => this.confirmOrder()}
-            >
-              Confirm Order
-            </Button>
+            <div>
+              {" "}
+              <Button
+                className="Confirm-button"
+                disabled={paymentSuccess}
+                onClick={() => this.confirmOrder()}
+              >
+                Confirm Order
+              </Button>
+            </div>
           </div>
         )}
         {!this.state.cart && (
@@ -231,7 +230,7 @@ export class CheckOut extends Component {
             </h1>
             <b>Add items to cart first!</b> <br />
             <Link to="/Pharmacy">
-              <Button>Go Back</Button>
+              <Button>Add Items</Button>
             </Link>
           </div>
         )}
