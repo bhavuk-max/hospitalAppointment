@@ -14,17 +14,19 @@ $type = $_POST["userType"];
 $qual = $_POST["Qualification"];
 $fees = $_POST["Fees"];
 $link = $_POST["MeetingLink"];
+$ques = $_POST["SecurityQuestion"];
+
 
 require_once 'db.php';
 
 if($type == "1"){
   $sql = "
-  UPDATE user SET FullName='$name',Address='$address', PhoneNo='$phone' WHERE ID='$id';
+  UPDATE user SET FullName='$name',Address='$address', PhoneNo='$phone', SecurityQuestion='$ques' WHERE ID='$id';
   UPDATE doctor SET Doctor_Fee='$fees', Meeting_Link='$link', Speciality='$speciality',Qualification='$qual' WHERE ID='$id';
   ";
 }
 else if($type == "2"){
-  $sql = "UPDATE user SET FullName='$name',Address='$address', PhoneNo='$phone' WHERE ID='$id'";
+  $sql = "UPDATE user SET FullName='$name',Address='$address', PhoneNo='$phone', SecurityQuestion='$ques' WHERE ID='$id'";
 }
 
 
