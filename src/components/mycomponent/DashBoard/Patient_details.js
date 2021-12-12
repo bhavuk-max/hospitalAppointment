@@ -4,13 +4,11 @@ import skin from "../DashBoard/skin.jpg";
 import heart from "../DashBoard/heart.jpg";
 import lose from "../DashBoard/lose.jpg";
 import back from "../DashBoard/back.jpg";
-import doctor from "../DashBoard/doctor.jpg";
 import Banner from "../DashBoard/Banner.png";
 import Covid from "../DashBoard/Covid.jpg";
  import Healthy from "../DashBoard/Healthy.jpg";
 import { BrowserRouter as Router, Link, Route } from "react-router-dom";
 import "../DashBoard/patient_css.css";
-import { Button } from "react-bootstrap";
 class Patient_details extends Component {
   render() {
     return (

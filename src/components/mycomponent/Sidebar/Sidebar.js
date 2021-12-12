@@ -4,13 +4,9 @@ import Offcanvas from "react-bootstrap/Offcanvas";
 import Button from "react-bootstrap/Button";
 import ListGroup from "react-bootstrap/ListGroup";
 import { Link } from "react-router-dom";
-//import Sidebar from "react-sidebar";
 import * as Riicons from "react-icons/ri";
 import * as Mdicons from "react-icons/md";
 import "./NavbarCommon.css";
-import { FaBars } from "react-icons/fa";
-import { AiOutlineClose } from "react-icons/ai";
-
 function Sidebar_Patient(props) {
   const [show, setShow] = useState(false);
   const [display, setDisplay] = useState(false);
@@ -30,7 +26,6 @@ function Sidebar_Patient(props) {
       <div className="navbars">
         {display ? (
           <Link to="#" className="web-icons-slidebar ">
-            {/* <FaBars onClick={showSidebar} /> */}
             <i className="fas fa-bars fa-2x ham" onClick={showSidebar}></i>
           </Link>
         ) : (
@@ -41,7 +36,6 @@ function Sidebar_Patient(props) {
           <ul className="nav-menu-items" onClick={showSidebar}>
             <li className="nav-toggle">
               <Link to="#" className="menu-bars">
-                {/* <AiOutlineClose /> */}
                 <i class="fas fa-times  sideCross" onClick={handleClose}></i>
               </Link>
             </li>
@@ -59,14 +53,12 @@ function Sidebar_Patient(props) {
             </li>
             <li className="nav-text">
               <Mdicons.MdLocalPharmacy />
-              {/* <Link to="/Pharmacy">Pharmacy</Link> */}
+
               <Link to="/Pharmacy">Pharmacy</Link>
             </li>
           </ul>
         </nav>
       </div>
-
-     
     </>
   );
 }

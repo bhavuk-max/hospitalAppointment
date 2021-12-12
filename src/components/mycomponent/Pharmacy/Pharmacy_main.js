@@ -4,7 +4,6 @@ import Card from "react-bootstrap/Card";
 import { companyData } from "./index2.js";
 import "./Pharmacy.css";
 import IncrementDecrement from "./IncrementDecrement";
-import CheckOut from "./CheckOut.js";
 import axios from "axios";
 class check extends Component {
   constructor(props) {
