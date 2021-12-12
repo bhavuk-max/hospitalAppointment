@@ -147,7 +147,7 @@ class UpcomingPatientAppointment extends React.Component {
                     >
                       <i
                         className="fas fa-trash-alt cancel"
-                        // onClick={() => this.cancelAppointment(x.Appointment_ID)}
+  
                         onClick={() => this.handleShow(x.Appointment_ID)}
                       ></i>
                     </OverlayTrigger>

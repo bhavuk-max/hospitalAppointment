@@ -187,9 +187,8 @@ footer {
 .bookAlert {
   z-index: 10000;
 }
-#google-pay {
-  position: absolute;
-  left: 1px;
-  top: -80px;
-  margin-top: 10px;
+.appointmentPayment {
+  position: fixed;
+  top: 61%;
+  right: 79.8%;
 }

@@ -32,8 +32,6 @@ import Payment from "./components/mycomponent/Payment/Payment";
 function App() {
   console.log(localStorage.getItem("UserId"));
   const userId = localStorage.getItem("UserId");
-  // const loginForm = <Redirect to="/login" />;
-  // const home = <Redirect exact to="/Home" />;
 
   return (
     <div className="App">
@@ -82,15 +80,8 @@ function App() {
               component={UpcomingPatientAppointment}
             />
 
-            <Route
-              path="/Dashboard"
-              exact
-              strict
-              component={Patient_details}
-            />
+            <Route path="/Dashboard" exact strict component={Patient_details} />
             <Route exact path="/CheckOut" exact strict component={CheckOut} />
-            
-          
           </div>
         </Switch>
       </Router>

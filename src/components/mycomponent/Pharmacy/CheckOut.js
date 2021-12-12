@@ -2,8 +2,6 @@ import React from "react";
 import { Component } from "react";
 import axios from "axios";
 import Table from "react-bootstrap/Table";
-import IncrementDecrement from "./IncrementDecrement";
-import Badge from "react-bootstrap/Badge";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Payment from "../Payment/Payment";
@@ -39,7 +37,6 @@ export class CheckOut extends Component {
         if (response) {
           this.setState({ confirmOrder: true });
         }
-        // window.location.reload(false);
       })
       .catch((error) => this.setState({ error: error.message }));
   }
@@ -76,8 +73,6 @@ export class CheckOut extends Component {
 
         if (result) {
           localStorage.setItem("Appointment_ID", result.data[0].Appointment_ID);
-          // this.setState({ table: result.data });
-          // this.setState({ cart: true });
           this.setState({
             table: result.data,
             cart: true,
@@ -86,7 +81,6 @@ export class CheckOut extends Component {
         }
       })
       .catch((error) => this.setState({ error: error.message }));
-    // localStorage.removeItem("Count");
   }
   totalprice() {
     const { Patient_ID } = this.state;
@@ -100,9 +94,8 @@ export class CheckOut extends Component {
       .then((result) => {
         console.log(result.data);
         this.setState({ total: result.data, payment: result.data });
-        // this.setState({ payment: result.data });
+
         console.log("total");
-        // console.log(this.state.total);
       })
       .catch((error) => this.setState({ error: error.message }));
   }
