@@ -2,23 +2,9 @@ import React, { Component } from "react";
 import { Button } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import { companyData } from "./index2.js";
-
 import "./Pharmacy.css";
 import IncrementDecrement from "./IncrementDecrement";
-import CheckOut from "./CheckOut.js";
 import axios from "axios";
-import Badge from "react-bootstrap/Badge";
-// import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
-import {
-  BrowserRouter as Router,
-  Link,
-  Route,
-  Switch,
-  Redirect,
-} from "react-router-dom";
-import { useState } from "react";
-import { FaShoppingCart } from "react-icons/fa";
-
 class check extends Component {
   constructor(props) {
     super(props);
@@ -27,17 +13,20 @@ class check extends Component {
       Patient_ID: localStorage.getItem("Patient_ID"),
       IncCheck: false,
       count: "",
+      quantityCheck: true,
+      AddCart: false,
     };
   }
 
   AddToCart(e) {
+    this.setState({AddCart: false});
     const name = e.name;
-    const { Patient_ID, count } = this.state;
+    const { Patient_ID} = this.state;
     var number = JSON.parse(localStorage.getItem("Count"));
     const price = e.price * number;
     console.log(number);
-    // console.log();
     const url4 = "http://hospitalappointment/send_pharmacy.php";
+    if(number){
     axios({
       method: "post",
       url: `${url4}`,
@@ -46,19 +35,44 @@ class check extends Component {
     })
       .then((response) => {
         console.log(response);
+        this.setState({AddCart: true});
       })
       .catch((error) => this.setState({ error: error.message }));
+      localStorage.removeItem("Count");
+    }
+    else{
+      alert("quantity can not be zero");
+      
+      
+    }
   }
-  HandleCount(Count) {
-    console.log("count");
-    console.log(Count);
-    this.setState({ quantity: Count });
+  handleClose() {
+    this.setState({ AddCart: false });
   }
+ 
   render() {
+    const {AddCart}=this.state;
     console.log(this.props);
     const a = "₹";
     return (
       <div>
+         {AddCart ? (
+          <div>
+            <div className="alert alert-success alert-itemadded" role="alert">
+              <strong>Item Added Successfully!!</strong>
+
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="alert"
+                aria-label="Close"
+                onClick={() => this.handleClose()}
+              ></button>
+            </div>
+          </div>
+        ) : (
+          ""
+        )}
         <div className="Pharmacy">
           <h1>Pharmacy</h1>
         </div>
@@ -164,11 +178,7 @@ class check extends Component {
               </div>
             ))}
 
-        <div className="shopping-cart">
-          <Link to="/CheckOut">
-            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-          </Link>
-        </div>
+        
       </div>
     );
   }

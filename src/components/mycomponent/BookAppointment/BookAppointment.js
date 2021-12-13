@@ -1,19 +1,13 @@
 import React, { useState } from "react";
 import { Component } from "react";
-import { BrowserRouter as Router, Link, Route } from "react-router-dom";
 import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
-// import "./NavbarCommon.css";
 import "./Com.css";
 import how from "./how.png";
-import Sidebar from "../Sidebar/Sidebar";
-import GooglePayButton from "@google-pay/button-react";
 import Payment from "../Payment/Payment";
 class BookAppointment extends Component {
   constructor(props) {
     super(props);
-    this.AfterBook = this.AfterBook.bind(this);
-
     this.submitHandler = this.submitHandler.bind(this);
   }
 
@@ -28,7 +22,6 @@ class BookAppointment extends Component {
     payment: null,
     booked: false,
     merchantName: "",
-    // status: localStorage.getItem("Status"),
   };
 
   doctorList() {
@@ -75,10 +68,6 @@ class BookAppointment extends Component {
         .catch((error) => this.setState({ error: error.message }));
     }
   }
-
-  AfterBook() {
-    alert("You are about to book your appointment");
-  }
   handleClose() {
     this.setState({ booked: false });
   }
@@ -122,13 +111,10 @@ class BookAppointment extends Component {
             <h5> Category:-</h5>
           </div>
 
-          {/* <div>TELL US ABOUT YOUR HEALTH:-</div> */}
           <select
             className="form-select form-select-sm w-25 p-3 mh-25"
             id="select-one-problem"
             aria-label=".form-select-sm example"
-            // value={category}
-            // onChange={(event) => this.handleEvent(event)}
             onChange={(event) =>
               this.setState({ category: event.target.value, doctors: [] }, () =>
                 this.doctorList()

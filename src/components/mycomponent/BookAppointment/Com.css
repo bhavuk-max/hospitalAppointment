@@ -164,16 +164,16 @@ body {
   top: 20px;
 }
 .column-how {
-  position: absolute;
-  width: 11%;
-  right: 255px;
-  top: 100px;
+  margin-left: 1020px;
+  width: 12%;
+  
 }
 .how-text {
-  position: absolute;
-  top: 285px;
-  left: 914px;
+  margin-top: 30px;
+  float: right;
+  margin-right: 275px;
 }
+
 footer {
   text-align: center;
   color: black;
@@ -185,9 +185,8 @@ footer {
 .bookAlert {
   z-index: 10000;
 }
-#google-pay {
-  position: absolute;
-  left: 1px;
-  top: -80px;
-  margin-top: 10px;
+.appointmentPayment {
+  position: fixed;
+  top: 61%;
+  right: 79.8%;
 }

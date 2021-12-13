@@ -4,20 +4,22 @@ import skin from "../DashBoard/skin.jpg";
 import heart from "../DashBoard/heart.jpg";
 import lose from "../DashBoard/lose.jpg";
 import back from "../DashBoard/back.jpg";
-import doctor from "../DashBoard/doctor.jpg";
 import Banner from "../DashBoard/Banner.png";
+import Covid from "../DashBoard/Covid.jpg";
+ import Healthy from "../DashBoard/Healthy.jpg";
 import { BrowserRouter as Router, Link, Route } from "react-router-dom";
 import "../DashBoard/patient_css.css";
-import { Button } from "react-bootstrap";
 class Patient_details extends Component {
   render() {
     return (
       <>
-      {/* <div className="buttons-Dashboard">
-      <Link to="/BookAppointment"><Button variant="primary" className="button-bookAppoint">BookAppointment</Button></Link>
-      <Link to="/UpcomingPatientAppointment"><Button variant="primary" className="button-Myappoint">My Appointments</Button></Link>
-      <Link to="/Pharmacy"><Button variant="primary" className="button-Pharmacy">Pharmacy</Button></Link>
-</div> */}
+      <div className="Dashboard">
+      <div className="column-02">
+          <img src={Healthy} alt="DocPat" style={{ width: "100%" }}></img>
+        </div>
+     <div className="column-01">
+          <img src={Covid} alt="Covid Rules" style={{ width: "100%" }}></img>
+        </div>
         <div className="column-0">
           <img src={Banner} alt="Banner" style={{ width: "100%" }}></img>
         </div>
@@ -78,6 +80,7 @@ class Patient_details extends Component {
               Consult Now
             </Link>
           </div>
+        </div>
         </div>
       </>
     );

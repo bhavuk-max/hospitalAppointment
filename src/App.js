@@ -23,24 +23,15 @@ import Article from "./components/Articles/Article";
 import Contact from "./components/ContactUs/ContactUs";
 import About from "./components/About/About";
 import UpcomingPatientAppointment from "./components/mycomponent/UpcomingPatientAppointment/UpcomingPatientAppointment";
-import Pharmacy from "./components/mycomponent/Pharmacy/Pharmacy";
 import Patient_details from "./components/mycomponent/DashBoard/Patient_details";
 import CheckOut from "./components/mycomponent/Pharmacy/CheckOut";
-
-import Grid from "./components/mycomponent/Pharmacy/grid";
-import Stopka from "./components/mycomponent/Pharmacy/stopka";
 import ArticleDetails from "./components/Articles/ArticleDetails";
 import Check from "./components/mycomponent/Pharmacy/Pharmacy_main";
 import Payment from "./components/mycomponent/Payment/Payment";
 
-// import Navbar from "./components/mycomponent/Navbar";
-// import { Patient_details } from "./components/mycomponent/Patient_details";
-
 function App() {
   console.log(localStorage.getItem("UserId"));
   const userId = localStorage.getItem("UserId");
-  // const loginForm = <Redirect to="/login" />;
-  // const home = <Redirect exact to="/Home" />;
 
   return (
     <div className="App">
@@ -75,7 +66,7 @@ function App() {
             <Route path="/Contact" exact strict component={Contact} />
             <Route path="/" exact strict component={Home} />
             <Route path="/Doctor" exact strict component={Home} />
-            <Route path="/Patient" exact strict component={Home} />
+            <Route path="/Patient" exact strict component={Patient_details} />
             <Route
               path="/BookAppointment"
               exact
@@ -89,15 +80,8 @@ function App() {
               component={UpcomingPatientAppointment}
             />
 
-            <Route
-              path="/Dashboard"
-              exact
-              strict
-              component={Patient_details}
-            />
+            <Route path="/Dashboard" exact strict component={Patient_details} />
             <Route exact path="/CheckOut" exact strict component={CheckOut} />
-            <Route exact path="/Check" exact strict component={Check} />
-            <Route exact path="/Stopka" exact strict component={Stopka} />
           </div>
         </Switch>
       </Router>
