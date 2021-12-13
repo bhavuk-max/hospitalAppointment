@@ -10,6 +10,7 @@ class signUp extends Component {
     type: "",
     fullName: "",
     AccountCreated: false,
+    SecurityQuestion: "",
   };
 
   handleClose() {
@@ -17,9 +18,9 @@ class signUp extends Component {
   }
   signUp(e) {
     e.preventDefault();
-    const { Email, Password, type } = this.state;
+    const { Email, Password, type, SecurityQuestion } = this.state;
     this.setState({ AccountCreated: true });
-    if (Email && Password && type) {
+    if (Email && Password && type && SecurityQuestion) {
       const url = "http://hospitalappointment/signUp.php";
       axios({
         method: "post",
@@ -98,6 +99,19 @@ class signUp extends Component {
                 required
               />
               <label>Password</label>
+            </div>
+            <div className="form-floating inputBox">
+              <input
+                type="text"
+                className="form-control"
+                id="security"
+                placeholder="SecurityQuestion"
+                onChange={(event) =>
+                  this.setState({ SecurityQuestion: event.target.value })
+                }
+                required
+              />
+              <label>Security Question(Favourite Brand Name)</label>
             </div>
             <h4>User Type</h4>
             <div className="form-check form-check-inline container col-4 radio">

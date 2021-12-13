@@ -3,11 +3,9 @@
   padding: 0;
 }
 
-#google-pay {
-  position: absolute;
-  left: 1px;
-  top: -80px;
-  margin-top: 10px;
+.appointmentPayment {
+  margin-right: 65%;
+  margin-top: 25%;
 
 }
 body {

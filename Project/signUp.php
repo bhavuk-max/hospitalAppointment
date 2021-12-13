@@ -12,11 +12,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
   $password = $_POST["Password"];
   $user = $_POST["type"];
   $name = $_POST["fullName"];
+  $ques = $_POST["SecurityQuestion"];
     
     require_once 'db.php';
 
-    $sql = "INSERT INTO user (Email,Password,FullName,UserType)
-    VALUES ('$email','$password','$name','$user')";
+    $sql = "INSERT INTO user (Email,Password,FullName,UserType,SecurityQuestion)
+    VALUES ('$email','$password','$name','$user','$ques')";
     
 
     if ($conn->query($sql) === TRUE) {

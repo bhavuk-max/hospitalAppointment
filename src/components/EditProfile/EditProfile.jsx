@@ -18,6 +18,7 @@ class EditProfile extends Component {
     MeetingLink: "",
     Fees: "",
     Qualification: "",
+    SecurityQuestion: "",
   };
   componentDidMount() {
     this.ProfileData();
@@ -46,6 +47,7 @@ class EditProfile extends Component {
                 MeetingLink: data.Meeting_Link,
                 Fees: data.Doctor_Fee,
                 Qualification: data.Qualification,
+                SecurityQuestion: data.SecurityQuestion,
               });
             } else if (userType === "2") {
               this.setState({
@@ -70,6 +72,7 @@ class EditProfile extends Component {
       Fees,
       MeetingLink,
       Qualification,
+      SecurityQuestion,
     } = this.state;
     const url = "http://hospitalappointment/EditProfile.php";
     if (
@@ -81,7 +84,8 @@ class EditProfile extends Component {
       userType &&
       Fees &&
       MeetingLink &&
-      Qualification
+      Qualification &&
+      SecurityQuestion
     ) {
       axios({
         method: "post",
@@ -136,6 +140,7 @@ class EditProfile extends Component {
       Fees,
       MeetingLink,
       Qualification,
+      SecurityQuestion,
     } = this.state;
     console.log(this.state);
     return (
@@ -295,6 +300,22 @@ class EditProfile extends Component {
                 ) : (
                   ""
                 )}
+                <div className="row justify-content-md-center">
+                  <div className="form-floating mb-3  ">
+                    <input
+                      defaultValue={SecurityQuestion}
+                      type="text"
+                      className="form-control"
+                      id="SecurityQuestion"
+                      placeholder="SecurityQuestion"
+                      onChange={(event) =>
+                        this.setState({ SecurityQuestion: event.target.value })
+                      }
+                      required
+                    />
+                    <label className="edit">Security Question</label>
+                  </div>
+                </div>
               </div>
               <button
                 type="submit"
