@@ -8,6 +8,8 @@ class ForgotPassword extends Component {
     resetPassword: false,
     Password: "",
     ConfirmPassword: "",
+    SecurityQuestion: "",
+    Question: false,
   };
   forgotPassword(e) {
     e.preventDefault();
@@ -22,8 +24,8 @@ class ForgotPassword extends Component {
       })
         .then((result) => {
           console.log(result);
-          if (result.data) {
-            this.setState({ resetPassword: true });
+          if (result.data === "Found") {
+            this.setState({ Question: true });
           }
         })
         .catch((error) => this.setState({ error: error.message }));
@@ -54,8 +56,28 @@ class ForgotPassword extends Component {
         .catch((error) => this.setState({ error: error.message }));
     }
   }
+  CheckQuestion(e) {
+    e.preventDefault();
+    const { Email, SecurityQuestion } = this.state;
+    if (Email && SecurityQuestion) {
+      const url = "http://hospitalappointment/Security.php";
+      axios({
+        method: "post",
+        url: `${url}`,
+        headers: { "content-type": "application/json" },
+        data: this.state,
+      })
+        .then((result) => {
+          console.log(result);
+          if (result.data === "Correct") {
+            this.setState({ resetPassword: true });
+          }
+        })
+        .catch((error) => this.setState({ error: error.message }));
+    }
+  }
   render() {
-    const { resetPassword } = this.state;
+    const { resetPassword, Question } = this.state;
     return (
       <div>
         {resetPassword ? (
@@ -105,6 +127,47 @@ class ForgotPassword extends Component {
                   onClick={(e) => this.ResetPassword(e)}
                 >
                   Reset Password
+                </button>
+              </form>
+            </Card.Body>
+          </Card>
+        ) : Question ? (
+          <Card
+            bg={"dark"}
+            text={"white"}
+            style={{ width: "300px" }}
+            className="mb-2 container formCard"
+          >
+            <Card.Header>
+              <h5>Enter your Security Question</h5>
+            </Card.Header>
+            <Card.Body>
+              <form>
+                <div className="container">
+                  <div className="row justify-content-md-center">
+                    <div className="form-floating mb-3  ">
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder="Security Question"
+                        onChange={(event) =>
+                          this.setState({
+                            SecurityQuestion: event.target.value,
+                          })
+                        }
+                        required
+                      />
+                      <label className="edit">Security Question</label>
+                    </div>
+                  </div>
+                </div>
+                <button
+                  type="submit"
+                  name="submit"
+                  className="btn btn-primary"
+                  onClick={(e) => this.CheckQuestion(e)}
+                >
+                  Submit
                 </button>
               </form>
             </Card.Body>
