@@ -12,6 +12,7 @@ class ForgotPassword extends Component {
     Question: false,
     VerifyEmail: false,
     VerifySecurityQuestion: false,
+    PasswordChanged: false,
   };
 
   forgotPassword(e) {
@@ -51,12 +52,13 @@ class ForgotPassword extends Component {
         .then((result) => {
           console.log(result);
           if (result.data) {
-            this.setState({
-              resetPassword: false,
-              Email: "",
-              Password: "",
-              ConfirmPassword: "",
-            });
+            // this.setState({
+            //   resetPassword: false,
+            //   Email: "",
+            //   Password: "",
+            //   ConfirmPassword: "",
+            // });
+            this.setState({ PasswordChanged: true });
           }
         })
         .catch((error) => this.setState({ error: error.message }));
@@ -93,6 +95,7 @@ class ForgotPassword extends Component {
       VerifySecurityQuestion,
       SecurityQuestion,
       Email,
+      PasswordChanged,
     } = this.state;
     return (
       <div>
@@ -124,6 +127,22 @@ class ForgotPassword extends Component {
                 data-bs-dismiss="alert"
                 aria-label="Close"
                 onClick={() => this.setState({ VerifySecurityQuestion: false })}
+              ></button>
+            </div>
+          </div>
+        ) : (
+          " "
+        )}
+        {PasswordChanged ? (
+          <div>
+            <div className="alert alert-success" role="alert">
+              <strong>Password Changed Successfully!</strong>
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="alert"
+                aria-label="Close"
+                onClick={() => (window.location.href = "/login")}
               ></button>
             </div>
           </div>
@@ -189,7 +208,7 @@ class ForgotPassword extends Component {
             className="mb-2 container formCard"
           >
             <Card.Header>
-              <h5>Enter your Security Question</h5>
+              <h5>Enter your Favourite Brand Name:</h5>
             </Card.Header>
             <Card.Body>
               <form>
