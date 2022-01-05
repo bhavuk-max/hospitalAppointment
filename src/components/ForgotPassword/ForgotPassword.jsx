@@ -10,7 +10,10 @@ class ForgotPassword extends Component {
     ConfirmPassword: "",
     SecurityQuestion: "",
     Question: false,
+    VerifyEmail: false,
+    VerifySecurityQuestion: false,
   };
+
   forgotPassword(e) {
     e.preventDefault();
     const { Email } = this.state;
@@ -26,6 +29,9 @@ class ForgotPassword extends Component {
           console.log(result);
           if (result.data === "Found") {
             this.setState({ Question: true });
+          }
+          if (result.data === "Not Found") {
+            this.setState({ VerifyEmail: true });
           }
         })
         .catch((error) => this.setState({ error: error.message }));
@@ -72,14 +78,58 @@ class ForgotPassword extends Component {
           if (result.data === "Correct") {
             this.setState({ resetPassword: true });
           }
+          if (result.data === "Incorrect") {
+            this.setState({ VerifySecurityQuestion: true });
+          }
         })
         .catch((error) => this.setState({ error: error.message }));
     }
   }
   render() {
-    const { resetPassword, Question } = this.state;
+    const {
+      resetPassword,
+      Question,
+      VerifyEmail,
+      VerifySecurityQuestion,
+      SecurityQuestion,
+      Email,
+    } = this.state;
     return (
       <div>
+        {VerifyEmail ? (
+          <div>
+            <div className="alert alert-danger" role="alert">
+              <strong>Email Not Registered!</strong>
+
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="alert"
+                aria-label="Close"
+                onClick={() => this.setState({ VerifyEmail: false })}
+              ></button>
+            </div>
+          </div>
+        ) : (
+          " "
+        )}
+        {VerifySecurityQuestion ? (
+          <div>
+            <div className="alert alert-danger" role="alert">
+              <strong>Wrong Answer!</strong>
+
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="alert"
+                aria-label="Close"
+                onClick={() => this.setState({ VerifySecurityQuestion: false })}
+              ></button>
+            </div>
+          </div>
+        ) : (
+          " "
+        )}
         {resetPassword ? (
           <Card
             bg={"dark"}
@@ -148,8 +198,10 @@ class ForgotPassword extends Component {
                     <div className="form-floating mb-3  ">
                       <input
                         type="text"
+                        value={SecurityQuestion}
                         className="form-control"
                         placeholder="Security Question"
+                        id="Question"
                         onChange={(event) =>
                           this.setState({
                             SecurityQuestion: event.target.value,
@@ -189,8 +241,10 @@ class ForgotPassword extends Component {
                     <div className="form-floating mb-3  ">
                       <input
                         type="email"
+                        value={Email}
                         className="form-control"
                         placeholder="Email"
+                        id="Email"
                         onChange={(event) =>
                           this.setState({ Email: event.target.value })
                         }
