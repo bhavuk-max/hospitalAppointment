@@ -40,63 +40,51 @@ class Home extends Component {
           <Carousel.Item className="carousel-item">
             {/* <img className="d-block w-100" src={first} alt="First slide" /> */}
             <div className="inner-card">
-              <Link to="/login" className="HomeCarousel">
-                <Card style={{ width: "18rem", margin: "10px" }}>
-                  <Card.Body>
-                    <Card.Title>Cardiac</Card.Title>
-                    <Card.Img variant="top" src={cardiac} className="image" />
-                  </Card.Body>
-                </Card>
-              </Link>
-              <Link to="/login" className="HomeCarousel">
-                <Card style={{ width: "18rem", margin: "10px" }}>
-                  <Card.Body>
-                    <Card.Title>Dental</Card.Title>
-                    <Card.Img variant="top" src={dental} className="image" />
-                  </Card.Body>
-                </Card>
-              </Link>
-              <Link to="/login" className="HomeCarousel">
-                <Card style={{ width: "18rem", margin: "10px" }}>
-                  <Card.Body>
-                    <Card.Title>ENT</Card.Title>
-                    <Card.Img variant="top" src={ent} className="image" />
-                  </Card.Body>
-                </Card>
-              </Link>
+              <Card style={{ width: "18rem", margin: "10px" }}>
+                <Card.Body>
+                  <Card.Title>Cardiac</Card.Title>
+                  <Card.Img variant="top" src={cardiac} className="image" />
+                </Card.Body>
+              </Card>
+
+              <Card style={{ width: "18rem", margin: "10px" }}>
+                <Card.Body>
+                  <Card.Title>Dental</Card.Title>
+                  <Card.Img variant="top" src={dental} className="image" />
+                </Card.Body>
+              </Card>
+
+              <Card style={{ width: "18rem", margin: "10px" }}>
+                <Card.Body>
+                  <Card.Title>ENT</Card.Title>
+                  <Card.Img variant="top" src={ent} className="image" />
+                </Card.Body>
+              </Card>
             </div>
           </Carousel.Item>
           <Carousel.Item className="carousel-item">
             {/* <img className="d-block w-100" src={first} alt="First slide" /> */}
             <div className="inner-card">
-              <Link to="/login" className="HomeCarousel">
-                <Card style={{ width: "18rem", margin: "10px" }}>
-                  <Card.Body>
-                    <Card.Title>Dermatology</Card.Title>
-                    <Card.Img
-                      variant="top"
-                      src={dermatology}
-                      className="image"
-                    />
-                  </Card.Body>
-                </Card>
-              </Link>
-              <Link to="/login" className="HomeCarousel">
-                <Card style={{ width: "18rem", margin: "10px" }}>
-                  <Card.Body>
-                    <Card.Title>Orthopedic</Card.Title>
-                    <Card.Img variant="top" src={ortho} className="image" />
-                  </Card.Body>
-                </Card>
-              </Link>
-              <Link to="/login" className="HomeCarousel">
-                <Card style={{ width: "18rem", margin: "10px" }}>
-                  <Card.Body>
-                    <Card.Title>Gastroenterology</Card.Title>
-                    <Card.Img variant="top" src={gastro} className="image" />
-                  </Card.Body>
-                </Card>
-              </Link>
+              <Card style={{ width: "18rem", margin: "10px" }}>
+                <Card.Body>
+                  <Card.Title>Dermatology</Card.Title>
+                  <Card.Img variant="top" src={dermatology} className="image" />
+                </Card.Body>
+              </Card>
+
+              <Card style={{ width: "18rem", margin: "10px" }}>
+                <Card.Body>
+                  <Card.Title>Orthopedic</Card.Title>
+                  <Card.Img variant="top" src={ortho} className="image" />
+                </Card.Body>
+              </Card>
+
+              <Card style={{ width: "18rem", margin: "10px" }}>
+                <Card.Body>
+                  <Card.Title>Gastroenterology</Card.Title>
+                  <Card.Img variant="top" src={gastro} className="image" />
+                </Card.Body>
+              </Card>
             </div>
           </Carousel.Item>
         </Carousel>
