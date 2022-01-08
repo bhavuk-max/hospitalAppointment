@@ -22,11 +22,15 @@ class Navbar extends React.Component {
     status: "",
     ID: localStorage.getItem("UserId"),
     DoctorStatus: false,
+    cart: false,
   };
   componentDidMount() {
     const userType = localStorage.getItem("UserType");
     if (userType === "1") {
       this.setState({ DoctorStatus: true });
+    }
+    if (userType === "2") {
+      this.setState({ cart: true });
     }
     if (userType) {
       this.setState({ Profile: true, hamType: userType });
@@ -51,7 +55,7 @@ class Navbar extends React.Component {
     });
   }
   render() {
-    const { Profile, hamType, DoctorStatus } = this.state;
+    const { Profile, hamType, DoctorStatus, cart } = this.state;
     return (
       <nav className="Nav">
         {/* <Sidebar /> */}
@@ -76,6 +80,15 @@ class Navbar extends React.Component {
         </div>
 
         <div className="NavBtn">
+          {cart ? (
+            <div className="shopping-cart">
+              <Link to="/CheckOut">
+                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+              </Link>
+            </div>
+          ) : (
+            " "
+          )}
           {Profile ? (
             <div class="dropdown">
               <button
@@ -87,11 +100,11 @@ class Navbar extends React.Component {
               >
                 <i class="fas fa-user-circle fa-2x"></i>
               </button>
-              <div className="shopping-cart">
+              {/* <div className="shopping-cart">
           <Link to="/CheckOut">
             <i class="fa fa-shopping-cart" aria-hidden="true"></i>
           </Link>
-        </div>
+        </div> */}
 
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                 <li className="detail-name">
