@@ -3,10 +3,11 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Nov 29, 2021 at 11:59 AM
+-- Generation Time: Jan 08, 2022 at 09:25 AM
 -- Server version: 8.0.21
 -- PHP Version: 7.3.21
 
+SET FOREIGN_KEY_CHECKS=0;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
@@ -74,35 +75,16 @@ CREATE TABLE IF NOT EXISTS `cart` (
   `price` int NOT NULL,
   PRIMARY KEY (`ID_Pharmacy`),
   KEY `Patient_ID` (`Patient_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `cart`
 --
 
 INSERT INTO `cart` (`ID_Pharmacy`, `Patient_ID`, `NAME`, `quantity`, `price`) VALUES
-(4, 2, 'Levothyroxine', 2, 70);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `chat`
---
-
-DROP TABLE IF EXISTS `chat`;
-CREATE TABLE IF NOT EXISTS `chat` (
-  `Message` varchar(500) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Dumping data for table `chat`
---
-
-INSERT INTO `chat` (`Message`) VALUES
-(''),
-('hello this is a test message'),
-(''),
-('test 2');
+(6, 2, 'Levothyroxine', 2, 70),
+(8, 2, 'Crocin', 2, 70),
+(9, 1, 'Crocin', 1, 35);
 
 -- --------------------------------------------------------
 
@@ -188,49 +170,6 @@ INSERT INTO `patient` (`Patient_ID`, `ID`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `resetpassword`
---
-
-DROP TABLE IF EXISTS `resetpassword`;
-CREATE TABLE IF NOT EXISTS `resetpassword` (
-  `ID` int NOT NULL AUTO_INCREMENT,
-  `code` varchar(255) NOT NULL,
-  `Email` varchar(100) NOT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Dumping data for table `resetpassword`
---
-
-INSERT INTO `resetpassword` (`ID`, `code`, `Email`) VALUES
-(1, '160fef5a7cd4b2', 'hospitalappointment01@gmail.com'),
-(2, '160fefb2118a6d', 'keshavsehgal27@gmail.com');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `sample`
---
-
-DROP TABLE IF EXISTS `sample`;
-CREATE TABLE IF NOT EXISTS `sample` (
-  `date` date NOT NULL,
-  `ID` int NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Dumping data for table `sample`
---
-
-INSERT INTO `sample` (`date`, `ID`) VALUES
-('0000-00-00', 1),
-('2021-09-08', 2);
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `user`
 --
 
@@ -244,6 +183,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `PhoneNo` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `UserType` int NOT NULL,
   `First_login` tinyint NOT NULL DEFAULT '0',
+  `SecurityQuestion` varchar(20) NOT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `Email` (`Email`),
   UNIQUE KEY `ID` (`ID`),
@@ -254,15 +194,15 @@ CREATE TABLE IF NOT EXISTS `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`ID`, `Email`, `Password`, `FullName`, `Address`, `PhoneNo`, `UserType`, `First_login`) VALUES
-(1, 'keshav@gmail.com', 'keshav', 'Keshav ', 'pb', '123', 1, 1),
-(2, 'keshav@yahoo.com', 'keshav', 'keshav', NULL, '1234567890', 2, 1),
-(3, 'abc@gmail.com', 'abc', 'abc', NULL, NULL, 1, 1),
-(4, 'pranav@gmail.com', 'pranav', 'pranav', 'CHD', '678', 1, 1),
-(5, 'abc@yahoo.com', 'abc', 'abc', 'hp', '5667', 2, 1),
-(6, 'bhavuk@gmail.com', 'bg12', 'Bhavuk Gupta', NULL, NULL, 1, 0),
-(7, 'Aman@gmail.com', 'aman123', 'Aman', 'chd', '2222', 1, 1),
-(8, 'Aman@yahoo.com', 'aman', 'Aman', 'Wb', '444', 2, 1);
+INSERT INTO `user` (`ID`, `Email`, `Password`, `FullName`, `Address`, `PhoneNo`, `UserType`, `First_login`, `SecurityQuestion`) VALUES
+(1, 'keshav@gmail.com', 'keshav', 'Keshav ', 'pb', '123', 1, 1, 'Nike'),
+(2, 'keshav@yahoo.com', 'keshav', 'keshav', NULL, '1234567890', 2, 1, ''),
+(3, 'abc@gmail.com', 'abc', 'abc', NULL, NULL, 1, 1, ''),
+(4, 'pranav@gmail.com', 'pranav', 'pranav', 'CHD', '678', 1, 1, ''),
+(5, 'abc@yahoo.com', 'abc', 'abc', 'hp', '5667', 2, 1, ''),
+(6, 'bhavuk@gmail.com', 'bg12', 'Bhavuk Gupta', NULL, NULL, 1, 0, ''),
+(7, 'Aman@gmail.com', 'Aman', 'Aman', 'chd', '2222', 1, 1, ''),
+(8, 'Aman@yahoo.com', 'Aman', 'Aman', 'Wb', '444', 2, 1, 'Dell');
 
 --
 -- Constraints for dumped tables
@@ -292,6 +232,7 @@ ALTER TABLE `doctor`
 --
 ALTER TABLE `patient`
   ADD CONSTRAINT `patient_ibfk_1` FOREIGN KEY (`ID`) REFERENCES `user` (`ID`);
+SET FOREIGN_KEY_CHECKS=1;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
