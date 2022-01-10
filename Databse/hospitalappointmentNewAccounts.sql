@@ -1,13 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
-
--- Generation Time: Jan 08, 2022 at 09:25 AM
-
--- Server version: 8.0.21
--- PHP Version: 7.3.21
+-- Generation Time: Jan 10, 2022 at 12:16 PM
+-- Server version: 8.0.27
+-- PHP Version: 7.4.26
 
 SET FOREIGN_KEY_CHECKS=0;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -43,24 +41,16 @@ CREATE TABLE IF NOT EXISTS `bookappointment` (
   PRIMARY KEY (`Appointment_ID`),
   KEY `Patient_ID` (`Patient_ID`),
   KEY `Doctor_ID` (`Doctor_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `bookappointment`
 --
 
 INSERT INTO `bookappointment` (`Appointment_ID`, `Patient_ID`, `Doctor_ID`, `Category`, `Date`, `Time`, `Fees`, `Status`) VALUES
-(1, 2, 1, 'Heart', '2021-10-25', '18:48:00', 0, 'Canceled'),
-(2, 2, 1, 'Heart', '2021-10-30', '11:35:00', 0, 'Completed'),
-(3, 2, 2, 'Bone', '2021-10-27', '23:35:00', 0, 'Canceled'),
-(4, 2, 1, 'Heart', '2021-11-11', '11:39:00', 0, 'Completed'),
-(5, 2, 1, 'Heart', '2021-10-26', '12:50:00', 0, 'Completed'),
-(6, 2, 2, 'Bone', '2021-11-20', '12:00:00', 0, 'Pending'),
-(7, 2, 1, 'Heart', '2021-11-20', '13:11:00', 0, 'Canceled'),
-(8, 2, 1, 'Heart', '2021-11-27', '13:20:00', 400, 'Pending'),
-(9, 2, 1, 'Heart', '2021-11-21', '21:17:00', 400, 'Pending'),
-(10, 2, 1, 'Heart', '2021-11-20', '21:22:00', 400, 'Pending'),
-(11, 2, 1, 'Heart', '2021-11-24', '12:09:00', 400, 'Pending');
+(1, 2, 1, 'Heart', '2022-01-10', '16:35:00', 0, 'Pending'),
+(2, 2, 3, 'Bone', '2022-01-13', '16:46:00', 0, 'Pending'),
+(3, 2, 4, 'Skin', '2022-01-10', '17:45:00', 0, 'Pending');
 
 -- --------------------------------------------------------
 
@@ -77,14 +67,13 @@ CREATE TABLE IF NOT EXISTS `cart` (
   `price` int NOT NULL,
   PRIMARY KEY (`ID_Pharmacy`),
   KEY `Patient_ID` (`Patient_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `cart`
 --
 
 INSERT INTO `cart` (`ID_Pharmacy`, `Patient_ID`, `NAME`, `quantity`, `price`) VALUES
-(6, 2, 'Levothyroxine', 2, 70),
 (8, 2, 'Crocin', 2, 70),
 (9, 1, 'Crocin', 1, 35);
 
@@ -103,17 +92,7 @@ CREATE TABLE IF NOT EXISTS `confirmedorders` (
   `Price` int NOT NULL,
   PRIMARY KEY (`Order_ID`),
   KEY `Patient_ID` (`Patient_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Dumping data for table `confirmedorders`
---
-
-INSERT INTO `confirmedorders` (`Order_ID`, `Patient_ID`, `NAME`, `Quantity`, `Price`) VALUES
-(1, 2, 'Crocin', 2, 70),
-(2, 2, 'Lisnopril', 1, 35),
-(3, 2, 'Lisnopril', 2, 70),
-(4, 2, 'Levothyroxine', 2, 70);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -133,7 +112,7 @@ CREATE TABLE IF NOT EXISTS `doctor` (
   PRIMARY KEY (`Doctor_ID`),
   UNIQUE KEY `ID` (`ID`),
   UNIQUE KEY `Doctor_ID` (`Doctor_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `doctor`
@@ -141,9 +120,11 @@ CREATE TABLE IF NOT EXISTS `doctor` (
 
 INSERT INTO `doctor` (`Doctor_ID`, `ID`, `Qualification`, `Speciality`, `Doctor_Fee`, `Meeting_Link`, `Status`) VALUES
 (1, 1, 'Mbbs', 'Heart', 450, 'https://zoom.us/j/2350488474?pwd=UjNuRmQ4Rkp6NFpHVERUTmhlZVJ', 1),
-(2, 3, '', '', 500, 'https://us05web.zoom.us/j/3578828586?pwd=Nk1mOWxPa3BhUFFoYzB', 1),
-(3, 4, '', '', 600, '', 1),
-(4, 7, 'Mbbs', 'Skin', 600, 'demo', 1);
+(2, 3, 'mbbs', 'Heart', 500, 'https://us05web.zoom.us/j/3578828586?pwd=Nk1mOWxPa3BhUFFoYzB', 1),
+(3, 4, 'mbbs', 'Bone', 600, 'null', 1),
+(4, 7, 'Mbbs', 'Skin', 600, 'demo', 1),
+(5, 9, 'mbbs', 'Back Pain', 300, 'null', 1),
+(6, 6, 'mbbs', 'Leg Pain', 400, 'null', 1);
 
 -- --------------------------------------------------------
 
@@ -190,7 +171,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   UNIQUE KEY `Email` (`Email`),
   UNIQUE KEY `ID` (`ID`),
   UNIQUE KEY `Phone No` (`PhoneNo`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `user`
@@ -199,14 +180,13 @@ CREATE TABLE IF NOT EXISTS `user` (
 INSERT INTO `user` (`ID`, `Email`, `Password`, `FullName`, `Address`, `PhoneNo`, `UserType`, `First_login`, `SecurityQuestion`) VALUES
 (1, 'keshav@gmail.com', 'keshav', 'Keshav ', 'pb', '123', 1, 1, 'Nike'),
 (2, 'keshav@yahoo.com', 'keshav', 'keshav', NULL, '1234567890', 2, 1, ''),
-(3, 'abc@gmail.com', 'abc', 'abc', NULL, NULL, 1, 1, ''),
-(4, 'pranav@gmail.com', 'pranav', 'pranav', 'CHD', '678', 1, 1, ''),
+(3, 'abc@gmail.com', 'abc', 'abc', 'MP', '5462812418', 1, 1, 'Panasonic'),
+(4, 'pranav@gmail.com', 'pranav', 'pranav', 'CHD', '678', 1, 1, 'LG'),
 (5, 'abc@yahoo.com', 'abc', 'abc', 'hp', '5667', 2, 1, ''),
-(6, 'bhavuk@gmail.com', 'bg12', 'Bhavuk Gupta', NULL, NULL, 1, 0, ''),
+(6, 'bhavuk@gmail.com', 'bg12', 'Bhavuk Gupta', 'Pb', '1234512345', 1, 1, 'Acer'),
 (7, 'Aman@gmail.com', 'Aman', 'Aman', 'chd', '2222', 1, 1, ''),
-
-(8, 'Aman@yahoo.com', 'Aman', 'Aman', 'Wb', '444', 2, 1, 'Dell');
-
+(8, 'Aman@yahoo.com', '95a6080a7a999364880885c180d92bb5', 'Aman', 'Wb', '444', 2, 1, 'Dell'),
+(9, 'Jai@gmail.com', 'Jay123', 'Jai Singh', 'chd', '71232431414', 1, 1, 'Dell');
 
 --
 -- Constraints for dumped tables
