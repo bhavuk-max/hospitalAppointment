@@ -9,10 +9,8 @@
   z-index: 999;
   top: 0;
 }
-.shopping-cart{
-  position: absolute;
-  right: 173%;
-  top: 28%;
+.shopping-cart {
+  padding: 40px;
 }
 
 .NavLink {
