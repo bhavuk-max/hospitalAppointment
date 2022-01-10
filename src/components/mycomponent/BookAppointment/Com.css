@@ -2,10 +2,13 @@
   margin: 0;
   padding: 0;
 }
+
 .appointmentPayment {
+
   display: flex;
   margin-top: 3px;
   margin-left: 144px;
+
 }
 body {
   font-style: normal;
@@ -140,9 +143,7 @@ body {
   margin-top: -38px;
   margin-bottom: 20px;
 }
-/* .front-1{
-  background-color: ;
-} */
+
 .MobileNo {
   position: fixed;
   top: 430px;
@@ -161,10 +162,12 @@ body {
   top: 20px;
 }
 .column-how {
+
   margin-top: -369px;
   display: flex;
   justify-content: end;
   margin-right: 117px;
+
 }
 .how-text {
   margin-left: 72%;

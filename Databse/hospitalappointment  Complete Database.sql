@@ -3,7 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
+
 -- Generation Time: Jan 08, 2022 at 09:25 AM
+
 -- Server version: 8.0.21
 -- PHP Version: 7.3.21
 
@@ -202,7 +204,9 @@ INSERT INTO `user` (`ID`, `Email`, `Password`, `FullName`, `Address`, `PhoneNo`,
 (5, 'abc@yahoo.com', 'abc', 'abc', 'hp', '5667', 2, 1, ''),
 (6, 'bhavuk@gmail.com', 'bg12', 'Bhavuk Gupta', NULL, NULL, 1, 0, ''),
 (7, 'Aman@gmail.com', 'Aman', 'Aman', 'chd', '2222', 1, 1, ''),
+
 (8, 'Aman@yahoo.com', 'Aman', 'Aman', 'Wb', '444', 2, 1, 'Dell');
+
 
 --
 -- Constraints for dumped tables
