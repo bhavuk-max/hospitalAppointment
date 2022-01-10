@@ -15,7 +15,7 @@
 }
 
 .article-body {
-  text-align: left;
+  text-align: center;
 }
 
 .article-card-icon {
@@ -29,5 +29,12 @@
 
 .article-card {
   width: 900px;
-  height: 500px;
+  height: auto;
+}
+
+.articleContent {
+  padding: 60px;
+  text-align: justify;
+  white-space: pre-line;
+  vertical-align: bottom;
 }
