@@ -161,11 +161,14 @@ body {
   top: 20px;
 }
 .column-how {
-  margin-top: -369px;
+  margin-top: -368px;
   display: flex;
   justify-content: end;
-  margin-right: 117px;
+  margin-right: 51px;
+  margin-left: 88%;
+  width: 5%;
 }
+
 .how-text {
   margin-left: 72%;
 }
