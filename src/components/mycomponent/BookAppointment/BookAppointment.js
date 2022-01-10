@@ -189,29 +189,33 @@ class BookAppointment extends Component {
             ></input>
           </div>
 
-          <div>
-            <button
-              disabled={paymentSuccess}
-              className="btn btn-primary"
-              id="button-book-appointment"
-              onClick={(e) => this.submitHandler(e)}
-            >
-              Book Appointment
-            </button>
-            <div className="appointmentPayment">
-              <Payment
-                payment={payment}
-                merchantName={merchantName}
-                paymentSuccess={(event) => {
-                  if (event.paymentMethodData.tokenizationData.token)
-                    this.setState({ paymentSuccess: false });
-                }}
-              />
-            </div>
+          {/* <div className="payment"> */}
+          <div className="appointmentPayment">
+            <Payment
+              payment={payment}
+              merchantName={merchantName}
+              paymentSuccess={(event) => {
+                if (event.paymentMethodData.tokenizationData.token)
+                  this.setState({ paymentSuccess: false });
+              }}
+            />
           </div>
+          <button
+            // disabled={paymentSuccess}
+            className="btn btn-primary"
+            id="button-book-appointment"
+            onClick={(e) => this.submitHandler(e)}
+          >
+            Book Appointment
+          </button>
+          {/* </div> */}
         </div>
         <div className="column-how">
-          <img src={how} alt="how it works" style={{ width: "100%" }}></img>
+          <img
+            src={how}
+            alt="how it works"
+            style={{ width: "200px", height: "200px" }}
+          ></img>
         </div>
         <div className="how-text">
           <p>Choose the category</p>

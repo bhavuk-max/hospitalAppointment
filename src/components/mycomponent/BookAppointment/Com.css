@@ -3,8 +3,9 @@
   padding: 0;
 }
 .appointmentPayment {
-  margin-right: 65%;
-  margin-top: 25%;
+  display: flex;
+  margin-top: 3px;
+  margin-left: 144px;
 }
 body {
   font-style: normal;
@@ -39,9 +40,8 @@ body {
 }
 
 .category {
-  position: fixed;
-  top: 193px;
-  left: 165px;
+  display: flex;
+  margin-left: 153px;
 }
 .form-select .form-select-sm .w-25 .p-3 .mh-25 {
   position: relative;
@@ -50,10 +50,10 @@ body {
 }
 
 #select-one-doctor {
-  position: fixed;
-  left: 290px;
-  width: 50px;
-  top: 252px;
+  display: flex;
+  margin-left: 292px;
+  margin-top: -38px;
+  margin-bottom: 20px;
 }
 .form-select .form-select-sm {
   width: 20%;
@@ -61,16 +61,14 @@ body {
 }
 
 #select-one-problem {
-  position: fixed;
-  left: 290px;
-  height: 53px;
-  width: 50px;
-  top: 187px;
+  display: flex;
+  margin-left: 292px;
+  margin-top: -38px;
+  margin-bottom: 20px;
 }
 .h3-select-date {
-  position: fixed;
-  left: 163px;
-  top: 323px;
+  display: flex;
+  margin-left: 153px;
 }
 
 .li-one:hover,
@@ -91,23 +89,21 @@ body {
   left: 325px;
 }
 .PreviousAppointment {
-  position: fixed;
-  top: 132px;
-  left: 150px;
+  margin-top: 55px;
+  display: flex;
+  margin-left: 155px;
 }
 .Table {
   position: relative;
   top: 225px;
 }
 .doctors-list {
-  position: fixed;
-  top: 263px;
-  left: 160px;
+  display: flex;
+  margin-left: 153px;
 }
 .select-time {
-  position: fixed;
-  left: 160px;
-  top: 375px;
+  display: flex;
+  margin-left: 153px;
 }
 #select-time-picker-clock {
   position: relative;
@@ -115,11 +111,9 @@ body {
   top: 10px;
 }
 #button-book-appointment {
-  position: absolute;
-  left: 161px;
-  top: 473px;
-  margin-top: 20px;
-  background-color: rgb(59, 101, 192);
+  display: flex;
+  margin-left: 143px;
+  margin-top: 26px;
 }
 .ContactUs {
   text-align: center;
@@ -129,19 +123,22 @@ body {
 
 .Datepicker,
 .Datepicker:focus {
-  position: fixed;
-  left: 290px;
-  top: 323px;
+  display: flex;
+  margin-left: 292px;
+  margin-top: -38px;
+  margin-bottom: 20px;
 }
 .TImepicker {
-  position: absolute;
-  left: 290px;
-  top: 300px;
+  display: flex;
+  margin-left: 292px;
+  margin-top: -38px;
+  margin-bottom: 20px;
 }
 .time-pickme {
-  position: fixed;
-  left: 291px;
-  top: 375px;
+  display: flex;
+  margin-left: 292px;
+  margin-top: -38px;
+  margin-bottom: 20px;
 }
 /* .front-1{
   background-color: ;
@@ -164,15 +161,13 @@ body {
   top: 20px;
 }
 .column-how {
-  position: absolute;
-  width: 11%;
-  right: 255px;
-  top: 100px;
+  margin-top: -369px;
+  display: flex;
+  justify-content: end;
+  margin-right: 117px;
 }
 .how-text {
-  position: absolute;
-  top: 285px;
-  left: 914px;
+  margin-left: 72%;
 }
 footer {
   text-align: center;
@@ -190,4 +185,12 @@ footer {
   left: 1px;
   top: -80px;
   margin-top: 10px;
+}
+
+.payment {
+  display: flex;
+  align-items: center;
+  position: relative;
+  top: 350px;
+  left: 160px;
 }
