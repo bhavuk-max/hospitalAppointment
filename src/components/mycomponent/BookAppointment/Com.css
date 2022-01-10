@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
 }
+
 .appointmentPayment {
   display: flex;
   margin-top: 3px;
@@ -140,9 +141,7 @@ body {
   margin-top: -38px;
   margin-bottom: 20px;
 }
-/* .front-1{
-  background-color: ;
-} */
+
 .MobileNo {
   position: fixed;
   top: 430px;
